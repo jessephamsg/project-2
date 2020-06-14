@@ -5,6 +5,7 @@ const router = require('./router/routes');
 const db = require('./database/db')
 
 db.connect();
+app.use(express.static('public'));
 app.use(express.urlencoded({extended: true}));
 app.use(router);
 
