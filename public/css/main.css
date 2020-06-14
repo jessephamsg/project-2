@@ -1,5 +1,7 @@
 body {
     font-family: 'Noto Sans', sans-serif;
+    color: #737070;
+    margin: 0 auto;
 }
 
 ul {
@@ -7,7 +9,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    box-shadow: 0 4px 9px 0 rgba(0,0,0,0.1);
 }
 
 li {
@@ -16,17 +18,114 @@ li {
 
 li:nth-child(3) {
     float: right;
-    background-color: #3F51B5;
+    background-color: #A767FF;
+    color: white;
 }
 
 li a {
     display: block;
-    color: white;
+    color: #737070;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
 
 li a:hover {
-    background-color: #111;
+    background-color: #F0D200;
+}
+
+.top-banner {
+    width: 100%;
+    height: 300px;
+    margin-top: 0px;
+    padding-top: 30px;
+    padding-bottom: 75px;
+    text-align: center;
+}
+
+.banner-content {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.banner-content > h2 {
+    color: #A767FF;
+    font-size: 30px;
+}
+
+.banner-content > button {
+    padding: 10px;
+    border: 0px;
+    border-radius: 3px;
+    color: white;
+    margin-top: 15px;
+}
+
+.banner-content>button:nth-child(4) {
+    background-color: #A767FF
+}
+
+.banner-content>button:nth-child(5) {
+    background-color: #F0D200
+}
+
+img {
+    width: 60%;
+    margin-top: 50px;
+    margin-left: 20%;
+}
+
+.content-segment {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 50px;
+    margin: 0 auto;
+}
+
+.content-segment > h2 {
+    color: #A767FF;
+    font-size: 30px;
+}
+
+.segment-body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.content-card {
+    width: 20%;
+    padding: 20px;
+    margin: 3px;
+    border-radius: 3px;
+    border: 1px solid #80808042;
+}
+
+.content-card:hover {
+    background-color: #FAF2B5;
+}
+
+.img-divider {
+    width: 100%;
+    height: 400px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.article-card {
+    width: 20%;
+    padding: 20px;
+    margin: 3px;
+    border-radius: 3px;
+    border: 1px solid #80808042;
+}
+
+.article-card > img {
+    width: 100%;
+    margin: 0;
+}
+
+.article-card:hover {
+    background-color: #FAF2B5;
 }
