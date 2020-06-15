@@ -16,9 +16,7 @@ module.exports = {
             role: req.body.role,
         }
         const account = await services.userAccountMgtService.createNewUser(userAccount)
-        res.render('admin.ejs', {
-            account
-        })
+        res.redirect('/login');
     },
     async logIn (req, res) {
         res.render('logIn.ejs')
@@ -26,9 +24,17 @@ module.exports = {
     async verifyAccount (req, res) {
         const username = req.body.username;
         const password = req.body.password;
-        console.log(username);
-        console.log(password)
         const account = await services.userAccountMgtService.searchAccount(username, password);
-        res.send(account);
+        req.session.account = account;
+        res.redirect('/dashboard');
+    },
+    async showDashboard (req, res) {
+        res.render('admin.ejs', {
+            user: req.session.account
+        });
+    },
+    logOut (req, res) {
+        req.session.destroy();
+        res.redirect('/');
     }
 }
