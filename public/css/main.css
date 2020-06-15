@@ -1,6 +1,6 @@
 body {
-    font-family: 'Noto Sans', sans-serif;
-    color: #737070;
+    font-family: 'Open Sans', sans-serif;
+    color: #131212e3;
     margin: 0 auto;
 }
 
@@ -10,6 +10,7 @@ ul {
     padding: 0;
     overflow: hidden;
     box-shadow: 0 4px 9px 0 rgba(0,0,0,0.1);
+    background-color: #131212e3;
 }
 
 li {
@@ -18,7 +19,7 @@ li {
 
 li:nth-child(3) {
     float: right;
-    background-color: #A767FF;
+    background-color: #0779E4;
     color: white;
 }
 
@@ -26,12 +27,16 @@ li a {
     display: block;
     color: #737070;
     text-align: center;
-    padding: 14px 16px;
+    padding: 20px 16px;
     text-decoration: none;
 }
 
+.login-button {
+    color: white;
+}
+
 li a:hover {
-    background-color: #F0D200;
+    background-color: #0779E4;
 }
 
 .top-banner {
@@ -41,6 +46,7 @@ li a:hover {
     padding-top: 30px;
     padding-bottom: 75px;
     text-align: center;
+    margin-bottom: 200px;
 }
 
 .banner-content {
@@ -49,83 +55,159 @@ li a:hover {
 }
 
 .banner-content > h2 {
-    color: #A767FF;
-    font-size: 30px;
+    font-size: 55px;
+    line-height: 63px;
+    font-weight: 600;
+}
+
+.banner-content > h5 {
+    margin-top: 60px;
 }
 
 .banner-content > button {
-    padding: 10px;
+    padding: 20px;
     border: 0px;
     border-radius: 3px;
     color: white;
-    margin-top: 15px;
+    font-size: 18px;
+    margin-top: 35px;
+}
+
+.banner-content > p {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 400;
 }
 
 .banner-content>button:nth-child(4) {
-    background-color: #A767FF
+    background-color: #0779E4;
 }
 
 .banner-content>button:nth-child(5) {
-    background-color: #F0D200
+    border: 1px solid #0779E4;
+    background-color: white;
+    color: #0779E4;
 }
 
 img {
-    width: 60%;
-    margin-top: 50px;
-    margin-left: 20%;
+    width: 90%;
+    margin-left: 10%;
 }
 
 .content-segment {
     display: flex;
     flex-direction: column;
     text-align: center;
-    padding: 50px;
     margin: 0 auto;
+    width: 100%;
+    height: 1380px;
 }
 
 .content-segment > h2 {
-    color: #A767FF;
-    font-size: 30px;
+    font-size: 50px;
+    font-weight: 600;
 }
 
 .segment-body {
+    width: 100%;
+    height: 800px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
+.content-card > h4 {
+    font-size: 25px;
+    font-weight: 400;
+}
+
+.content-card > p {
+    font-size: 16px;
+    font-weight: 400;
+}
+
 .content-card {
-    width: 20%;
-    padding: 20px;
+    width: 36%;
+    padding: 50px;
     margin: 3px;
     border-radius: 3px;
-    border: 1px solid #80808042;
-}
-
-.content-card:hover {
-    background-color: #FAF2B5;
-}
-
-.img-divider {
-    width: 100%;
     height: 400px;
     background-size: cover;
-    background-repeat: no-repeat;
 }
 
-.article-card {
-    width: 20%;
-    padding: 20px;
-    margin: 3px;
-    border-radius: 3px;
-    border: 1px solid #80808042;
+.content-card:nth-child(1) {
+    color: white;
 }
 
-.article-card > img {
+.content-card:nth-child(2) {
+    background-size: cover;
+    color: #131212;
+}
+
+.content-card:nth-child(4) {
+    background-size: cover;
+    color: #131212;
+}
+
+.content-card:nth-child(3) {
+    background-size: cover;
+    color: #131212;
+}
+
+.signup-segment {
+    background-color: #EFF3C6;
     width: 100%;
-    margin: 0;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 50px;
+    padding-top: 50px;
+    background-image: url('https://i.pinimg.com/originals/cf/e4/1d/cfe41dcb2a7deecdbd38ddc68513b47f.png');
+    background-repeat: no-repeat;
+    background-position: bottom right;
 }
 
-.article-card:hover {
-    background-color: #FAF2B5;
+.sign-up-form {
+    width: 50%;
+}
+
+.sign-up-form >h3 {
+    color: #0779E4;
+    font-size: 30px;
+    text-align: center;
+}
+
+.sign-up-form > input[type='text'] {
+    padding: 10px;
+    width: 97%;
+    border: none;
+    margin-bottom: 18px;
+    border-radius: 3px;
+    background-color: #d1d4b17d;
+}
+
+.sign-up-form > input[type='submit'] {
+    padding: 18px;
+    width: 100%;
+    border: none;
+    margin-bottom: 18px;
+    border-radius: 3px;
+    background-color: #0779E4;
+    margin-top: 30px;
+    color: white;
+    font-size: 17px;
+}
+
+.sign-up-form > select {
+    padding: 10px;
+    width: 100%;
+    border: none;
+    margin-bottom: 18px;
+    border-radius: 3px;
+    background-color: #d1d4b17d;
+}
+
+footer {
+    width: 100%;
+    height: 350px;
+    background-color: #131212e3;
 }
