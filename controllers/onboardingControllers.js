@@ -4,6 +4,9 @@ module.exports = {
     showLandingPage (req, res) {
         res.render('landing-page.ejs');
     },
+    signUp (req, res) {
+        res.render('signUp.ejs');
+    },
     async createNewUser (req, res) {
         const userAccount = {
             username: req.body.username,
@@ -18,7 +21,7 @@ module.exports = {
         const account = await services.userAccountMgtService.createNewUser(userAccount)
         res.redirect('/login');
     },
-    async logIn (req, res) {
+    logIn (req, res) {
         res.render('logIn.ejs')
     },
     async verifyAccount (req, res) {
