@@ -14,4 +14,5 @@ router.put('/dashboard', controllers.userProfileControllers.editUserProfile);
 
 //Super Admin App Routes
 
+
 module.exports = router;
