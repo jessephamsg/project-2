@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%- include('./partials/admin-head.ejs') %>
+</head>
+<body>
+    <%- include('./partials/app-horizontal-nav.ejs') %>
+    <div class='admin-body'>
+            <div class='left-section'>
+                <%- include('./partials/admin-nav.ejs') %>
+            </div>
+            <div class='mid-section'>
+                    <nav>
+                            <ul class ='subtab-navigator'>
+                                <div class='subtab-name'>AGE GROUPS</div>
+                                <div class="subtab-type" onclick='showSubTypeDropdown()' id='dropdown-1'>Toddlers</div>
+                                <div class="subtab-type" onclick='showSubTypeDropdown()' id='dropdown-2'>Nursery & Kinders</div>
+                                <div class="subtab-type" onclick='showSubTypeDropdown()' id='dropdown-3'>Lower Primary</div>
+                                <div class="subtab-type" onclick='showSubTypeDropdown()' id='dropdown-4'>Upper Primary</div>                                            
+                            </ul>
+                            <div class ='subtab-navigator'>
+                            <div class="dropdown-container" id='dropdown-container-1'>
+                                <a href="/students/tots">Data</a>
+                                <a href="/students/tots/attendance">Attendance Form</a>
+                            </div>
+                            <div class="dropdown-container" id='dropdown-container-2'>
+                                <a href="/students/juniors">Data</a>
+                                <a href="/students/juniors/attendance">Attendance Form</a>
+                            </div>
+                            <div class="dropdown-container" id='dropdown-container-3'>
+                                <a href="/students/lowerprimary">Data</a>
+                                <a href="/students/lowerprimary/attendance">Attendance Form</a>
+                            </div>
+                            <div class="dropdown-container" id='dropdown-container-4'>
+                                <a href="/students/upperprimary">Data</a>
+                                <a href="/students/upperprimary/attendance">Attendance Form</a>
+                            </div>
+                            </div>
+                    </nav>
+            </div>
+            <div class='right-section'>
+            </div>
+        </div>
+</body>
+</html>

@@ -8,15 +8,18 @@ ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    width: 15%;
+    width: 100%;
     background-color: #f1f1f1;
 }
 
 li a {
     display: block;
     color: #000;
-    padding: 8px 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 15%;
     text-decoration: none;
+    font-size: 13px;
 }
 
 li a.active {
@@ -35,7 +38,7 @@ ul.horizontal-nav {
     width: 100%;
     overflow: hidden;
     box-shadow: 0 4px 9px 0 rgba(0,0,0,0.1);
-    background-color: #131212e3;
+    background-color: #f1f1f1;
 }
 
 .horizontal-nav > li {
@@ -71,8 +74,10 @@ ul.horizontal-nav {
 
 .left-section {
     height: 900px;
-    width: 15%;
-    background-color: #f1f1f1
+    width: 20%;
+    background-color: #f1f1f1;
+    display: flex;
+    flex-direction: column;
 }
 
 .mid-section {
@@ -86,13 +91,76 @@ ul.horizontal-nav {
 }
 
 .dropdown-students, .dropdown-teachers {
-    background-color: #00ffff00;
-    border: none;
-    padding: 8px 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
     font-family: inherit;
-    font-size: inherit;
+    font-size: 13px;
+    width: 85%;
+    padding-left: 15%;
+    overflow: hidden;
 }
 
-.dropdown-container-students, .dropdown-container-teachers {
+.dropdown-container-students, .dropdown-container-teachers, .dropdown-container {
     display: none;
+    width: 100%;
+}
+
+.dropdown-container-students>a, .dropdown-container-teachers>a, dropdown-container>a {
+    text-decoration: none;
+    font-size: 13px;
+    display: block;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 25%;
+    width: 75%;
+    color: #0779E4;
+}
+
+.dropdown-container-students>a:hover {
+    background-color: #555;
+    color: white;
+}
+
+.dropdown-students:hover {
+    background-color: #555;
+    color: white;
+}
+
+.dropdown-container-teachers>a:hover {
+    background-color: #555;
+    color: white;
+}
+
+.dropdown-teachers:hover {
+    background-color: #555;
+    color: white;
+}
+
+.subtab-navigator {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    font-size: 13px;
+    background-color: white;
+    margin-bottom: 10px;
+}
+
+.subtab-type, .subtab-name {
+    padding: 20px;
+}
+
+.subtab-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: #0779E4;
+}
+
+.dropdown-container> a {
+    text-decoration: none;
+    margin-left: 3%;
+    padding: 15px;
+    background-color: #0779e414;
+    color: #0779E4;
+    margin-top: 10%;
 }
