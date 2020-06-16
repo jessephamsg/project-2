@@ -5,16 +5,25 @@
 </head>
 <body>
     <%- include('./partials/app-horizontal-nav.ejs') %>
-    <%- include('./partials/admin-nav.ejs') %>
-    <%= user.username %>
-    <%= user.note %>
-    <form action='/' method='GET'>
-        <input type='submit' value='Log out'>
-    </form>
-    <form action='/dashboard?_method=PUT' method='POST'>
-        <input type='text' name='note'>
-        <input type='text' name='id' value="<%=user['_id']%>">
-        <input type='submit' value='Submit'>
-    </form>
+    <div class='admin-body'>
+        <div class='left-section'>
+            <%- include('./partials/admin-nav.ejs') %>
+        </div>
+        <div class='mid-section'>
+            <%= user.username %>
+            <%= user.note %>
+            <form action='/' method='GET'>
+                <input type='submit' value='Log out'>
+            </form>
+            <form action='/dashboard?_method=PUT' method='POST'>
+                <input type='text' name='note'>
+                <input type='text' name='id' value="<%=user['_id']%>">
+                <input type='submit' value='Submit'>
+            </form>
+        </div>
+        <div class='right-section'>
+
+        </div>
+    </div>
 </body>
 </html>

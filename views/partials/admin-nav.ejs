@@ -1,8 +1,15 @@
 <nav>
         <ul>
             <li><a href="/dashboard">Dashboard</a></li>
-            <li><a class="" href="/students">Students</a></li>
-            <li><a href="/logout">Logout</a></li>
-            <li><a class="" href="/teachers">Teachers</a></li>
+            <button class="dropdown-students" onclick='showStudentDropdown()'>Students</button>
+                  <div class="dropdown-container-students">
+                    <a href="/students/age">Age Groups</a>
+                    <a href="/students/region">Regions</a>
+                  </div>
+            <button class="dropdown-teachers" onclick='showTeacherDropdown()'>Teachers</button>
+                <div class="dropdown-container-teachers">
+                    <a href="/teachers/age">Age Groups</a>
+                    <a href="/teachers/region">Regions</a>
+                </div>
         </ul>
 </nav>

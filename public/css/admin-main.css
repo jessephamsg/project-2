@@ -8,7 +8,7 @@ ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    width: 200px;
+    width: 15%;
     background-color: #f1f1f1;
 }
 
@@ -62,4 +62,37 @@ ul.horizontal-nav {
 
 .horizontal-nav > li a:hover {
     background-color: #0779E4;
+}
+
+.admin-body {
+    display: flex;
+    flex-direction: row;
+}
+
+.left-section {
+    height: 900px;
+    width: 15%;
+    background-color: #f1f1f1
+}
+
+.mid-section {
+    width: 80%;
+}
+
+.right-section {
+    height: 900px;
+    width: 20%;
+    background-color: aliceblue;
+}
+
+.dropdown-students, .dropdown-teachers {
+    background-color: #00ffff00;
+    border: none;
+    padding: 8px 16px;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.dropdown-container-students, .dropdown-container-teachers {
+    display: none;
 }
