@@ -12,6 +12,8 @@ module.exports = {
         console.log('connected to Mongo');
         const db = await connection.db(DB_NAME);
         this.userAccounts =  db.collection('userAccounts');
+        this.studentRecords = db.collection('studentRecords');
+        this.teacherRecords = db.collection('teacherRecords');
     },
     disconnect () {
         client.close();
