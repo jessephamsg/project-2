@@ -13,6 +13,6 @@ router.post('/', controllers.onboardingControllers.createNewUser);
 router.put('/dashboard', controllers.userProfileControllers.editUserProfile);
 
 //Super Admin App Routes
-router.get('/students/tots/data', controllers.studentControllers.showToddlersData)
+router.get('/students/age', controllers.studentControllers.showDefaultData)
 
 module.exports = router;

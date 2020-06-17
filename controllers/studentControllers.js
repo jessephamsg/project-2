@@ -1,7 +1,10 @@
 const services = require('../services');
 
 module.exports = {
-    showToddlersData (req, res) {
-        res.render('admin-ageGroups.ejs');
+    async showDefaultData (req, res) {
+        const toddlerData = await services.studentService.getStudentsByAgeGroup('Tots');
+        res.render('admin-ageGroups.ejs', {
+            data: toddlerData
+        });
     }
 }
