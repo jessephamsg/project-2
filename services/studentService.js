@@ -1,0 +1,2 @@
+const repositories = require('../repositories');
+

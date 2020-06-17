@@ -3,11 +3,11 @@ const SPACE_BREAK = ' ';
 const NUMBER_TO_SPLIT = 3;
 
 const capitalStringFirstLetter = (string) => {
-    string.charAt(LETTER_TO_CAPITAL).toUpperCase() + string.slice(1);
+    return string.charAt(LETTER_TO_CAPITAL).toUpperCase() + string.toLowerCase().slice(1);
 }
 
 module.exports = class Student {
-    constructor (id, fistName, lastName, dob, ageGroup, guardianName, guardianContact, guardianRole, membership, firstSeen, lastSeen) {
+    constructor (id, firstName, lastName, dob, ageGroup, guardianName, guardianContact, guardianRole, membership, firstSeen, lastSeen) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
