@@ -20,7 +20,6 @@
                             </ul>
                             
                             <div class ='subtab-navigator'>
-
                             <% if(data[0].ageGroup === 'Tots') { %>
                                 <div class="dropdown-container" id='dropdown-container-1' style='display: block'>
                                     <%- include('./partials/admin-subtype.ejs', {ageGroup: 'Tots'}) %>
@@ -60,34 +59,11 @@
                                     <%- include('./partials/admin-subtype.ejs', {ageGroup: 'Upper-Primary'}) %>
                                 </div>
                             <% } %> 
-
+                            <button onclick='launchChildRegistrationForm()' id='add-child-button'>Add</button>
                             </div>
                     </nav>
                     <table>
-                        <tr>
-                            <th>Child's Name</th>
-                            <th>DOB</th>
-                            <th>Age Group</th>
-                            <th>Guardian's Name</th>
-                            <th>Guardian's Contact</th>
-                            <th>Guardian's Role</th>
-                            <th>Guardian's Membership</th>
-                            <th>Child's First Seen</th>
-                            <th>Child's Last Seen</th>
-                        </tr>
-                        <% data.forEach(datum => { %>
-                            <tr>
-                                <td><%= datum.formatChildFullName() %></td>
-                                <td><%= datum.dob %></td>
-                                <td><%= datum.ageGroup %></td>
-                                <td><%= datum.formatGuardianFullName() %></td>
-                                <td><%= datum.formatPhoneNumber() %></td>
-                                <td><%= datum.guardianRole %></td>
-                                <td><%= datum.membership %></td>
-                                <td><%= datum.firstSeen %></td>
-                                <td><%= datum.lastSeen %></td>
-                            </tr>
-                        <% }) %>
+                        <%- include('./partials/admin-studentdata-table.ejs', {data}) %>
                     </table>
                     
             </div>

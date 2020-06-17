@@ -197,3 +197,7 @@ th {
   background-color: #0779e4d4;
   color: white;
 }
+
+#add-child-button {
+  margin-right: 2.5%;
+}
