@@ -150,6 +150,11 @@ ul.horizontal-nav {
     padding: 20px;
 }
 
+.subtab-type>a {
+    text-decoration: none;
+    color: #131212e3
+}
+
 .subtab-name {
     font-size: 15px;
     font-weight: 600;

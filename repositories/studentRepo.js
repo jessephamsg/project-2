@@ -18,6 +18,12 @@ module.exports = {
     async getAll () {
         const studentData = await db.studentRecords.find().toArray();
         return studentData;
+    }, 
+    async getAllByAgeGroup (ageGroupQuery) {
+        const studentData = await db.studentRecords.find({
+            ageGroup: ageGroupQuery
+        }).toArray();
+        return studentData;
     },
     async getOneByID (studentObjectID) { //use when retrieving infor for editing
 
