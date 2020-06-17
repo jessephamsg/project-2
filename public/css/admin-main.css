@@ -172,3 +172,28 @@ ul.horizontal-nav {
     color: #0779E4;
     border: none;
 }
+
+table {
+  border-collapse: collapse;
+  width: 95%;
+  font-size: 12px;
+  margin-left: 2.5%;
+}
+
+td, th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  font-weight: 500;
+}
+
+tr:nth-child(even){background-color: #f2f2f2;}
+
+tr:hover {background-color: #ddd;}
+
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #0779e4d4;
+  color: white;
+}
