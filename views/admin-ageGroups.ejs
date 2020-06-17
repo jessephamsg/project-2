@@ -65,7 +65,14 @@
                     <table>
                         <%- include('./partials/admin-studentdata-table.ejs', {data}) %>
                     </table>
-                    
+
+                    <div class='modal' id='child-registration-form'>
+                        <div class='modal-content'>
+                        <h2>Add New Child</h2>
+                        <%- include('./partials/admin-childrenForm.ejs', {data}) %>
+                        <input type='submit' value='Close' onclick='closeFormModal()'>
+                        </div>
+                    </div>
             </div>
             <div class='right-section'>
             </div>
