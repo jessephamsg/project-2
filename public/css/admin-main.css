@@ -161,11 +161,14 @@ ul.horizontal-nav {
     color: #0779E4;
 }
 
-.dropdown-container> a {
-    text-decoration: none;
-    margin-left: 3%;
+.dropdown-container>form {
+    display: inline-block;
+}
+
+.dropdown-container>form>input[type='submit'] {
+    margin-left: 15%;
     padding: 15px;
     background-color: #0779e414;
     color: #0779E4;
-    margin-top: 10%;
+    border: none;
 }

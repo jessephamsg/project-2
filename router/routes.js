@@ -14,5 +14,9 @@ router.put('/dashboard', controllers.userProfileControllers.editUserProfile);
 
 //Super Admin App Routes
 router.get('/students/age', controllers.studentControllers.showDefaultData)
+router.get('/students/age/tots', controllers.studentControllers.showTotsData)
+router.get('/students/age/junior', controllers.studentControllers.showJuniorData)
+router.get('/students/age/lower-primary', controllers.studentControllers.showLowerPrimaryData)
+router.get('/students/age/upper-primary', controllers.studentControllers.showUpperPrimaryData)
 
 module.exports = router;
