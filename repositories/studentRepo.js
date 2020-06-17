@@ -6,11 +6,12 @@ module.exports = {
             firstName: studentObject.firstName,
             lastName: studentObject.lastName,
             dob: studentObject.dob,
+            ageGroup: studentObject.ageGroup,
             guardianName: studentObject.guardianName,
             guardianContact: studentObject.guardianContact,
             guardianRole: studentObject.guardianRole,
             membership: studentObject.membership,
-            attendance: 1,
+            firstSeen: studentObject.firstSeen,
         });
         const studentDetails = await studentPersonalDetails.ops[0]
         return studentDetails;

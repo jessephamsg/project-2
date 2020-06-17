@@ -30,5 +30,20 @@ module.exports = {
         res.render('admin-ageGroups.ejs', {
             data: childrenData
         });
+    },
+    async addNewStudentData (req, res) {
+        const studentDetails = {
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            dob: req.body.dob,
+            ageGroup: req.body.ageGroup,
+            guardianName: req.body.guardianName,
+            guardianContact: req.body.guardianContact,
+            guardianRole: req.body.guardianRole,
+            membership: req.body.membership,
+            firstSeen: req.body.firstSeen,
+        }
+        const childrenData = await services.studentService.createNewStudent(studentDetails);
+        res.redirect('/students/age');
     }
 }
