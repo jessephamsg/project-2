@@ -1,4 +1,5 @@
 const services = require('../services');
+const studentValidator = require('../validators/studentValidator');
 
 module.exports = {
     async showDefaultData (req, res) {
@@ -43,7 +44,16 @@ module.exports = {
             membership: req.body.membership,
             firstSeen: req.body.firstSeen,
         }
-        const childrenData = await services.studentService.createNewStudent(studentDetails);
-        res.redirect('/students/age');
+        try {
+            studentValidator.students.validate(studentDetails);
+            const childrenData = await services.studentService.createNewStudent(studentDetails);
+            res.redirect('/students/age');
+        } catch (err) {
+            const childrenData = await services.studentService.getStudentsByAgeGroup('Tots');
+            res.render('admin-newChild.ejs', {
+                data: childrenData,
+                err
+            })    
+        }
     }
 }
