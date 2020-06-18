@@ -223,7 +223,7 @@ th {
   padding: 20px;
   border: 1px solid #888;
   width: 60%; /* Could be more or less, depending on screen size */
-  height: 460px;
+  height: fit-content;
   font-size: 13px;
   display: flex;
   flex-direction: column;
@@ -282,4 +282,13 @@ th {
 
 .modal-content > h2 {
   margin-bottom: 30px;
+}
+
+.form-error {
+  width: 80%;
+  height: 30px;
+  padding: 10px;
+  margin-top: 0px;
+  background-color: #e91e6336;
+  color: #E91E63;
 }

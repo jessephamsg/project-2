@@ -11,7 +11,7 @@ module.exports = {
         },
         dob: {
             type: 'string',
-            format: 'date-time'
+            format: 'date'
         },
         ageGroup: {
             type: 'string',
@@ -32,7 +32,7 @@ module.exports = {
         },
         firstSeen: {
             type: 'string',
-            format: 'date-time'
+            format: 'date'
         }
     }
 }

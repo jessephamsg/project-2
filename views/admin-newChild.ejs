@@ -69,7 +69,9 @@
                     <div class='modal' id='child-registration-form' style='display: block'>
                         <div class='modal-content'>
                         <h2>Add New Child</h2>
-                        <%=err%>
+                        <% err.forEach(errContent => { %>
+                            <p class='form-error'><%=errContent%></p>
+                        <% }) %>
                         <%- include('./partials/admin-childrenForm.ejs', {data}) %>
                         <input type='submit' value='Close' onclick='closeFormModal()'>
                         </div>

@@ -6,15 +6,19 @@ const ajv = new Ajv({
 });
 const studentSchema = require('./schema/student');
 const validator = ajv.compile(studentSchema);
+const ValidationError = require('../formatter/ValidationError');
 
 module.exports = {
     students: {
         validate (data) {
             const isValid = validator(data);
             if(!isValid) {
-                throw 'errorrrr';
+                const errors = new ValidationError(validator.errors).errorType;
+                const errorArr = [];
+                errors.forEach(error => errorArr.push(`${error.dataPath} ${error.message}`))
+                throw errorArr;
             } 
-            return isValid
+            return isValid   
         }
     }
 }
