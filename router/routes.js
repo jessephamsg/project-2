@@ -19,5 +19,6 @@ router.get('/students/age/junior', controllers.studentControllers.showJuniorData
 router.get('/students/age/lower-primary', controllers.studentControllers.showLowerPrimaryData)
 router.get('/students/age/upper-primary', controllers.studentControllers.showUpperPrimaryData)
 router.post('/students/age', controllers.studentControllers.addNewStudentData)
+router.get('/teachers/age', controllers.teacherControllers.showDefaultData)
 
 module.exports = router;
