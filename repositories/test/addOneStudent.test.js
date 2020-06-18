@@ -3,7 +3,8 @@ const studentRepo = require('../studentRepo');
 const TEST_DATA = {
     firstName: 'Ng',
     lastName: 'Eric',
-    dob: '6/8/2020',
+    dob: '2020-08-06',
+    ageGroup: 'Tots',
     guardianName: 'Tim',
     guardianContact: 'Ng',
     guardianRole:'Father',
@@ -25,5 +26,6 @@ test('if studentRepo.addOne() returns an object', async()=> {
 
 test ('if studentRepo.addOne() adds one document whose firstName is the same as TEST_DATA\'s first name', async() => {
     const result = await studentRepo.addOne(TEST_DATA);
+    console.log(result);
     await expect(result.firstName).toBe(TEST_DATA.firstName);
 })

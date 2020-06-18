@@ -2,7 +2,7 @@ const db = require('../../database/db');
 const studentServices = require('../studentService');
 const Student = require('../../formatter/Student');
 const TEST_DATA = 'Tots';
-const EXPECTED_RESULT = 'Ong Emmanual';
+const EXPECTED_RESULT = 'Ng Eric';
 
 beforeAll (async()=> {
     await db.connect();
