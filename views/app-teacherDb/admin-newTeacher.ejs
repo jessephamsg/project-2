@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%- include('../app-general/partials/admin-head.ejs') %>
+</head>
+<body>
+    <%- include('../app-general/partials/app-horizontal-nav.ejs') %>
+    <div class='admin-body'>
+            <div class='left-section'>
+                <%- include('../app-general/partials/admin-nav.ejs') %>
+            </div>
+            <div class='mid-section'>
+                        <%- include('./partials/admin-teacher-mid-nav.ejs', {data}) %>
+                    <table>
+                        <%- include('./partials/admin-teacherdata-table.ejs', {data}) %>
+                    </table>
+
+                    <div class='modal' id='child-registration-form' style='display: block'>
+                        <div class='modal-content'>
+                        <h2>Add New Teacher</h2>
+                        <% err.forEach(errContent => { %>
+                            <p class='form-error'><%=errContent%></p>
+                        <% }) %>
+                        <%- include('./partials/admin-teacherForm.ejs', {data}) %>
+                        <input type='submit' value='Close' onclick='closeFormModal()'>
+                        </div>
+                    </div>
+            </div>
+            <div class='right-section'>
+            </div>
+        </div>
+</body>
+</html>

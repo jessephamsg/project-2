@@ -1,4 +1,5 @@
 const services = require('../services');
+const teacherValidator = require('../validators/teacherValidator');
 
 module.exports = {
     async showDefaultData(req, res) {
@@ -40,15 +41,15 @@ module.exports = {
             contactNumber: req.body.contactNumber,
         }
         try {
-            //studentValidator.students.validate(studentDetails);
+            teacherValidator.teachers.validate(teacherDetails);
             const teacherData = await services.teacherService.createNewTeacher(teacherDetails)
             res.redirect('/teachers/age');
         } catch (err) {
-            // const teacherData = await services.teacherService.getTeachersByAgeGroup('Tots');
-            // res.render('admin-newChild.ejs', {
-            //     data: childrenData,
-            //     err
-            // })    
+            const teacherData = await services.teacherService.getTeachersByAgeGroup('Tots');
+            res.render('app-teacherDb/admin-newTeacher.ejs', {
+                data: teacherData,
+                err
+            })    
         }
     }
 }

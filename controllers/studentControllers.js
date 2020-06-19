@@ -1,6 +1,5 @@
 const services = require('../services');
 const studentValidator = require('../validators/studentValidator');
-const moment = require('moment');
 
 module.exports = {
     async showDefaultData(req, res) {
