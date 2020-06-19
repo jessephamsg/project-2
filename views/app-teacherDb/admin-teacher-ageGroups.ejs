@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <%- include('./partials/admin-head.ejs') %>
+    <%- include('../app-general/partials/admin-head.ejs') %>
 </head>
 <body>
-    <%- include('./partials/app-horizontal-nav.ejs') %>
+    <%- include('../app-general/partials/app-horizontal-nav.ejs') %>
     <div class='admin-body'>
             <div class='left-section'>
-                <%- include('./partials/admin-nav.ejs') %>
+                <%- include('../app-general/partials/admin-nav.ejs') %>
             </div>
             <div class='mid-section'>
-                        <%- include('./partials/admin-mid-nav.ejs', {data}) %>  
+                        <%- include('./partials/admin-teacher-mid-nav.ejs', {data}) %>
                     <table>
-                        <%- include('./partials/admin-studentdata-table.ejs', {data}) %>
+                        <%- include('./partials/admin-teacherdata-table.ejs', {data}) %>
                     </table>
 
                     <div class='modal' id='child-registration-form'>
                         <div class='modal-content'>
-                        <h2>Add New Child</h2>
-                        <%- include('./partials/admin-childrenForm.ejs', {data}) %>
+                        <h2>Add New Teacher</h2>
+                        <%- include('./partials/admin-teacherForm.ejs', {data}) %>
                         <input type='submit' value='Close' onclick='closeFormModal()'>
                         </div>
                     </div>

@@ -3,31 +3,31 @@ const services = require('../services');
 module.exports = {
     async showDefaultData(req, res) {
         const teacherData = await services.teacherService.getTeachersByAgeGroup('Tots');
-        res.render('admin-teacher-ageGroups.ejs', {
+        res.render('app-teacherDb/admin-teacher-ageGroups.ejs', {
             data: teacherData
         });
     },
     async showTotsData(req, res) {
         const teacherData = await services.teacherService.getTeachersByAgeGroup('Tots');
-        res.render('admin-teacher-ageGroups.ejs', {
+        res.render('app-teacherDb/admin-teacher-ageGroups.ejs', {
             data: teacherData
         });
     },
     async showJuniorData(req, res) {
         const teacherData = await services.teacherService.getTeachersByAgeGroup('Junior');
-        res.render('admin-teacher-ageGroups.ejs', {
+        res.render('app-teacherDb/admin-teacher-ageGroups.ejs', {
             data: teacherData
         });
     },
     async showLowerPrimaryData(req, res) {
         const teacherData = await services.teacherService.getTeachersByAgeGroup('Lower Primary');
-        res.render('admin-teacher-ageGroups.ejs', {
+        res.render('app-teacherDb/admin-teacher-ageGroups.ejs', {
             data: teacherData
         });
     },
     async showUpperPrimaryData(req, res) {
         const teacherData = await services.teacherService.getTeachersByAgeGroup('Upper Primary');
-        res.render('admin-teacher-ageGroups.ejs', {
+        res.render('app-teacherDb/admin-teacher-ageGroups.ejs', {
             data: teacherData
         });
     },

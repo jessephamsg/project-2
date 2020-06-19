@@ -2,10 +2,10 @@ const services = require('../services');
 
 module.exports = {
     showLandingPage(req, res) {
-        res.render('landing-page.ejs');
+        res.render('onboarding/landing-page.ejs');
     },
     signUp(req, res) {
-        res.render('signUp.ejs');
+        res.render('onboarding/signUp.ejs');
     },
     async createNewUser(req, res) {
         const userAccount = {
@@ -22,7 +22,7 @@ module.exports = {
         res.redirect('/login');
     },
     logIn(req, res) {
-        res.render('logIn.ejs')
+        res.render('onboarding/logIn.ejs')
     },
     async verifyAccount(req, res) {
         const username = req.body.username;
@@ -32,7 +32,7 @@ module.exports = {
         res.redirect('/dashboard');
     },
     async showDashboard(req, res) {
-        res.render('admin.ejs', {
+        res.render('app-general/admin.ejs', {
             user: req.session.account
         });
     },
