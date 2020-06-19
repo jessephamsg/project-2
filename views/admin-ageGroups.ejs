@@ -10,58 +10,7 @@
                 <%- include('./partials/admin-nav.ejs') %>
             </div>
             <div class='mid-section'>
-                    <nav>
-                            <ul class ='subtab-navigator'>
-                                <div class='subtab-name'>AGE GROUPS</div>
-                                <div class="subtab-type" onclick='showSubTypeDropdown()' id='dropdown-1'>Toddlers</div>
-                                <div class="subtab-type" onclick='showSubTypeDropdown()' id='dropdown-2'>Nursery & Kinders</div>
-                                <div class="subtab-type" onclick='showSubTypeDropdown()' id='dropdown-3'>Lower Primary</div>
-                                <div class="subtab-type" onclick='showSubTypeDropdown()' id='dropdown-4'>Upper Primary</div>                                            
-                            </ul>
-                            
-                            <div class ='subtab-navigator'>
-                            <% if(data[0].ageGroup === 'Tots') { %>
-                                <div class="dropdown-container" id='dropdown-container-1' style='display: block'>
-                                    <%- include('./partials/admin-subtype.ejs', {ageGroup: 'Tots'}) %>
-                                </div>
-                            <% } else { %>
-                                <div class="dropdown-container" id='dropdown-container-1'>
-                                    <%- include('./partials/admin-subtype.ejs', {ageGroup: 'Tots'}) %>
-                                </div>
-                            <% } %>
-                            
-                            <% if(data[0].ageGroup === 'Junior') { %>
-                                <div class="dropdown-container" id='dropdown-container-2' style='display: block'>
-                                    <%- include('./partials/admin-subtype.ejs', {ageGroup: 'Junior'}) %>
-                                </div>
-                            <% } else { %>
-                                <div class="dropdown-container" id='dropdown-container-2'>
-                                    <%- include('./partials/admin-subtype.ejs', {ageGroup: 'Junior'}) %>
-                                </div>
-                            <% } %>
-
-                            <% if(data[0].ageGroup === 'Lower Primary') { %>
-                                <div class="dropdown-container" id='dropdown-container-3' style='display: block'>
-                                    <%- include('./partials/admin-subtype.ejs', {ageGroup: 'Lower-Primary'}) %>
-                                </div>
-                            <% } else { %>
-                                <div class="dropdown-container" id='dropdown-container-3'>
-                                    <%- include('./partials/admin-subtype.ejs', {ageGroup: 'Lower-Primary'}) %>
-                                </div>
-                            <% } %> 
-
-                            <% if(data[0].ageGroup === 'Upper Primary') { %>
-                                <div class="dropdown-container" id='dropdown-container-4' style='display: block'>
-                                    <%- include('./partials/admin-subtype.ejs', {ageGroup: 'Upper-Primary'}) %>
-                                </div>
-                            <% } else { %>
-                                <div class="dropdown-container" id='dropdown-container-4'>
-                                    <%- include('./partials/admin-subtype.ejs', {ageGroup: 'Upper-Primary'}) %>
-                                </div>
-                            <% } %> 
-                            <button onclick='launchChildRegistrationForm()' id='add-child-button'>Add</button>
-                            </div>
-                    </nav>
+                        <%- include('./partials/admin-mid-nav.ejs', {data}) %>  
                     <table>
                         <%- include('./partials/admin-studentdata-table.ejs', {data}) %>
                     </table>

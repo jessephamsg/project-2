@@ -12,8 +12,6 @@ module.exports = {
         return teacherDetails;
     },
     async getAllByAgeGroup(ageGroupQuery) {
-        await this.addDateFieldsToAllData();
-        await this.addAgeFieldToAllData();
         const teacherData = await db.teacherRecords.find({
             ageGroup: ageGroupQuery
         }).toArray();

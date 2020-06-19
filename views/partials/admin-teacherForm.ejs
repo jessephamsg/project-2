@@ -1,0 +1,34 @@
+<form action='/students/age' method='POST'>
+    <div class='form-subsection'>
+        <div class='input-pair'>
+            <label for='firstName'>Teacher's First Name</label><br>
+            <input type='text' name='firstName'><br>
+        </div>
+        <div class='input-pair'>
+            <label for='firstName'>Teacher's Last Name</label><br>
+            <input type='text' name='lastName'><br>
+        </div>
+    </div>
+    <div class='form-subsection'>
+        <div class='input-pair'>
+            <label for='dob'>Teacher's Date of Birth</label><br>
+            <input type='date' name='dob'><br>
+        </div>
+        <div class='input-pair'>
+            <label for='ageGroup'>Teacher's Assigned Age Group</label><br>
+            <select name='ageGroup'>
+                <option value='Tots'>Tots</option>
+                <option value='Junior'>Junior</option>
+                <option value='Lower Primary'>Lower Primary</option>
+                <option value='Upper Primary'>Upper Primary</option>
+            </select><br>
+        </div>
+    </div>
+    <div class='form-subsection'>
+        <div class='input-pair'>
+            <label for='guardianContact'>Teacher's Contact</label><br>
+            <input type='text' name='guardianContact'><br>
+        </div>
+    </div>
+    <input type='submit' value='Save'>
+</form>
