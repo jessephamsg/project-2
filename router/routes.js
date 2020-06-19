@@ -18,6 +18,7 @@ router.get('/students/age/tots', controllers.studentControllers.showTotsData);
 router.get('/students/age/junior', controllers.studentControllers.showJuniorData);
 router.get('/students/age/lower-primary', controllers.studentControllers.showLowerPrimaryData);
 router.get('/students/age/upper-primary', controllers.studentControllers.showUpperPrimaryData);
+router.get('/students/age/tots/form', controllers.studentControllers.showTotsAttendanceForm);
 router.post('/students/age', controllers.studentControllers.addNewStudentData);
 
 //Super Admin App Routes - Teachers

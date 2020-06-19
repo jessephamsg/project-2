@@ -55,5 +55,11 @@ module.exports = {
                 err
             })
         }
+    },
+    async showTotsAttendanceForm (req, res) {
+        const childrenData = await services.studentService.getStudentsByAgeGroup('Tots');
+        res.render('app-studentDb/admin-attendance.ejs', {
+            data: childrenData
+        })
     }
 }
