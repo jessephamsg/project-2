@@ -1,7 +1,7 @@
 const db = require('../database/db');
 
 module.exports = {
-    async addOne (teacherObject) {
+    async addOne(teacherObject) {
         const teacherPersonalDetails = await db.teacherRecords.insertOne({
             firstName: teacherObject.firstName,
             lastName: teacherObject.lastName,

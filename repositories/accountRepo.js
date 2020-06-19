@@ -30,11 +30,11 @@ module.exports = {
         }).toArray();
         return updatedAccount[0];
     },
-    async findOneAccount (logInUsername, logInPassword) {
+    async findOneAccount(logInUsername, logInPassword) {
         const account = await db.userAccounts.find({
             $and: [
-                {username: logInUsername},
-                {password: logInPassword}
+                { username: logInUsername },
+                { password: logInPassword }
             ]
         }).toArray();
         return account[0];

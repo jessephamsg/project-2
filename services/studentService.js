@@ -11,7 +11,7 @@ module.exports = {
         const students = studentData.map(student => { return buildStudentObject(student) });
         return students;
     },
-    async createNewStudent (studentDetails) {
+    async createNewStudent(studentDetails) {
         const studentData = await repositories.studentRepo.addOne(studentDetails);
         const student = await buildStudentObject(studentData);
         return student;

@@ -10,15 +10,15 @@ const capitalStringFirstLetter = (string) => {
 }
 
 module.exports = class Teacher extends Student {
-    constructor(id, firstName, lastName, dob, ageGroup, contactNumber){
-    super(id, firstName, lastName, dob, ageGroup) 
+    constructor(id, firstName, lastName, dob, ageGroup, contactNumber) {
+        super(id, firstName, lastName, dob, ageGroup)
         this.contactNumber = contactNumber
     }
     formatTeacherNumber() {
         const numberArr = this.contactNumber.split('');
         const formattedNumArr = [];
-        for(let [index, number] of numberArr.entries()) {
-            index%3===0 && index !== numberArr.length-1 ? formattedNumArr.push(number + DASH_BREAK) : formattedNumArr.push(number);
+        for (let [index, number] of numberArr.entries()) {
+            index % NUMBER_TO_SPLIT === 0 && index !== numberArr.length - 1 ? formattedNumArr.push(number + DASH_BREAK) : formattedNumArr.push(number);
         };
         return formattedNumArr.join('');
     }

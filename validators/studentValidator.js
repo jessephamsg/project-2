@@ -10,15 +10,15 @@ const ValidationError = require('../formatter/ValidationError');
 
 module.exports = {
     students: {
-        validate (data) {
+        validate(data) {
             const isValid = validator(data);
-            if(!isValid) {
+            if (!isValid) {
                 const errors = new ValidationError(validator.errors).errorType;
                 const errorArr = [];
                 errors.forEach(error => errorArr.push(`${error.dataPath} ${error.message}`))
                 throw errorArr;
-            } 
-            return isValid   
+            }
+            return isValid
         }
     }
 }

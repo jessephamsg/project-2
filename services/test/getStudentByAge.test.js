@@ -4,11 +4,11 @@ const Student = require('../../formatter/Student');
 const TEST_DATA = 'Tots';
 const EXPECTED_RESULT = 'Ng Eric';
 
-beforeAll (async()=> {
+beforeAll(async () => {
     await db.connect();
 });
 
-afterAll(async()=> {
+afterAll(async () => {
     await db.disconnect();
 });
 

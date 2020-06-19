@@ -7,20 +7,20 @@ const TEST_DATA = {
     ageGroup: 'Tots',
 }
 
-beforeAll (async()=> {
+beforeAll(async () => {
     await db.connect();
 });
 
-afterAll(async()=> {
+afterAll(async () => {
     await db.disconnect();
 })
 
-test('if teacherRepo.addOne() returns an object', async()=> {
+test('if teacherRepo.addOne() returns an object', async () => {
     const result = await teacherRepo.addOne(TEST_DATA);
     await expect(result).toBeInstanceOf(Object);
 });
 
-test ('if teacherRepo.addOne() adds one document whose firstName is the same as TEST_DATA\'s first name', async() => {
+test('if teacherRepo.addOne() adds one document whose firstName is the same as TEST_DATA\'s first name', async () => {
     const result = await teacherRepo.addOne(TEST_DATA);
     console.log(result);
     await expect(result.firstName).toBe(TEST_DATA.firstName);

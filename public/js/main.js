@@ -8,7 +8,7 @@ const showTeacherDropdown = () => {
 
 const showSubTypeDropdown = () => {
     $('.dropdown-container').css('display', 'none');
-    const id = parseInt(event.currentTarget.id.replace('dropdown-',''));
+    const id = parseInt(event.currentTarget.id.replace('dropdown-', ''));
     $(`#dropdown-container-${id}`).css('display', 'block');
 };
 

@@ -2,11 +2,11 @@ const db = require('../../database/db');
 const studentRepo = require('../studentRepo');
 const TEST_DATA = 'Tots';
 
-beforeAll (async()=> {
+beforeAll(async () => {
     await db.connect();
 });
 
-afterAll(async()=> {
+afterAll(async () => {
     await db.disconnect();
 });
 

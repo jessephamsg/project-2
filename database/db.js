@@ -7,15 +7,15 @@ const client = new MongoClient(MONGO_URI, {
 });
 
 module.exports = {
-    async connect () {
+    async connect() {
         const connection = await client.connect();
         console.log('connected to Mongo');
         const db = await connection.db(DB_NAME);
-        this.userAccounts =  db.collection('userAccounts');
+        this.userAccounts = db.collection('userAccounts');
         this.studentRecords = db.collection('studentRecords');
         this.teacherRecords = db.collection('teacherRecords');
     },
-    disconnect () {
+    disconnect() {
         client.close();
     }
 }

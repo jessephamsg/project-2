@@ -1,43 +1,43 @@
 const services = require('../services');
 
 module.exports = {
-    async showDefaultData (req, res) {
+    async showDefaultData(req, res) {
         const teacherData = await services.teacherService.getTeachersByAgeGroup('Tots');
         res.render('admin-teacher-ageGroups.ejs', {
             data: teacherData
         });
     },
-    async showTotsData (req, res) {
+    async showTotsData(req, res) {
         const teacherData = await services.teacherService.getTeachersByAgeGroup('Tots');
         res.render('admin-teacher-ageGroups.ejs', {
             data: teacherData
         });
     },
-    async showJuniorData (req, res) {
+    async showJuniorData(req, res) {
         const teacherData = await services.teacherService.getTeachersByAgeGroup('Junior');
         res.render('admin-teacher-ageGroups.ejs', {
             data: teacherData
         });
     },
-    async showLowerPrimaryData (req, res) {
+    async showLowerPrimaryData(req, res) {
         const teacherData = await services.teacherService.getTeachersByAgeGroup('Lower Primary');
         res.render('admin-teacher-ageGroups.ejs', {
             data: teacherData
         });
     },
-    async showUpperPrimaryData (req, res) {
+    async showUpperPrimaryData(req, res) {
         const teacherData = await services.teacherService.getTeachersByAgeGroup('Upper Primary');
         res.render('admin-teacher-ageGroups.ejs', {
             data: teacherData
         });
     },
-    async addNewTeacherData (req, res) {
+    async addNewTeacherData(req, res) {
         const teacherDetails = {
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             dob: req.body.dob,
             ageGroup: req.body.ageGroup,
-            contactNumber: req.body.contactNumber, 
+            contactNumber: req.body.contactNumber,
         }
         try {
             //studentValidator.students.validate(studentDetails);

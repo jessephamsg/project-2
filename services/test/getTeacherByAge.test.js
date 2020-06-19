@@ -4,11 +4,11 @@ const Teacher = require('../../formatter/Teacher');
 const TEST_DATA = 'Tots';
 const EXPECTED_RESULT = 'Helen Keller';
 
-beforeAll (async()=> {
+beforeAll(async () => {
     await db.connect();
 });
 
-afterAll(async()=> {
+afterAll(async () => {
     await db.disconnect();
 });
 

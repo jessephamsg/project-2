@@ -1,13 +1,13 @@
 const services = require('../services');
 
 module.exports = {
-    showLandingPage (req, res) {
+    showLandingPage(req, res) {
         res.render('landing-page.ejs');
     },
-    signUp (req, res) {
+    signUp(req, res) {
         res.render('signUp.ejs');
     },
-    async createNewUser (req, res) {
+    async createNewUser(req, res) {
         const userAccount = {
             username: req.body.username,
             password: req.body.password,
@@ -21,22 +21,22 @@ module.exports = {
         const account = await services.userAccountMgtService.createNewUser(userAccount)
         res.redirect('/login');
     },
-    logIn (req, res) {
+    logIn(req, res) {
         res.render('logIn.ejs')
     },
-    async verifyAccount (req, res) {
+    async verifyAccount(req, res) {
         const username = req.body.username;
         const password = req.body.password;
         const account = await services.userAccountMgtService.searchAccount(username, password);
         req.session.account = account;
         res.redirect('/dashboard');
     },
-    async showDashboard (req, res) {
+    async showDashboard(req, res) {
         res.render('admin.ejs', {
             user: req.session.account
         });
     },
-    logOut (req, res) {
+    logOut(req, res) {
         req.session.destroy();
         res.redirect('/');
     }
