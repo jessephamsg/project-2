@@ -32,27 +32,23 @@ module.exports = {
         });
     },
     async addNewTeacherData (req, res) {
-        const studentDetails = {
+        const teacherDetails = {
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             dob: req.body.dob,
             ageGroup: req.body.ageGroup,
-            guardianName: req.body.guardianName,
-            guardianContact: req.body.guardianContact,
-            guardianRole: req.body.guardianRole,
-            membership: req.body.membership,
-            firstSeen: req.body.firstSeen,
+            contactNumber: req.body.contactNumber, 
         }
         try {
-            studentValidator.students.validate(studentDetails);
-            const childrenData = await services.studentService.createNewStudent(studentDetails);
-            res.redirect('/students/age');
+            //studentValidator.students.validate(studentDetails);
+            const teacherData = await services.teacherService.createNewTeacher(teacherDetails)
+            res.redirect('/teachers/age');
         } catch (err) {
-            const childrenData = await services.studentService.getStudentsByAgeGroup('Tots');
-            res.render('admin-newChild.ejs', {
-                data: childrenData,
-                err
-            })    
+            // const teacherData = await services.teacherService.getTeachersByAgeGroup('Tots');
+            // res.render('admin-newChild.ejs', {
+            //     data: childrenData,
+            //     err
+            // })    
         }
     }
 }

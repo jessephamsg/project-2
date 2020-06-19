@@ -7,6 +7,7 @@ module.exports = {
             lastName: teacherObject.lastName,
             dob: teacherObject.dob,
             ageGroup: teacherObject.ageGroup,
+            contactNumber: teacherObject.contactNumber
         });
         const teacherDetails = await teacherPersonalDetails.ops[0]
         return teacherDetails;
