@@ -1,4 +1,5 @@
 const db = require('../database/db');
+const ObjectId = require('mongodb').ObjectId;
 
 module.exports = {
     async addOne(studentObject) {
@@ -12,6 +13,7 @@ module.exports = {
             guardianRole: studentObject.guardianRole,
             membership: studentObject.membership,
             firstSeen: studentObject.firstSeen,
+            attendance: []
         });
         const studentDetails = await studentPersonalDetails.ops[0]
         return studentDetails;
@@ -61,11 +63,21 @@ module.exports = {
         })
         return students;
     },
-    async getOneByID(studentObjectID) { //use when retrieving infor for editing
-
+    async getOneByID(studentObjectID) { 
+        const student = await db.studentRecords.findOne({
+            _id: ObjectId(studentObjectID)
+        })
+        return student
     },
-    async editOneByID() { //use when editing one record of choice
-
+    async updateOneAttendanceArrayByID(studentObjectID, dataForUpdate) { 
+        const student = await db.studentRecords.update({
+            _id: ObjectId(studentObjectID),
+        }, {
+            $push: {
+                attendance: dataForUpdate
+            }
+        })
+        return student;
     },
     async getManyByRegions() {
 

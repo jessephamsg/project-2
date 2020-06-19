@@ -1,9 +1,11 @@
 const repositories = require('../repositories');
 const Student = require('../formatter/Student');
-const START_DATE = '2020-05-01'
+const START_DATE = '2020-01-05';
+const CLASS_FREQ_IN_MILISEC = 7 * 8.64e+7;
+const WEEKS_IN_A_YEAR = 52;
 
-const buildStudentObject = ({ id, firstName, lastName, dob, ageGroup, guardianName, guardianContact, guardianRole, membership, firstSeen, lastSeen }) => {
-    return new Student(id, firstName, lastName, dob, ageGroup, guardianName, guardianContact, guardianRole, membership, firstSeen, lastSeen);
+const buildStudentObject = ({ _id, firstName, lastName, dob, ageGroup, guardianName, guardianContact, guardianRole, membership, firstSeen, lastSeen }) => {
+    return new Student(_id, firstName, lastName, dob, ageGroup, guardianName, guardianContact, guardianRole, membership, firstSeen, lastSeen);
 }
 
 module.exports = {
@@ -17,8 +19,19 @@ module.exports = {
         const student = await buildStudentObject(studentData);
         return student;
     },
-    async createClassTimetable () {
-        //parse string into date, plus 7 then save into array as string, then render in form
+    createClassTimetable() {
+        const parsedDate = Date.parse(START_DATE);
+        const timeTable = [parsedDate];
+        for (let i = 0; i <= WEEKS_IN_A_YEAR; i++) {
+            timeTable.push(timeTable[timeTable.length - 1] + CLASS_FREQ_IN_MILISEC);
+        };
+        const stringTimeTable = timeTable.map(date => new Date(date).toISOString().slice(0, 10))
+        return stringTimeTable;
+    },
+    async updateStudentAttendanceById(studentID, dataForUpdate) {
+        const studentData = await repositories.studentRepo.updateOneAttendanceArrayByID(studentID, dataForUpdate);
+        const student = await buildStudentObject(studentData);
+        return student
     }
 }
 

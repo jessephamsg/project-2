@@ -13,7 +13,19 @@
                 <%- include('./partials/admin-mid-nav.ejs', {data}) %>
 
                 <div>
-                    
+                    <form action='./form' method='POST'>
+                        <label for='classDate'>Attendance for Date</label>
+                        <select name='classDate'>
+                            <% dates.forEach(date => { %>
+                                <option value='<%=date%>'><%=date%></option>
+                            <% }) %>
+                        </select>
+                        <% data.forEach(datum => { %>
+                            <input type='checkbox' name='isPresent' value='<%=datum.id%>'>
+                            <label for='isPresent'><%=datum.formatChildFullName()%></label>
+                        <% }) %>
+                        <input type='submit' value='Submit'>
+                    </form>
                 </div>
             </div>
             <div class='right-section'>

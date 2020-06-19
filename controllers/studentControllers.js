@@ -58,8 +58,18 @@ module.exports = {
     },
     async showTotsAttendanceForm (req, res) {
         const childrenData = await services.studentService.getStudentsByAgeGroup('Tots');
+        const timeTable = services.studentService.createClassTimetable();
         res.render('app-studentDb/admin-attendance.ejs', {
-            data: childrenData
+            data: childrenData,
+            dates: timeTable
         })
+    },
+    async updateStudentAttendance (req, res) {
+        const studentsPresent = req.body.isPresent;
+        const datePresent = req.body.classDate;
+        studentsPresent.forEach(async student=> {
+            await services.studentService.updateStudentAttendanceById(student, datePresent);
+        })
+        res.send(req.body);
     }
 }
