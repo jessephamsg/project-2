@@ -10,3 +10,8 @@ beforeAll(async () => {
 afterAll(async () => {
     await db.disconnect();
 });
+
+test('if studentRepo.getAllByRegions returns an array', async() => {
+    const results = await studentRepo.getAllByRegions(TEST_DATA);
+    await expect(results.length).toBeGreaterThan(0);
+})

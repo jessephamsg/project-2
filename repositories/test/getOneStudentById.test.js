@@ -1,7 +1,7 @@
 const db = require('../../database/db');
 const studentRepo = require('../studentRepo');
 const ObjectId = require('mongodb').ObjectId;
-const TEST_DATA = '5eecd7b721fff7a25fe1832d';
+const TEST_DATA = '5eeda8d9598d6b07fb4d199e';
 
 beforeAll(async () => {
     await db.connect();

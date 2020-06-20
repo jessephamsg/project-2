@@ -153,4 +153,10 @@ module.exports = {
             dates: timeTable
         })
     },
+    async showDefaultRegionData(req, res) {
+        const childrenData = await services.studentService.getStudentsByRegion('Jurong West & East');
+        res.render('app-studentDb/admin-regions.ejs', {
+            data: childrenData
+        });
+    }
 }

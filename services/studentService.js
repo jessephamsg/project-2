@@ -31,7 +31,12 @@ module.exports = {
     async updateStudentAttendanceById(studentID, dataForUpdate) {
         const studentData = await repositories.studentRepo.updateOneAttendanceArrayByID(studentID, dataForUpdate);
         const student = await buildStudentObject(studentData);
-        return student
+        return student;
+    },
+    async getStudentsByRegion(regionQuery) {
+        const studentData = await repositories.studentRepo.getAllByRegions(regionQuery);
+        const student = await buildStudentObject(studentData);
+        return student;
     }
 }
 

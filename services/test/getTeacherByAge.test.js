@@ -19,5 +19,5 @@ const buildTeacherObject = ({ id, firstName, lastName, dob, ageGroup, contactNum
 test('test if getTeachersByAgeGroup() returns a built object whose property\'s value equals to test data', async () => {
     const result = await teacherServices.getTeachersByAgeGroup(TEST_DATA);
     console.log(result);
-    expect(result[1].formatChildFullName()).toBe(EXPECTED_RESULT);
+    expect(result[0].formatChildFullName()).toBe(EXPECTED_RESULT);
 })
