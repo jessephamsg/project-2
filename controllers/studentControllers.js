@@ -154,7 +154,7 @@ module.exports = {
         })
     },
     async showDefaultRegionData(req, res) {
-        const childrenData = await services.studentService.getStudentsByRegion('Jurong West & East');
+        const childrenData = await services.studentService.getStudentsByRegion('Jurong East & West');
         res.render('app-studentDb/admin-regions.ejs', {
             data: childrenData
         });

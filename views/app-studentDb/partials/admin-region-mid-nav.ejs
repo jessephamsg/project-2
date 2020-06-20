@@ -1,9 +1,17 @@
 <nav>
      <ul class ='subtab-navigator'>
-        <div class='subtab-name'>REGIONS</div>
-        <div class="subtab-type" id='dropdown-1'>Jurong</div>
-        <div class="subtab-type" id='dropdown-2'>Clementi</div>
-        <div class="subtab-type" id='dropdown-3'>BB & CCK</div>
-        <div class="subtab-type" id='dropdown-4'>Bukit Panjang</div>                                            
+        <div class='subtab-name'>REGIONS</div>   
+        <form action='/students/region/jurong' method='GET'>
+            <input type='submit' value='Jurong' class="subtab-type">
+        </form>   
+        <form action='/students/region/clementi' method='GET'>
+            <input type='submit' value='Clementi' class="subtab-type">
+        </form> 
+        <form action='/students/region/bukit-panjang' method='GET'>
+            <input type='submit' value='Bukit Panjang' class="subtab-type">
+        </form>  
+        <form action='/students/region/bbk-cck' method='GET'>
+            <input type='submit' value='BB & CCK' class="subtab-type">
+        </form>                                      
      </ul>
 </nav>

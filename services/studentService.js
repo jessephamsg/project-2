@@ -35,8 +35,8 @@ module.exports = {
     },
     async getStudentsByRegion(regionQuery) {
         const studentData = await repositories.studentRepo.getAllByRegions(regionQuery);
-        const student = await buildStudentObject(studentData);
-        return student;
+        const students = studentData.map(student => { return buildStudentObject(student) });
+        return students;
     }
 }
 
