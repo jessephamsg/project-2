@@ -13,18 +13,24 @@
                 <%- include('./partials/admin-mid-nav.ejs', {data}) %>
 
                 <div>
-                    <form action='./form' method='POST'>
+                    <form action='./form' method='POST' id='attendance-form'>
+                        <h2>Attendance Form</h2>
                         <label for='classDate'>Attendance for Date</label>
                         <select name='classDate'>
                             <% dates.forEach(date => { %>
                                 <option value='<%=date%>'><%=date%></option>
                             <% }) %>
                         </select>
+                        <h3>Student List</h3>
+                        <div id='attendance-form-student-list'>
                         <% data.forEach(datum => { %>
+                            <div class='checkbox-pairs'>
                             <input type='checkbox' name='isPresent' value='<%=datum.id%>'>
-                            <label for='isPresent'><%=datum.formatChildFullName()%></label>
+                            <label for='isPresent'><%=datum.formatChildFullName()%></label><br>
+                            </div>
                         <% }) %>
-                        <input type='submit' value='Submit'>
+                        </div>
+                        <input type='submit' value='Submit' id='attendance-form-submit-button'>
                     </form>
                 </div>
             </div>

@@ -8,17 +8,17 @@
         <th>Guardian's Membership</th>
         <th>Child's First Seen</th>
         <th>Child's Last Seen</th>
-    </tr>
-    <% data.forEach(datum => { %>
-        <tr>
-            <td><%= datum.formatChildFullName() %></td>
-            <td><%= datum.dob %></td>
-            <td><%= datum.ageGroup %></td>
-            <td><%= datum.formatGuardianFullName() %></td>
-            <td><%= datum.formatPhoneNumber() %></td>
-            <td><%= datum.guardianRole %></td>
-            <td><%= datum.membership %></td>
-            <td><%= datum.firstSeen %></td>
-            <td><%= datum.lastSeen %></td>
-        </tr>
-    <% }) %>
+</tr>
+<% data.forEach(datum => { %>
+<tr>
+        <td class='first-col'><%= datum.formatChildFullName() %></td>
+        <td><%= datum.dob %></td>
+        <td><%= datum.ageGroup %></td>
+        <td><%= datum.formatGuardianFullName() %></td>
+        <td><%= datum.formatPhoneNumber() %></td>
+        <td><%= datum.guardianRole %></td>
+        <td><%= datum.membership %></td>
+        <td><%= datum.firstSeen %></td>
+        <td><%= datum.lastSeen %></td>
+</tr>
+<% }) %>

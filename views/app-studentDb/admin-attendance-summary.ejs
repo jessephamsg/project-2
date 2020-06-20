@@ -22,12 +22,12 @@
                         </tr>
                         <% for(let datum of data) { %> 
                             <tr>
-                            <td><%=datum.formatChildFullName()%></td>
+                            <td class='first-col'><%=datum.formatChildFullName()%></td>
                             <% for (let childPresenceDate of datum.attendance) { %>
                                     <% if(childPresenceDate.isPresent === true) { %>
-                                        <td> 1 </td>
+                                        <td class='marked-present'> 1 </td>
                                     <% } else { %>
-                                        <td> 0 </td>
+                                        <td class='marked-absent'> 0 </td>
                                     <% } %>
                             <% } %>
                             </tr>
