@@ -6,6 +6,8 @@ const TEST_DATA = {
     dob: '1990-08-06',
     ageGroup: 'Tots',
     contactNumber: '80184081',
+    address: '',
+    region: 'Bukit Panjang'
 }
 
 beforeAll(async () => {

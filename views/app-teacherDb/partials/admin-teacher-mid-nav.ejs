@@ -1,52 +1,52 @@
 <nav>
-        <ul class ='subtab-navigator'>
-            <div class='subtab-name'>AGE GROUPS</div>
-            <div class="subtab-type" onclick='showSubTypeDropdown()' id='dropdown-1'>Toddlers</div>
-            <div class="subtab-type" onclick='showSubTypeDropdown()' id='dropdown-2'>Nursery & Kinders</div>
-            <div class="subtab-type" onclick='showSubTypeDropdown()' id='dropdown-3'>Lower Primary</div>
-            <div class="subtab-type" onclick='showSubTypeDropdown()' id='dropdown-4'>Upper Primary</div>                                            
-        </ul>
-        
-        <div class ='subtab-navigator'>
-        <% if(data[0].ageGroup === 'Tots') { %>
-            <div class="dropdown-container" id='dropdown-container-1' style='display: block'>
-                <%- include('../partials/admin-teacher-subtype.ejs', {ageGroup: 'Tots'}) %>
-            </div>
-        <% } else { %>
-            <div class="dropdown-container" id='dropdown-container-1'>
-                <%- include('../partials/admin-teacher-subtype.ejs', {ageGroup: 'Tots'}) %>
-            </div>
-        <% } %>
-        
-        <% if(data[0].ageGroup === 'Junior') { %>
-            <div class="dropdown-container" id='dropdown-container-2' style='display: block'>
-                <%- include('../partials/admin-teacher-subtype.ejs', {ageGroup: 'Junior'}) %>
-            </div>
-        <% } else { %>
-            <div class="dropdown-container" id='dropdown-container-2'>
-                <%- include('../partials/admin-teacher-subtype.ejs', {ageGroup: 'Junior'}) %>
-            </div>
-        <% } %>
-
-        <% if(data[0].ageGroup === 'Lower Primary') { %>
-            <div class="dropdown-container" id='dropdown-container-3' style='display: block'>
-                <%- include('../partials/admin-teacher-subtype.ejs', {ageGroup: 'Lower-Primary'}) %>
-            </div>
-        <% } else { %>
-            <div class="dropdown-container" id='dropdown-container-3'>
-                <%- include('../partials/admin-teacher-subtype.ejs', {ageGroup: 'Lower-Primary'}) %>
-            </div>
-        <% } %> 
-
-        <% if(data[0].ageGroup === 'Upper Primary') { %>
-            <div class="dropdown-container" id='dropdown-container-4' style='display: block'>
-                <%- include('../partials/admin-teacher-subtype.ejs', {ageGroup: 'Upper-Primary'}) %>
-            </div>
-        <% } else { %>
-            <div class="dropdown-container" id='dropdown-container-4'>
-                <%- include('../partials/admin-teacher-subtype.ejs', {ageGroup: 'Upper-Primary'}) %>
-            </div>
-        <% } %> 
-        <button onclick='launchChildRegistrationForm()' id='add-child-button'>Add</button>
-        </div>
+    <ul class ='subtab-navigator'>
+        <div class='subtab-name'>REGIONS</div>
+        <div class="subtab-type" onclick='showSubTypeDropdown()' id='dropdown-1'>Jurong</div>
+        <div class="subtab-type" onclick='showSubTypeDropdown()' id='dropdown-2'>Clementi</div>
+        <div class="subtab-type" onclick='showSubTypeDropdown()' id='dropdown-3'>Bukit Panjang</div>
+        <div class="subtab-type" onclick='showSubTypeDropdown()' id='dropdown-4'>BB & CKK</div>                                            
+    </ul>
+   
+    <div class ='subtab-navigator'>
+        <% if(data[0].region === 'Jurong East & West') { %>
+                <div class="dropdown-container" id='dropdown-container-1' style='display: block'>
+                    <%- include('../partials/admin-region-subtab.ejs', {region: 'Jurong'}) %>
+                </div>
+            <% } else { %>
+                <div class="dropdown-container" id='dropdown-container-1'>
+                    <%- include('../partials/admin-region-subtab.ejs', {region: 'Jurong'}) %>
+                </div>
+            <% } %>
+               
+            <% if(data[0].region === 'Clementi') { %>
+                <div class="dropdown-container" id='dropdown-container-2' style='display: block'>
+                    <%- include('../partials/admin-region-subtab.ejs', {region: 'Clementi'}) %>
+                </div>
+            <% } else { %>
+                <div class="dropdown-container" id='dropdown-container-2'>
+                    <%- include('../partials/admin-region-subtab.ejs', {region: 'Clementi'}) %>
+                </div>
+            <% } %>
+       
+            <% if(data[0].region === 'Bukit Panjang') { %>
+                <div class="dropdown-container" id='dropdown-container-3' style='display: block'>
+                    <%- include('../partials/admin-region-subtab.ejs', {region: 'Bukit-Panjang'}) %>
+                </div>
+            <% } else { %>
+                <div class="dropdown-container" id='dropdown-container-3'>
+                    <%- include('../partials/admin-region-subtab.ejs', {region: 'Bukit-Panjang'}) %>
+                </div>
+            <% } %> 
+       
+            <% if(data[0].region === 'Chua Chu Kang & Bukit Batok') { %>
+                <div class="dropdown-container" id='dropdown-container-4' style='display: block'>
+                    <%- include('../partials/admin-region-subtab.ejs', {region: 'CCK-BB'}) %>
+                </div>
+            <% } else { %>
+                <div class="dropdown-container" id='dropdown-container-4'>
+                    <%- include('../partials/admin-region-subtab.ejs', {region: 'CCK-BB'}) %>
+                </div>
+            <% } %> 
+               <button onclick='launchChildRegistrationForm()' id='add-child-button'>Add</button>
+    </div>
 </nav>

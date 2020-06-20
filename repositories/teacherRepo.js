@@ -7,7 +7,9 @@ module.exports = {
             lastName: teacherObject.lastName,
             dob: teacherObject.dob,
             ageGroup: teacherObject.ageGroup,
-            contactNumber: teacherObject.contactNumber
+            contactNumber: teacherObject.contactNumber,
+            address: teacherObject.address,
+            region: teacherObject.region
         });
         const teacherDetails = await teacherPersonalDetails.ops[0]
         return teacherDetails;
@@ -18,4 +20,10 @@ module.exports = {
         }).toArray();
         return teacherData;
     },
+    async getAllByRegion(regionQuery) {
+        const teacherData = await db.teacherRecords.find({
+            region: regionQuery
+        }).toArray();
+        return teacherData;
+    }
 }

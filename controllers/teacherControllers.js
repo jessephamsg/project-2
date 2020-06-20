@@ -39,6 +39,8 @@ module.exports = {
             dob: req.body.dob,
             ageGroup: req.body.ageGroup,
             contactNumber: req.body.contactNumber,
+            address: req.body.address,
+            region: req.body.region
         }
         try {
             teacherValidator.teachers.validate(teacherDetails);
@@ -51,5 +53,35 @@ module.exports = {
                 err
             })    
         }
+    },
+    async showDefaultRegionData (req, res) {
+        const teacherData = await services.teacherService.getTeachersByRegion('Jurong East & West');
+        res.render('app-teacherDb/admin-teacher-region.ejs', {
+            data: teacherData
+        });
+    },
+    async showJurongRegionData (req, res) {
+        const teacherData = await services.teacherService.getTeachersByRegion('Jurong East & West');
+        res.render('app-teacherDb/admin-teacher-region.ejs', {
+            data: teacherData
+        });
+    },
+    async showClementiRegionData (req, res) {
+        const teacherData = await services.teacherService.getTeachersByRegion('Clementi');
+        res.render('app-teacherDb/admin-teacher-region.ejs', {
+            data: teacherData
+        });
+    },
+    async showPanjangRegionData (req, res) {
+        const teacherData = await services.teacherService.getTeachersByRegion('Bukit Panjang');
+        res.render('app-teacherDb/admin-teacher-region.ejs', {
+            data: teacherData
+        });
+    },
+    async showBatokRegionData (req, res) {
+        const teacherData = await services.teacherService.getTeachersByRegion('Chua Chu Kang & Bukit Batok');
+        res.render('app-teacherDb/admin-teacher-region.ejs', {
+            data: teacherData
+        });
     }
 }

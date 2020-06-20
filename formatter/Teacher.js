@@ -10,9 +10,11 @@ const capitalStringFirstLetter = (string) => {
 }
 
 module.exports = class Teacher extends Student {
-    constructor(id, firstName, lastName, dob, ageGroup, contactNumber) {
+    constructor(id, firstName, lastName, dob, ageGroup, contactNumber, address, region) {
         super(id, firstName, lastName, dob, ageGroup)
-        this.contactNumber = contactNumber
+        this.contactNumber = contactNumber,
+        this.address = address,
+        this.region = region
     }
     formatTeacherNumber() {
         const numberArr = this.contactNumber.split('');

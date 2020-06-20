@@ -3,6 +3,7 @@ const router = express.Router();
 const controllers = require('../controllers')
 
 //Onboarding Routes
+
 router.get('/', controllers.onboardingControllers.showLandingPage);
 router.get('/login', controllers.onboardingControllers.logIn);
 router.get('/signup', controllers.onboardingControllers.signUp);
@@ -56,8 +57,14 @@ router.get('/teachers/age/tots', controllers.teacherControllers.showTotsData);
 router.get('/teachers/age/junior', controllers.teacherControllers.showJuniorData);
 router.get('/teachers/age/lower-primary', controllers.teacherControllers.showLowerPrimaryData);
 router.get('/teachers/age/upper-primary', controllers.teacherControllers.showUpperPrimaryData);
+
 router.post('/teachers/age', controllers.teacherControllers.addNewTeacherData);
 
+router.get('/teachers/region', controllers.teacherControllers.showDefaultRegionData);
+router.get('/teachers/region/jurong', controllers.teacherControllers.showJurongRegionData);
+router.get('/teachers/region/clementi', controllers.teacherControllers.showClementiRegionData);
+router.get('/teachers/region/bukit-panjang', controllers.teacherControllers.showPanjangRegionData);
+router.get('/teachers/region/cck-bb', controllers.teacherControllers.showBatokRegionData);
 
 
 module.exports = router;

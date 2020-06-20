@@ -24,12 +24,14 @@ const buildTestObject = (TEST_DATA) => {
         lastName: TEST_DATA.lastName,
         dob: '',
         ageGroup: '',
-        contactNumber: ''
+        contactNumber: '',
+        address: '',
+        region: ''
     }
 }
 
-const buildTeacherObject = ({ id, firstName, lastName, dob, ageGroup, contactNumber }) => {
-    return new Teacher(id, firstName, lastName, dob, ageGroup, contactNumber);
+const buildTeacherObject = ({ id, firstName, lastName, dob, ageGroup, contactNumber, address, region }) => {
+    return new Teacher(id, firstName, lastName, dob, ageGroup, contactNumber, address, region);
 }
 
 test('if formatChildFullName() returns a name fully formatted when test data comes with proper case', () => {
