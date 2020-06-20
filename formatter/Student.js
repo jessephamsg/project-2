@@ -8,7 +8,7 @@ const capitalStringFirstLetter = (string) => {
 }
 
 module.exports = class Student {
-    constructor(id, firstName, lastName, dob, ageGroup, guardianName, guardianContact, guardianRole, membership, firstSeen, lastSeen) {
+    constructor(id, firstName, lastName, dob, ageGroup, guardianName, guardianContact, guardianRole, membership, firstSeen, attendance) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -19,7 +19,7 @@ module.exports = class Student {
         this.guardianRole = guardianRole;
         this.membership = membership;
         this.firstSeen = firstSeen;
-        this.lastSeen = lastSeen;
+        this.attendance = attendance;
     }
     formatChildFullName() {
         return capitalStringFirstLetter(this.firstName) + SPACE_BREAK + capitalStringFirstLetter(this.lastName);

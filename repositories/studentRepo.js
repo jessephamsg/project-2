@@ -1,5 +1,30 @@
 const db = require('../database/db');
 const ObjectId = require('mongodb').ObjectId;
+const START_DATE = '2020-01-05';
+const CLASS_FREQ_IN_MILISEC = 7 * 8.64e+7;
+const WEEKS_IN_A_YEAR = 52;
+
+const createClassTimetable = () => {
+    const parsedDate = Date.parse(START_DATE);
+    const timeTable = [parsedDate];
+    for (let i = 0; i <= WEEKS_IN_A_YEAR; i++) {
+        timeTable.push(timeTable[timeTable.length - 1] + CLASS_FREQ_IN_MILISEC);
+    };
+    const stringTimeTable = timeTable.map(date => new Date(date).toISOString().slice(0, 10))
+    return stringTimeTable;
+}
+
+const attendancePropertyBuilder = () => {
+    const attendanceArr = [];
+    const timeTable = createClassTimetable();
+    for (const classDate of timeTable) {
+        attendanceArr.push({
+            date: classDate,
+            isPresent: false,
+        })
+    };
+    return attendanceArr
+}
 
 module.exports = {
     async addOne(studentObject) {
@@ -13,7 +38,7 @@ module.exports = {
             guardianRole: studentObject.guardianRole,
             membership: studentObject.membership,
             firstSeen: studentObject.firstSeen,
-            attendance: []
+            attendance: attendancePropertyBuilder()
         });
         const studentDetails = await studentPersonalDetails.ops[0]
         return studentDetails;
@@ -72,9 +97,10 @@ module.exports = {
     async updateOneAttendanceArrayByID(studentObjectID, dataForUpdate) { 
         const student = await db.studentRecords.update({
             _id: ObjectId(studentObjectID),
+            "attendance.date": dataForUpdate
         }, {
-            $push: {
-                attendance: dataForUpdate
+            $set: {
+                "attendance.$.isPresent": true
             }
         })
         return student;

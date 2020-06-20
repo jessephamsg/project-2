@@ -6,9 +6,11 @@ const TEST_DATA = {
     dob: '2020-08-06',
     ageGroup: 'Tots',
     guardianName: 'Tim',
-    guardianContact: 'Ng',
+    guardianContact: '9390808402',
     guardianRole: 'Father',
     membership: 'member',
+    firstSeen: '',
+    attendance: []
 }
 
 beforeAll(async () => {

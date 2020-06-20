@@ -19,8 +19,10 @@ router.get('/students/age/junior', controllers.studentControllers.showJuniorData
 router.get('/students/age/lower-primary', controllers.studentControllers.showLowerPrimaryData);
 router.get('/students/age/upper-primary', controllers.studentControllers.showUpperPrimaryData);
 router.get('/students/age/tots/form', controllers.studentControllers.showTotsAttendanceForm);
+router.get('/students/age/tots/attendance', controllers.studentControllers.showTotsAttendance);
 router.post('/students/age', controllers.studentControllers.addNewStudentData);
 router.post('/students/age/tots/form', controllers.studentControllers.updateStudentAttendance);
+
 
 //Super Admin App Routes - Teachers
 router.get('/teachers/age', controllers.teacherControllers.showDefaultData);

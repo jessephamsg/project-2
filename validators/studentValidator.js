@@ -15,6 +15,7 @@ module.exports = {
             if (!isValid) {
                 const errors = new ValidationError(validator.errors).errorType;
                 const errorArr = [];
+                console.log(errors);
                 errors.forEach(error => errorArr.push(`${error.dataPath} ${error.message}`))
                 throw errorArr;
             }

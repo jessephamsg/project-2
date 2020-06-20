@@ -5,6 +5,7 @@ const TEST_DATA = {
     lastName: 'Keller',
     dob: '1990-08-06',
     ageGroup: 'Tots',
+    contactNumber: '80184081',
 }
 
 beforeAll(async () => {

@@ -56,7 +56,7 @@ module.exports = {
             })
         }
     },
-    async showTotsAttendanceForm (req, res) {
+    async showTotsAttendanceForm(req, res) {
         const childrenData = await services.studentService.getStudentsByAgeGroup('Tots');
         const timeTable = services.studentService.createClassTimetable();
         res.render('app-studentDb/admin-attendance.ejs', {
@@ -64,12 +64,20 @@ module.exports = {
             dates: timeTable
         })
     },
-    async updateStudentAttendance (req, res) {
+    async updateStudentAttendance(req, res) {
         const studentsPresent = req.body.isPresent;
         const datePresent = req.body.classDate;
-        studentsPresent.forEach(async student=> {
+        studentsPresent.forEach(async student => {
             await services.studentService.updateStudentAttendanceById(student, datePresent);
         })
         res.send(req.body);
+    },
+    async showTotsAttendance(req, res) {
+        const childrenData = await services.studentService.getStudentsByAgeGroup('Tots');
+        const timeTable = services.studentService.createClassTimetable();
+        res.render('app-studentDb/admin-attendance-summary.ejs', {
+            data: childrenData,
+            dates: timeTable
+        })
     }
 }
