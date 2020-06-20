@@ -42,7 +42,8 @@ module.exports = {
             guardianContact: req.body.guardianContact,
             guardianRole: req.body.guardianRole,
             membership: req.body.membership,
-            firstSeen: req.body.firstSeen,
+            address: req.body.address,
+            region: req.body.region
         }
         try {
             studentValidator.students.validate(studentDetails);
@@ -64,13 +65,61 @@ module.exports = {
             dates: timeTable
         })
     },
-    async updateStudentAttendance(req, res) {
+    async showJuniorAttendanceForm(req, res) {
+        const childrenData = await services.studentService.getStudentsByAgeGroup('Junior');
+        const timeTable = services.studentService.createClassTimetable();
+        res.render('app-studentDb/admin-attendance.ejs', {
+            data: childrenData,
+            dates: timeTable
+        })
+    },
+    async showLowerPrimaryAttendanceForm(req, res) {
+        const childrenData = await services.studentService.getStudentsByAgeGroup('Lower Primary');
+        const timeTable = services.studentService.createClassTimetable();
+        res.render('app-studentDb/admin-attendance.ejs', {
+            data: childrenData,
+            dates: timeTable
+        })
+    },
+    async showUpperPrimaryAttendanceForm(req, res) {
+        const childrenData = await services.studentService.getStudentsByAgeGroup('Upper Primary');
+        const timeTable = services.studentService.createClassTimetable();
+        res.render('app-studentDb/admin-attendance.ejs', {
+            data: childrenData,
+            dates: timeTable
+        })
+    },
+    async updateTotsStudentAttendance(req, res) {
         const studentsPresent = req.body.isPresent;
         const datePresent = req.body.classDate;
         studentsPresent.forEach(async student => {
             await services.studentService.updateStudentAttendanceById(student, datePresent);
         })
         res.redirect('/students/age/Tots/attendance');
+    },
+    async updateJuniorStudentAttendance(req, res) {
+        const studentsPresent = req.body.isPresent;
+        const datePresent = req.body.classDate;
+        studentsPresent.forEach(async student => {
+            await services.studentService.updateStudentAttendanceById(student, datePresent);
+        })
+        res.redirect('/students/age/junior/attendance');
+    },
+    async updateLowerPrimaryStudentAttendance(req, res) {
+        const studentsPresent = req.body.isPresent;
+        const datePresent = req.body.classDate;
+        studentsPresent.forEach(async student => {
+            await services.studentService.updateStudentAttendanceById(student, datePresent);
+        })
+        res.redirect('/students/age/lower-primary/attendance');
+    },
+    async updateUpperPrimaryStudentAttendance(req, res) {
+        const studentsPresent = req.body.isPresent;
+        const datePresent = req.body.classDate;
+        studentsPresent.forEach(async student => {
+            await services.studentService.updateStudentAttendanceById(student, datePresent);
+        })
+        res.redirect('/students/age/upper-primary/attendance');
     },
     async showTotsAttendance(req, res) {
         const childrenData = await services.studentService.getStudentsByAgeGroup('Tots');
@@ -79,5 +128,29 @@ module.exports = {
             data: childrenData,
             dates: timeTable
         })
-    }
+    },
+    async showJuniorAttendance(req, res) {
+        const childrenData = await services.studentService.getStudentsByAgeGroup('Junior');
+        const timeTable = services.studentService.createClassTimetable();
+        res.render('app-studentDb/admin-attendance-summary.ejs', {
+            data: childrenData,
+            dates: timeTable
+        })
+    },
+    async showLowerPrimaryAttendance(req, res) {
+        const childrenData = await services.studentService.getStudentsByAgeGroup('Lower Primary');
+        const timeTable = services.studentService.createClassTimetable();
+        res.render('app-studentDb/admin-attendance-summary.ejs', {
+            data: childrenData,
+            dates: timeTable
+        })
+    },
+    async showUpperPrimaryAttendance(req, res) {
+        const childrenData = await services.studentService.getStudentsByAgeGroup('Upper Primary');
+        const timeTable = services.studentService.createClassTimetable();
+        res.render('app-studentDb/admin-attendance-summary.ejs', {
+            data: childrenData,
+            dates: timeTable
+        })
+    },
 }

@@ -37,7 +37,8 @@ module.exports = {
             guardianContact: studentObject.guardianContact,
             guardianRole: studentObject.guardianRole,
             membership: studentObject.membership,
-            firstSeen: studentObject.firstSeen,
+            address: studentObject.address,
+            region: studentObject.region,
             attendance: attendancePropertyBuilder()
         });
         const studentDetails = await studentPersonalDetails.ops[0]
@@ -105,8 +106,11 @@ module.exports = {
         })
         return student;
     },
-    async getManyByRegions() {
-
+    async getAllByRegions(regionName) {
+        const students = await db.studentRecords.find({
+            region: regionName,
+        }).toArray();
+        return students
     },
     async getManyByAgeGroup() {
 
