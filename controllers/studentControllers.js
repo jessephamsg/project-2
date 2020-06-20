@@ -70,7 +70,7 @@ module.exports = {
         studentsPresent.forEach(async student => {
             await services.studentService.updateStudentAttendanceById(student, datePresent);
         })
-        res.send(req.body);
+        res.redirect('/students/age/Tots/attendance');
     },
     async showTotsAttendance(req, res) {
         const childrenData = await services.studentService.getStudentsByAgeGroup('Tots');
