@@ -182,5 +182,37 @@ module.exports = {
         res.render('app-studentDb/admin-regions.ejs', {
             data: childrenData
         });
-    }
+    },
+    async showJurongRegionAttendanceData(req, res) {
+        const childrenData = await services.studentService.getStudentsByRegion('Jurong East & West');
+        const timeTable = services.studentService.createClassTimetable();
+        res.render('app-studentDb/admin-region-attendance-summary.ejs', {
+            dates: timeTable,
+            data: childrenData
+        });
+    },
+    async showClementiRegionAttendanceData(req, res) {
+        const childrenData = await services.studentService.getStudentsByRegion('Clementi');
+        const timeTable = services.studentService.createClassTimetable();
+        res.render('app-studentDb/admin-region-attendance-summary.ejs', {
+            dates: timeTable,
+            data: childrenData
+        });
+    },
+    async showPanjangRegionAttendanceData(req, res) {
+        const childrenData = await services.studentService.getStudentsByRegion('Bukit Panjang');
+        const timeTable = services.studentService.createClassTimetable();
+        res.render('app-studentDb/admin-region-attendance-summary.ejs', {
+            dates: timeTable,
+            data: childrenData
+        });
+    },
+    async showBatokRegionAttendanceData(req, res) {
+        const childrenData = await services.studentService.getStudentsByRegion('Chua Chu Kang & Bukit Batok');
+        const timeTable = services.studentService.createClassTimetable();
+        res.render('app-studentDb/admin-region-attendance-summary.ejs', {
+            dates: timeTable,
+            data: childrenData
+        });
+    },
 }

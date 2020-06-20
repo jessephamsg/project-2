@@ -45,6 +45,11 @@ router.get('/students/region/clementi', controllers.studentControllers.showCleme
 router.get('/students/region/bukit-panjang', controllers.studentControllers.showPanjangRegionData);
 router.get('/students/region/cck-bb', controllers.studentControllers.showBatokRegionData);
 
+router.get('/students/region/jurong/attendance', controllers.studentControllers.showJurongRegionAttendanceData);
+router.get('/students/region/clementi/attendance', controllers.studentControllers.showClementiRegionAttendanceData);
+router.get('/students/region/bukit-panjang/attendance', controllers.studentControllers.showPanjangRegionAttendanceData);
+router.get('/students/region/cck-bb/attendance', controllers.studentControllers.showBatokRegionAttendanceData);
+
 //Super Admin App Routes - Teachers
 router.get('/teachers/age', controllers.teacherControllers.showDefaultData);
 router.get('/teachers/age/tots', controllers.teacherControllers.showTotsData);
