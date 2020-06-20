@@ -158,5 +158,29 @@ module.exports = {
         res.render('app-studentDb/admin-regions.ejs', {
             data: childrenData
         });
+    },
+    async showJurongRegionData(req, res) {
+        const childrenData = await services.studentService.getStudentsByRegion('Jurong East & West');
+        res.render('app-studentDb/admin-regions.ejs', {
+            data: childrenData
+        });
+    },
+    async showClementiRegionData(req, res) {
+        const childrenData = await services.studentService.getStudentsByRegion('Clementi');
+        res.render('app-studentDb/admin-regions.ejs', {
+            data: childrenData
+        });
+    },
+    async showPanjangRegionData(req, res) {
+        const childrenData = await services.studentService.getStudentsByRegion('Bukit Panjang');
+        res.render('app-studentDb/admin-regions.ejs', {
+            data: childrenData
+        });
+    },
+    async showBatokRegionData(req, res) {
+        const childrenData = await services.studentService.getStudentsByRegion('Chua Chu Kang & Bukit Batok');
+        res.render('app-studentDb/admin-regions.ejs', {
+            data: childrenData
+        });
     }
 }

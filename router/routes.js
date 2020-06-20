@@ -40,6 +40,10 @@ router.get('/students/age/upper-primary/attendance', controllers.studentControll
 
 //Super Admin App Routes - Students Region
 router.get('/students/region', controllers.studentControllers.showDefaultRegionData);
+router.get('/students/region/jurong', controllers.studentControllers.showJurongRegionData);
+router.get('/students/region/clementi', controllers.studentControllers.showClementiRegionData);
+router.get('/students/region/bukit-panjang', controllers.studentControllers.showPanjangRegionData);
+router.get('/students/region/cck-bb', controllers.studentControllers.showBatokRegionData);
 
 //Super Admin App Routes - Teachers
 router.get('/teachers/age', controllers.teacherControllers.showDefaultData);
