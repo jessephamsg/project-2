@@ -69,7 +69,14 @@ module.exports = {
             $set: {
                 "attendance.$.isPresent": true
             }
-        })
+        });
+        await db.studentRecords.update({
+            _id: ObjectId(studentObjectID),
+        }, {
+            $push: {attendanceSummary: dataForUpdate}
+        });
+        this.updateFirstSeenDateValue();
+        this.updateLastSeenDateValue();
         return student;
     },
     async getAllByRegions(regionName) {
@@ -78,5 +85,42 @@ module.exports = {
         }).toArray();
         return students
     },
-    
+    async updateFirstSeenDateValue () {
+        const students = await db.studentRecords.aggregate([
+            {
+                $project: {
+                    "firstSeen.date": {$arrayElemAt: ['$attendanceSummary', 0]}
+                }
+            }
+        ]).toArray();
+        for (const student of students) {
+            await db.studentRecords.updateOne({
+                _id: ObjectId(student['_id'])
+            }, {
+                $set: {
+                    "firstSeen.date": student.firstSeen.date
+                }
+            });  
+        }
+        return students;
+    },
+    async updateLastSeenDateValue () {
+        const students = await db.studentRecords.aggregate([
+            {
+                $project: {
+                    "lastSeen.date": {$arrayElemAt: ['$attendanceSummary', -1]}
+                }
+            }
+        ]).toArray();
+        for (const student of students) {
+            await db.studentRecords.updateOne({
+                _id: ObjectId(student['_id'])
+            }, {
+                $set: {
+                    "lastSeen.date": student.lastSeen.date
+                }
+            });  
+        }
+        return students;
+    }
 }

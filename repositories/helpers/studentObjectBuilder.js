@@ -25,7 +25,20 @@ module.exports = {
             membership: studentObject.membership,
             address: studentObject.address,
             region: studentObject.region,
-            attendance: attendancePropertyBuilder()
+            attendance: attendancePropertyBuilder(),
+            attendanceSummary: [],
+            firstSeen: {
+                date: '',
+                week: 0
+            },
+            lastSeen: {
+                date: '',
+                week: 0
+            },
+            isRegular: true,
+            teacherIC: {
+                _id: '',
+            }
         }; 
         return newStudent;
     }

@@ -4,8 +4,8 @@ const START_DATE = '2020-01-05';
 const CLASS_FREQ_IN_MILISEC = 7 * 8.64e+7;
 const WEEKS_IN_A_YEAR = 52;
 
-const buildStudentObject = ({ _id, firstName, lastName, dob, ageGroup, guardianName, guardianContact, guardianRole, membership, address, region, attendance }) => {
-    return new Student(_id, firstName, lastName, dob, ageGroup, guardianName, guardianContact, guardianRole, membership, address, region, attendance);
+const buildStudentObject = ({ _id, firstName, lastName, dob, ageGroup, guardianName, guardianContact, guardianRole, membership, address, region, attendance, attendanceSummary, firstSeen, lastSeen, isRegular, teacherIC, age }) => {
+    return new Student(_id, firstName, lastName, dob, ageGroup, guardianName, guardianContact, guardianRole, membership, address, region, attendance, attendanceSummary, firstSeen, lastSeen, isRegular, teacherIC, age);
 }
 
 module.exports = {

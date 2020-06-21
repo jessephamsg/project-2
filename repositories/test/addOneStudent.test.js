@@ -11,7 +11,20 @@ const TEST_DATA = {
     membership: 'member',
     address: '',
     region: '',
-    attendance: []
+    attendance: [],
+    attendanceSummary: [],
+    firstSeen: {
+        date: '',
+        week: 0
+    },
+    lastSeen: {
+        date: '',
+        week: 0
+    },
+    isRegular: true,
+    teacherIC: {
+        _id: '',
+    }
 }
 
 beforeAll(async () => {
