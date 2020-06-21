@@ -11,10 +11,32 @@
             </div>
             <div class='mid-section'>
                     <%- include('./partials/admin-mid-nav.ejs', {data}) %>  
+                    <div class='ageGroup-stats'>
+                        <div class='stats-div' id='stats-1'>
+                            <div class='stats-div-content'>
+                                <h3>Total number of <br><%=data[0].ageGroup%></h3>
+                                <p><%=data.length%></p>
+                            </div>
+                            <img class='stats-div-img' src='https://lh3.googleusercontent.com/proxy/lvEi4jHEtiqQqJPJyzM3u59XJQyioeNBdHdSJGyPwuyBu69VnQC-zSR5omHTVSEIwJvosWJ7kBK6fTlI__3VAwSJ86i5HbKg23lpFSO7cUUINuzkEi18OA_dlRpAEvnqOKsQ'>
+                        </div>
+                        <div class='stats-div' id='stats-2'>
+                            <div class='stats-div-content'>
+                                <h3>Total number of regulars</h3>
+                                <p><%=regulars%></p>
+                            </div>
+                            <img class='stats-div-img' src='https://findicons.com/files/icons/2315/default_icon/256/media_repeat_alt_inv.png'>
+                        </div>
+                        <div class='stats-div' id='stats-3'>
+                            <div class='stats-div-content'>
+                                <h3>Total number of non-regulars</h3>
+                                <p><%=irregulars%></p>
+                            </div>
+                            <img class='stats-div-img' src='https://lh3.googleusercontent.com/proxy/lvEi4jHEtiqQqJPJyzM3u59XJQyioeNBdHdSJGyPwuyBu69VnQC-zSR5omHTVSEIwJvosWJ7kBK6fTlI__3VAwSJ86i5HbKg23lpFSO7cUUINuzkEi18OA_dlRpAEvnqOKsQ'>
+                        </div>
+                    </div>
                     <table>
                         <%- include('./partials/admin-studentdata-table.ejs', {data}) %>
                     </table>
-
                     <div class='modal' id='child-registration-form'>
                         <div class='modal-content'>
                         <h2>Add New Child</h2>

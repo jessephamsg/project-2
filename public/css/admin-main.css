@@ -372,7 +372,7 @@ th {
 #attendance-form>input[type='submit'] {
     padding: 10px;
     margin-top: 30px;
-    background-color:#0779E4;
+    background-color: #0779E4;
     color: white;
     border: none;
 }
@@ -381,3 +381,65 @@ input[type='checkbox'] {
     width: 20px;
     height: 20px;
 }
+
+.ageGroup-stats {
+    width: 95%;
+    height: 150px;
+    display: flex;
+    margin-left: 2.5%;
+    justify-content: space-around;
+    margin-bottom: 2.5%;
+    margin-top: 2.5%;
+}
+
+.stats-div {
+    width: 32%;
+    height: 100%;
+    background-color: red;
+    display: flex;
+}
+
+#stats-1 {
+    background-image: linear-gradient(to right, rgb(142, 214, 215) , #0779E4);
+    color: #0779E4;
+    font-weight: 600;
+}
+
+#stats-2 {
+    background-image: linear-gradient(to right, rgb(240, 242, 203) , rgb(107, 185, 184));
+    color: rgb(104, 179, 178);
+    font-weight: 600;
+}
+
+#stats-3 {
+    background-image: linear-gradient(to right, rgb(240, 242, 203) , #e91e63);
+    color: #e91e63;
+    font-weight: 600;
+}
+
+.stats-div-content {
+    width: 70%;
+    margin-left: 5%;
+}
+
+.stats-div-img {
+   width: 30%;
+}
+
+.stats-div> img {
+    width: 40%;
+    margin-top: 10%;
+    opacity: 0.2;
+    margin-bottom: 10%;
+}
+
+.stats-div-content > h3 {
+    font-size: 14px;
+    margin-bottom: 0px;
+}
+
+.stats-div-content > p {
+    font-size: 62px;
+    margin-top: 0px;
+}
+

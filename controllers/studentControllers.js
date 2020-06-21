@@ -4,32 +4,52 @@ const studentValidator = require('../validators/studentValidator');
 module.exports = {
     async showDefaultData(req, res) {
         const childrenData = await services.studentService.getStudentsByAgeGroup('Tots');
+        const regulars = await services.studentService.sumRegularsByAge('Tots', true);
+        const irregulars = await services.studentService.sumRegularsByAge('Tots', false);
         res.render('app-studentDb/admin-ageGroups.ejs', {
-            data: childrenData
+            data: childrenData,
+            regulars,
+            irregulars
         });
     },
     async showTotsData(req, res) {
         const childrenData = await services.studentService.getStudentsByAgeGroup('Tots');
+        const regulars = await services.studentService.sumRegularsByAge('Tots', true);
+        const irregulars = await services.studentService.sumRegularsByAge('Tots', false);
         res.render('app-studentDb/admin-ageGroups.ejs', {
-            data: childrenData
+            data: childrenData,
+            regulars,
+            irregulars
         });
     },
     async showJuniorData(req, res) {
         const childrenData = await services.studentService.getStudentsByAgeGroup('Junior');
+        const regulars = await services.studentService.sumRegularsByAge('Junior', true);
+        const irregulars = await services.studentService.sumRegularsByAge('Junior', false);
         res.render('app-studentDb/admin-ageGroups.ejs', {
-            data: childrenData
+            data: childrenData,
+            regulars,
+            irregulars
         });
     },
     async showLowerPrimaryData(req, res) {
         const childrenData = await services.studentService.getStudentsByAgeGroup('Lower Primary');
+        const regulars = await services.studentService.sumRegularsByAge('Lower Primary', true);
+        const irregulars = await services.studentService.sumRegularsByAge('Lower Primary', false);
         res.render('app-studentDb/admin-ageGroups.ejs', {
-            data: childrenData
+            data: childrenData,
+            regulars,
+            irregulars
         });
     },
     async showUpperPrimaryData(req, res) {
         const childrenData = await services.studentService.getStudentsByAgeGroup('Upper Primary');
+        const regulars = await services.studentService.sumRegularsByAge('Upper Primary', true);
+        const irregulars = await services.studentService.sumRegularsByAge('Upper Primary', false);
         res.render('app-studentDb/admin-ageGroups.ejs', {
-            data: childrenData
+            data: childrenData,
+            regulars,
+            irregulars
         });
     },
     async addNewStudentData(req, res) {
@@ -163,32 +183,52 @@ module.exports = {
     },
     async showDefaultRegionData(req, res) {
         const childrenData = await services.studentService.getStudentsByRegion('Jurong East & West');
+        const regulars = await services.studentService.sumRegularsByRegion('Jurong East & West', true);
+        const irregulars = await services.studentService.sumRegularsByRegion('Jurong East & West', false);
         res.render('app-studentDb/admin-regions.ejs', {
-            data: childrenData
+            data: childrenData,
+            regulars,
+            irregulars
         });
     },
     async showJurongRegionData(req, res) {
         const childrenData = await services.studentService.getStudentsByRegion('Jurong East & West');
+        const regulars = await services.studentService.sumRegularsByRegion('Jurong East & West', true);
+        const irregulars = await services.studentService.sumRegularsByRegion('Jurong East & West', false);
         res.render('app-studentDb/admin-regions.ejs', {
-            data: childrenData
+            data: childrenData,
+            regulars,
+            irregulars
         });
     },
     async showClementiRegionData(req, res) {
         const childrenData = await services.studentService.getStudentsByRegion('Clementi');
+        const regulars = await services.studentService.sumRegularsByRegion('Clementi', true);
+        const irregulars = await services.studentService.sumRegularsByRegion('Clementi', false);
         res.render('app-studentDb/admin-regions.ejs', {
-            data: childrenData
+            data: childrenData,
+            regulars,
+            irregulars
         });
     },
     async showPanjangRegionData(req, res) {
         const childrenData = await services.studentService.getStudentsByRegion('Bukit Panjang');
+        const regulars = await services.studentService.sumRegularsByRegion('Bukit Panjang', true);
+        const irregulars = await services.studentService.sumRegularsByRegion('Bukit Panjang', false);
         res.render('app-studentDb/admin-regions.ejs', {
-            data: childrenData
+            data: childrenData,
+            regulars,
+            irregulars
         });
     },
     async showBatokRegionData(req, res) {
         const childrenData = await services.studentService.getStudentsByRegion('Chua Chu Kang & Bukit Batok');
+        const regulars = await services.studentService.sumRegularsByRegion('Chua Chu Kang & Bukit Batok', true);
+        const irregulars = await services.studentService.sumRegularsByRegion('Chua Chu Kang & Bukit Batok', false);
         res.render('app-studentDb/admin-regions.ejs', {
-            data: childrenData
+            data: childrenData,
+            regulars,
+            irregulars
         });
     },
     async showJurongRegionAttendanceData(req, res) {

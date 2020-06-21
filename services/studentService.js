@@ -45,6 +45,14 @@ module.exports = {
     async sumAttendanceByRegion (regionQuery) {
         const aggregatedAttendance = await repositories.studentRepo.sumAttendanceByDateAndRegion(regionQuery);
         return aggregatedAttendance
+    },
+    async sumRegularsByAge (ageQuery, regularValue) {
+        const regulars = await repositories.studentRepo.getAllTrueRegularByAgeGroup(ageQuery, regularValue);
+        return regulars
+    },
+    async sumRegularsByRegion (regionQuery, regularValue) {
+        const regulars = await repositories.studentRepo.getAllTrueRegularByAgeGroup(regionQuery, regularValue);
+        return regulars
     }
 }
 

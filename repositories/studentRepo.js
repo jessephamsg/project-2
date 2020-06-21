@@ -198,5 +198,21 @@ module.exports = {
             })
         }
         return allAttendance;
-    }
+    },
+    async getAllTrueRegularByAgeGroup (ageQuery, regularValue) {
+        const regulars = await db.studentRecords.find({
+            isRegular: regularValue,
+            ageGroup: ageQuery
+        }).toArray();
+        const total = await regulars.length;
+        return total
+    },
+    async getAllTrueRegularByRegion (regionQuery, regularValue) {
+        const regulars = await db.studentRecords.find({
+            isRegular: regularValue,
+            ageGroup: regionQuery
+        }).toArray();
+        const total = await regulars.length;
+        return total
+    },
 }
