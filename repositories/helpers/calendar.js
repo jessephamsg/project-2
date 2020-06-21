@@ -21,9 +21,8 @@ module.exports = {
         const numberOfDaysSinceBeginning = date.getTime() - startDate.getTime();
         return numberOfDaysSinceBeginning/ DAY_IN_MILISEC
     },
-    convertDaysToWeek (dateString) {
+    convertDateToWeek (dateString) {
         return Math.ceil(this.convertDatesToDays(dateString)/ DAYS_IN_A_WEEK);
     }
-
 } 
 
