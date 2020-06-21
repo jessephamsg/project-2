@@ -11,32 +11,14 @@
             </div>
             <div class='mid-section'>
                 <%- include('./partials/admin-mid-nav.ejs', {data}) %>
-
                 <div>
                     <table>
-                        <tr>
-                          <th>Name</th>
-                          <% dates.forEach(date => { %>
-                              <th><%=date%></th>
-                          <% }) %>
-                        </tr>
-                        <% for(let datum of data) { %> 
-                            <tr>
-                            <td class='first-col'><%=datum.formatChildFullName()%></td>
-                            <% for (let childPresenceDate of datum.attendance) { %>
-                                    <% if(childPresenceDate.isPresent === true) { %>
-                                        <td class='marked-present'> 1 </td>
-                                    <% } else { %>
-                                        <td class='marked-absent'> 0 </td>
-                                    <% } %>
-                            <% } %>
-                            </tr>
-                        <% } %>
-                      </table>
+                        <%- include('./partials/admin-children-attendance-table.ejs', {data:data, dates: dates, totalAttendance:totalAttendance}) %>
+                    </table>
                 </div>
             </div>
             <div class='right-section'>
             </div>
-        </div>
+    </div>
 </body>
 </html>

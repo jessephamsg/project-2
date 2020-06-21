@@ -13,29 +13,12 @@
                 <%- include('./partials/admin-region-mid-nav.ejs') %>  
                 <div>
                     <table>
-                        <tr>
-                          <th>Name</th>
-                          <% dates.forEach(date => { %>
-                              <th><%=date%></th>
-                          <% }) %>
-                        </tr>
-                        <% for(let datum of data) { %> 
-                            <tr>
-                            <td><%=datum.formatChildFullName()%></td>
-                            <% for (let childPresenceDate of datum.attendance) { %>
-                                    <% if(childPresenceDate.isPresent === true) { %>
-                                        <td> 1 </td>
-                                    <% } else { %>
-                                        <td> 0 </td>
-                                    <% } %>
-                            <% } %>
-                            </tr>
-                        <% } %>
-                      </table>
+                        <%- include('./partials/admin-children-attendance-table.ejs', {data:data, dates: dates, totalAttendance:totalAttendance}) %>
+                    </table>
                 </div>
             </div>
             <div class='right-section'>
             </div>
-        </div>
+    </div>
 </body>
 </html>

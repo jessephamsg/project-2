@@ -12,30 +12,33 @@
         <div class='mid-section'>
             <%- include('./partials/admin-region-mid-nav.ejs') %>  
             <table>
-                <tr>
-                        <th>Child's Name</th>
-                        <th>DOB</th>
-                        <th>Age Group</th>
-                        <th>Guardian's Name</th>
-                        <th>Guardian's Contact</th>
-                        <th>Guardian's Role</th>
-                        <th>Guardian's Membership</th>
-                        <th>Child's First Seen</th>
-                        <th>Child's Last Seen</th>
-                </tr>
-                <% data.forEach(datum => { %>
-                <tr>
-                        <td><%= datum.formatChildFullName() %></td>
-                        <td><%= datum.dob %></td>
-                        <td><%= datum.ageGroup %></td>
-                        <td><%= datum.formatGuardianFullName() %></td>
-                        <td><%= datum.formatPhoneNumber() %></td>
-                        <td><%= datum.guardianRole %></td>
-                        <td><%= datum.membership %></td>
-                        <td><%= datum.firstSeen %></td>
-                        <td><%= datum.lastSeen %></td>
-                </tr>
-                <% }) %>
+                    <tr>
+                            <th>Child's Name</th>
+                            <th>DOB</th>
+                            <th>Age</th>
+                            <th>Guardian's Details</th>
+                            <th>Guardian's Membership</th>
+                            <th>Overall Attendance</th>
+                            <th>Child's First Seen</th>
+                            <th>Child's Last Seen</th>
+                            <th>Teacher in-charge</th>
+                    </tr>
+                    <% data.forEach(datum => { %>
+                    <tr>
+                            <td class='first-col'><%= datum.formatChildFullName() %></td>
+                            <td><%= datum.dob %></td>
+                            <td><%= datum.formatAgeInYears() %></td>
+                            <td><%= datum.formatGuardianFullName() %><br>
+                                <%= datum.formatPhoneNumber() %><br>
+                                (<%= datum.guardianRole %>)<br>
+                            </td>
+                            <td><%= datum.membership %></td>
+                            <td><%= datum.isRegular %></td>
+                            <td><%= datum.firstSeen.date %></td>
+                            <td><%= datum.lastSeen.date %></td>
+                            <td><%= datum.teacherIC %></td>
+                    </tr>
+                    <% }) %>
             </table>
         </div>
         <div class='right-section'>

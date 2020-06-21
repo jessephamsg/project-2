@@ -62,7 +62,7 @@ module.exports = {
         const timeTable = services.studentService.createClassTimetable();
         res.render('app-studentDb/admin-attendance.ejs', {
             data: childrenData,
-            dates: timeTable
+            dates: timeTable,
         })
     },
     async showJuniorAttendanceForm(req, res) {
@@ -124,33 +124,41 @@ module.exports = {
     async showTotsAttendance(req, res) {
         const childrenData = await services.studentService.getStudentsByAgeGroup('Tots');
         const timeTable = services.studentService.createClassTimetable();
+        const aggregatedAttendance = await services.studentService.sumAttendance('Tots');
         res.render('app-studentDb/admin-attendance-summary.ejs', {
             data: childrenData,
-            dates: timeTable
+            dates: timeTable,
+            totalAttendance: aggregatedAttendance
         })
     },
     async showJuniorAttendance(req, res) {
         const childrenData = await services.studentService.getStudentsByAgeGroup('Junior');
         const timeTable = services.studentService.createClassTimetable();
+        const aggregatedAttendance = await services.studentService.sumAttendance('Junior');
         res.render('app-studentDb/admin-attendance-summary.ejs', {
             data: childrenData,
-            dates: timeTable
+            dates: timeTable,
+            totalAttendance: aggregatedAttendance
         })
     },
     async showLowerPrimaryAttendance(req, res) {
         const childrenData = await services.studentService.getStudentsByAgeGroup('Lower Primary');
         const timeTable = services.studentService.createClassTimetable();
+        const aggregatedAttendance = await services.studentService.sumAttendance('Lower Primary');
         res.render('app-studentDb/admin-attendance-summary.ejs', {
             data: childrenData,
-            dates: timeTable
+            dates: timeTable,
+            totalAttendance: aggregatedAttendance
         })
     },
     async showUpperPrimaryAttendance(req, res) {
         const childrenData = await services.studentService.getStudentsByAgeGroup('Upper Primary');
         const timeTable = services.studentService.createClassTimetable();
+        const aggregatedAttendance = await services.studentService.sumAttendance('Upper Primary');
         res.render('app-studentDb/admin-attendance-summary.ejs', {
             data: childrenData,
-            dates: timeTable
+            dates: timeTable,
+            totalAttendance: aggregatedAttendance
         })
     },
     async showDefaultRegionData(req, res) {
@@ -186,33 +194,41 @@ module.exports = {
     async showJurongRegionAttendanceData(req, res) {
         const childrenData = await services.studentService.getStudentsByRegion('Jurong East & West');
         const timeTable = services.studentService.createClassTimetable();
+        const aggregatedAttendance = await services.studentService.sumAttendanceByRegion('Jurong East & West');
         res.render('app-studentDb/admin-region-attendance-summary.ejs', {
             dates: timeTable,
-            data: childrenData
+            data: childrenData,
+            totalAttendance: aggregatedAttendance
         });
     },
     async showClementiRegionAttendanceData(req, res) {
         const childrenData = await services.studentService.getStudentsByRegion('Clementi');
         const timeTable = services.studentService.createClassTimetable();
+        const aggregatedAttendance = await services.studentService.sumAttendanceByRegion('Clementi');
         res.render('app-studentDb/admin-region-attendance-summary.ejs', {
             dates: timeTable,
-            data: childrenData
+            data: childrenData,
+            totalAttendance: aggregatedAttendance
         });
     },
     async showPanjangRegionAttendanceData(req, res) {
         const childrenData = await services.studentService.getStudentsByRegion('Bukit Panjang');
         const timeTable = services.studentService.createClassTimetable();
+        const aggregatedAttendance = await services.studentService.sumAttendanceByRegion('Bukit Panjang');
         res.render('app-studentDb/admin-region-attendance-summary.ejs', {
             dates: timeTable,
-            data: childrenData
+            data: childrenData,
+            totalAttendance: aggregatedAttendance
         });
     },
     async showBatokRegionAttendanceData(req, res) {
         const childrenData = await services.studentService.getStudentsByRegion('Chua Chu Kang & Bukit Batok');
         const timeTable = services.studentService.createClassTimetable();
+        const aggregatedAttendance = await services.studentService.sumAttendanceByRegion('Chua Chu Kang & Bukit Batok');
         res.render('app-studentDb/admin-region-attendance-summary.ejs', {
             dates: timeTable,
-            data: childrenData
+            data: childrenData,
+            totalAttendance: aggregatedAttendance
         });
     },
 }

@@ -1,0 +1,26 @@
+<tr>
+    <th>Name</th>
+    <% dates.forEach(date => { %>
+        <th><%=date%></th>
+        <% }) %>
+</tr>
+                        
+<tr>
+    <td>Total Attendance</td>
+    <% totalAttendance.forEach(attendance => { %>
+        <td><%=attendance.allAttendance%></td>
+        <% }) %>
+</tr>
+                        
+<% for(let datum of data) { %> 
+<tr>
+    <td class='first-col'><%=datum.formatChildFullName()%></td>
+    <% for (let childPresenceDate of datum.attendance) { %>
+        <% if(childPresenceDate.isPresent === true) { %>
+            <td class='marked-present'> 1 </td>
+            <% } else { %>
+            <td class='marked-absent'> 0 </td>
+            <% } %>
+        <% } %>
+</tr>
+<% } %>

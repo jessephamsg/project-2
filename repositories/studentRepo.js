@@ -166,5 +166,37 @@ module.exports = {
             index++
         }
         return attendanceFreq
+    },
+    async sumAttendanceByDateAndAgeGroup(ageQuery) {
+        const dates = calendarHelper.createClassTimetable();
+        const allAttendance = [];
+        for (const classDate of dates) {
+            const results = await db.studentRecords.find({
+                "attendance": { date: classDate, isPresent: true },
+                ageGroup: ageQuery
+            }).toArray();
+            const allStudentsAttending = results.length;
+            allAttendance.push({
+                date: classDate,
+                allAttendance: allStudentsAttending
+            })
+        }
+        return allAttendance;
+    },
+    async sumAttendanceByDateAndRegion(regionQuery) {
+        const dates = calendarHelper.createClassTimetable();
+        const allAttendance = [];
+        for (const classDate of dates) {
+            const results = await db.studentRecords.find({
+                "attendance": { date: classDate, isPresent: true },
+                region: regionQuery
+            }).toArray();
+            const allStudentsAttending = results.length;
+            allAttendance.push({
+                date: classDate,
+                allAttendance: allStudentsAttending
+            })
+        }
+        return allAttendance;
     }
 }

@@ -37,6 +37,14 @@ module.exports = {
         const studentData = await repositories.studentRepo.getAllByRegions(regionQuery);
         const students = studentData.map(student => { return buildStudentObject(student) });
         return students;
+    },
+    async sumAttendance (ageQuery) {
+        const aggregatedAttendance = await repositories.studentRepo.sumAttendanceByDateAndAgeGroup(ageQuery);
+        return aggregatedAttendance
+    },
+    async sumAttendanceByRegion (regionQuery) {
+        const aggregatedAttendance = await repositories.studentRepo.sumAttendanceByDateAndRegion(regionQuery);
+        return aggregatedAttendance
     }
 }
 
