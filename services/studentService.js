@@ -38,20 +38,20 @@ module.exports = {
         const students = studentData.map(student => { return buildStudentObject(student) });
         return students;
     },
-    async sumAttendance (ageQuery) {
+    async sumAttendance(ageQuery) {
         const aggregatedAttendance = await repositories.studentRepo.sumAttendanceByDateAndAgeGroup(ageQuery);
         return aggregatedAttendance
     },
-    async sumAttendanceByRegion (regionQuery) {
+    async sumAttendanceByRegion(regionQuery) {
         const aggregatedAttendance = await repositories.studentRepo.sumAttendanceByDateAndRegion(regionQuery);
         return aggregatedAttendance
     },
-    async sumRegularsByAge (ageQuery, regularValue) {
+    async sumRegularsByAge(ageQuery, regularValue) {
         const regulars = await repositories.studentRepo.getAllTrueRegularByAgeGroup(ageQuery, regularValue);
         return regulars
     },
-    async sumRegularsByRegion (regionQuery, regularValue) {
-        const regulars = await repositories.studentRepo.getAllTrueRegularByAgeGroup(regionQuery, regularValue);
+    async sumRegularsByRegion(regionQuery, regularValue) {
+        const regulars = await repositories.studentRepo.getAllTrueRegularByRegion(regionQuery, regularValue);
         return regulars
     }
 }

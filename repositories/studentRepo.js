@@ -199,7 +199,7 @@ module.exports = {
         }
         return allAttendance;
     },
-    async getAllTrueRegularByAgeGroup (ageQuery, regularValue) {
+    async getAllTrueRegularByAgeGroup(ageQuery, regularValue) {
         const regulars = await db.studentRecords.find({
             isRegular: regularValue,
             ageGroup: ageQuery
@@ -207,10 +207,10 @@ module.exports = {
         const total = await regulars.length;
         return total
     },
-    async getAllTrueRegularByRegion (regionQuery, regularValue) {
+    async getAllTrueRegularByRegion(regionQuery, regularValue) {
         const regulars = await db.studentRecords.find({
             isRegular: regularValue,
-            ageGroup: regionQuery
+            region: regionQuery
         }).toArray();
         const total = await regulars.length;
         return total

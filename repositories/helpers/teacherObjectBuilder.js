@@ -13,7 +13,7 @@ const rosterBuilder = () => {
 }
 
 module.exports = {
-    buildTeacherObject (teacherObject) {
+    buildTeacherObject(teacherObject) {
         const newTeacher = {
             firstName: teacherObject.firstName,
             lastName: teacherObject.lastName,
@@ -28,7 +28,7 @@ module.exports = {
             assignedChildren: [],
             roster: rosterBuilder(),
             isAtFullCapacity: false,
-        }; 
+        };
         return newTeacher;
     }
 }

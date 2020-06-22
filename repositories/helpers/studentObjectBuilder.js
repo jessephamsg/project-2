@@ -13,7 +13,7 @@ const attendancePropertyBuilder = () => {
 }
 
 module.exports = {
-    buildStudentObject (studentObject) {
+    buildStudentObject(studentObject) {
         const newStudent = {
             firstName: studentObject.firstName,
             lastName: studentObject.lastName,
@@ -39,7 +39,7 @@ module.exports = {
             teacherIC: {
                 _id: '',
             }
-        }; 
+        };
         return newStudent;
     }
 }
