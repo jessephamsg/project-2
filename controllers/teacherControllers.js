@@ -53,37 +53,52 @@ module.exports = {
             res.render('app-teacherDb/admin-newTeacher.ejs', {
                 data: teacherData,
                 err
-            })    
+            })
         }
     },
-    async showDefaultRegionData (req, res) {
+    async showDefaultRegionData(req, res) {
         const teacherData = await services.teacherService.getTeachersByRegion('Jurong East & West');
         res.render('app-teacherDb/admin-teacher-region.ejs', {
             data: teacherData
         });
     },
-    async showJurongRegionData (req, res) {
+    async showJurongRegionData(req, res) {
         const teacherData = await services.teacherService.getTeachersByRegion('Jurong East & West');
         res.render('app-teacherDb/admin-teacher-region.ejs', {
             data: teacherData
         });
     },
-    async showClementiRegionData (req, res) {
+    async showClementiRegionData(req, res) {
         const teacherData = await services.teacherService.getTeachersByRegion('Clementi');
         res.render('app-teacherDb/admin-teacher-region.ejs', {
             data: teacherData
         });
     },
-    async showPanjangRegionData (req, res) {
+    async showPanjangRegionData(req, res) {
         const teacherData = await services.teacherService.getTeachersByRegion('Bukit Panjang');
         res.render('app-teacherDb/admin-teacher-region.ejs', {
             data: teacherData
         });
     },
-    async showBatokRegionData (req, res) {
+    async showBatokRegionData(req, res) {
         const teacherData = await services.teacherService.getTeachersByRegion('Chua Chu Kang & Bukit Batok');
         res.render('app-teacherDb/admin-teacher-region.ejs', {
             data: teacherData
         });
+    },
+    async showTotsTeacherRoster(req, res) {
+        const teacherData = await services.teacherService.getTeachersByAgeGroup('Tots');
+        const dailyManpower = 5;
+        const slots = ['10-12PM', '2-4PM', '5-7PM'];
+        const timeTable = services.studentService.createClassTimetable();
+        res.render('app-teacherDb/admin-teacher-roster.ejs', {
+            timeTable,
+            data: teacherData,
+            manpower: dailyManpower,
+            timeslots: slots
+        })
+    },
+    async updateTeacherRoster(req, res) {
+        res.send(req.body)
     }
 }

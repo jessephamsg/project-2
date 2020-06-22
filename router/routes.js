@@ -66,5 +66,7 @@ router.get('/teachers/region/clementi', controllers.teacherControllers.showCleme
 router.get('/teachers/region/bukit-panjang', controllers.teacherControllers.showPanjangRegionData);
 router.get('/teachers/region/cck-bb', controllers.teacherControllers.showBatokRegionData);
 
+router.get('/teachers/age/tots/roster', controllers.teacherControllers.showTotsTeacherRoster);
+router.post('/teachers/age/tots/roster', controllers.teacherControllers.updateTeacherRoster);
 
 module.exports = router;

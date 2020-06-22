@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%- include('../app-general/partials/admin-head.ejs') %>
+</head>
+<body>
+    <%- include('../app-general/partials/app-horizontal-nav.ejs') %>
+    <div class='admin-body'>
+            <div class='left-section'>
+                <%- include('../app-general/partials/admin-nav.ejs') %>
+            </div>
+            <div class='mid-section'>
+                <%- include('./partials/admin-teacher-mid-nav.ejs', {data}) %>
+                <form action='/teachers/age/<%=data[0].ageGroup%>/roster?' method='POST'>
+                    <table>
+                        <tr>
+                            <th>Time slots</th>
+                            <% timeTable.forEach(date => { %>
+                                <th><%=date%></th>
+                            <% }) %>
+                        </tr>
+                        <% for(const slot of timeslots) { %>
+                        <tr>
+                            <td><%=slot%></td>
+                            <% for(let i=0; i < timeTable.length; i++) { %>
+                                <td>
+                                <% for(let i =0; i< manpower; i++) { %>
+                                    <select name='rosteredTeacher' class='roster-selection'>
+                                        <option>0</option>
+                                        <% data.forEach(teacher => { %>
+                                        <option value='<%=teacher.formatTeacherFullName()%>' class='hidden-option'><%=teacher.formatTeacherFullName()%></option>
+                                        <% }) %>
+                                    </select>
+                                    <% } %>
+                                </td>
+                            <% } %>
+                        </tr>
+                        <% } %>
+                    </table>
+                    <input type='submit' value='submit'>
+                </form>
+            </div>
+            <div class='right-section'>
+            </div>
+        </div>
+</body>
+</html>
