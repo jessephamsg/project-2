@@ -12,20 +12,7 @@
             <div class='mid-section'>
                 <%- include('./partials/admin-teacher-region-mid-nav.ejs', {data}) %>
                 <table>
-                <tr>
-                    <th>Teacher's Name</th>
-                    <th>DOB</th>
-                    <th>Age Group</th>
-                    <th>Teacher's Contact</th>
-                </tr>
-                <% data.forEach(datum => { %>
-                <tr>
-                    <td><%= datum.formatChildFullName() %></td>
-                        <td><%= datum.dob %></td>
-                        <td><%= datum.ageGroup %></td>
-                        <td><%= datum.formatTeacherNumber() %></td>
-                </tr>
-                <% }) %>
+                <%- include('./partials/admin-teacherdata-table.ejs', {data}) %>
                 </table>
             </div>
             <div class='right-section'>

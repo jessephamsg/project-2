@@ -3,12 +3,24 @@
     <th>DOB</th>
     <th>Age Group</th>
     <th>Teacher's Contact</th>
+    <th>Region</th>
+    <th>Role</th>
+    <th>Start Date</th>
+    <th>Years of Experience</th>
+    <th>Assigned Children</th>
+    <th>Bandwidth</th>
 </tr>
 <% data.forEach(datum => { %>
 <tr>
-    <td><%= datum.formatChildFullName() %></td>
+    <td><%= datum.formatTeacherFullName() %></td>
     <td><%= datum.dob %></td>
     <td><%= datum.ageGroup %></td>
     <td><%= datum.formatTeacherNumber() %></td>
+    <td><%= datum.region %></td>
+    <td><%= datum.role %></td>
+    <td><%= datum.startDate %></td>
+    <td><%= datum.formatYears() %></td>
+    <td><%= datum.assignedChildren %></td>
+    <td><%= datum.isAtFullCapacity %></td>
 </tr>
 <% }) %>

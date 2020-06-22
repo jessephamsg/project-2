@@ -7,7 +7,9 @@ const TEST_DATA = {
     ageGroup: 'Tots',
     contactNumber: '80184081',
     address: '',
-    region: 'Bukit Panjang'
+    region: 'Bukit Panjang',
+    role: 'Teacher',
+    startDate: '2019-01-09',
 }
 
 beforeAll(async () => {
@@ -25,6 +27,5 @@ test('if teacherRepo.addOne() returns an object', async () => {
 
 test('if teacherRepo.addOne() adds one document whose firstName is the same as TEST_DATA\'s first name', async () => {
     const result = await teacherRepo.addOne(TEST_DATA);
-    console.log(result);
     await expect(result.firstName).toBe(TEST_DATA.firstName);
 })

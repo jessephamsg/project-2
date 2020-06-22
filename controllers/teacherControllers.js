@@ -40,7 +40,9 @@ module.exports = {
             ageGroup: req.body.ageGroup,
             contactNumber: req.body.contactNumber,
             address: req.body.address,
-            region: req.body.region
+            region: req.body.region,
+            startDate: req.body.startDate,
+            role: req.body.role
         }
         try {
             teacherValidator.teachers.validate(teacherDetails);

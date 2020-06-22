@@ -1,8 +1,8 @@
 const repositories = require('../repositories');
 const Teacher = require('../formatter/Teacher');
 
-const buildTeacherObject = ({ id, firstName, lastName, dob, ageGroup, contactNumber, address, region }) => {
-    return new Teacher(id, firstName, lastName, dob, ageGroup, contactNumber, address, region);
+const buildTeacherObject = ({ id, firstName, lastName, dob, ageGroup, contactNumber, address, region, role, startDate, yearsOfExperience, assignedChildren, roster, isAtFullCapacity }) => {
+    return new Teacher(id, firstName, lastName, dob, ageGroup, contactNumber, address, region, role, startDate, yearsOfExperience, assignedChildren, roster, isAtFullCapacity);
 }
 
 module.exports = {
