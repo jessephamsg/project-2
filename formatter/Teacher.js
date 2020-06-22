@@ -1,11 +1,6 @@
 const stringParser = require('./helpers/stringParser')
-const Student = require('./Student');
-
-const DASH_BREAK = '-'
-const NUMBER_TO_SPLIT = 3;
-const LETTER_TO_CAPITAL = 0;
-const SPACE_BREAK = ' ';
-const YEAR_IN_MILISEC = 3.17098e-11;
+const dataOutputFormatter = require('./helpers/dataOutputFormatter');
+const outputFormatter = dataOutputFormatter.formatDataOutput();
 
 
 module.exports = class Teacher {
@@ -26,14 +21,14 @@ module.exports = class Teacher {
         this.isAtFullCapacity = isAtFullCapacity
     }
     formatTeacherFullName () {
-        const firstName = stringParser.capitalStringFirstLetter(this.firstName, LETTER_TO_CAPITAL);
-        const lastName = stringParser.capitalStringFirstLetter(this.lastName, LETTER_TO_CAPITAL);
-        return firstName + SPACE_BREAK + lastName
+        const firstName = stringParser.capitalStringFirstLetter(this.firstName, outputFormatter.LETTER_TO_CAPITAL);
+        const lastName = stringParser.capitalStringFirstLetter(this.lastName, outputFormatter.LETTER_TO_CAPITAL);
+        return firstName + outputFormatter.SPACE_BREAK + lastName
     }
     formatTeacherNumber() {
-        return stringParser.splitNumberString(this.contactNumber, NUMBER_TO_SPLIT, DASH_BREAK)
+        return stringParser.splitNumberString(this.contactNumber, outputFormatter.NUMBER_TO_SPLIT, outputFormatter.DASH_BREAK);
     }
     formatYears() {
-        return (this.yearsOfExperience * YEAR_IN_MILISEC).toFixed(2)
+        return (this.yearsOfExperience * outputFormatter.YEAR_IN_MILISEC).toFixed(outputFormatter.NUMBER_OF_DP)
     }
 }
