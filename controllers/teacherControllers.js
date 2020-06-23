@@ -101,8 +101,16 @@ module.exports = {
     async updateTeacherRoster(req, res) {
         const roster = req.body.rosteredTeacher
         const filteredRoster = roster.filter(rosterDateAndID => rosterDateAndID.length > 10);
-        const rosteredDateArr = filteredRoster.map(item => item.substr(0,10));
-        const rosteredIDArr = filteredRoster.map(item => item.substring(11));
-        res.send(rosteredIDArr)
+        const rosterArr = []
+        for (const roster of filteredRoster) {
+            const rosterObject = {
+                date: roster.substr(2, 10), 
+                id:roster.substring(13), 
+                timing: roster.substr(0,1)
+            }
+            rosterArr.push(rosterObject);
+        }
+        const updatedTeacherData = await services.teacherService.setStaffRoster(rosterArr);
+        res.send(updatedTeacherData);
     }
 }

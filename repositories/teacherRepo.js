@@ -62,9 +62,26 @@ module.exports = {
             }, {
                 $set: {
                     yearsOfExperience: teacher.yearsOfExperience
-                }
+                },
             })
         }
+        return teachers
+    },
+    async updateStaffRosters (rosterArr) {
+        for (const arr of rosterArr) {
+            const teacher = await db.teacherRecords.update({
+                _id: ObjectId(arr.id),
+                'roster.date': arr.date
+            }, {
+                $set: {
+                    'roster.$.isRostered': true,
+                }, 
+                $push: {
+                    'roster.$.timing': arr.timing
+                }
+            });
+        }
+        const teachers = await db.teacherRecords.find().toArray()
         return teachers
     }
 }

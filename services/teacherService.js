@@ -20,6 +20,11 @@ module.exports = {
         const teacherData = await repositories.teacherRepo.getAllByRegion(regionQuery);
         const teachers = teacherData.map(teacher => {return buildTeacherObject(teacher)});
         return teachers;
+    },
+    async setStaffRoster (rosterArr) {
+        const updatedTeacherData = await repositories.teacherRepo.updateStaffRosters(rosterArr);
+        const teachers = updatedTeacherData.map(teacher => {return buildTeacherObject(teacher)});
+        return teachers
     }
 }
 

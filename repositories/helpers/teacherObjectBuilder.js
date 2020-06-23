@@ -7,6 +7,7 @@ const rosterBuilder = () => {
         rosterArr.push({
             date: classDate,
             isRostered: false,
+            timing: []
         })
     };
     return rosterArr
