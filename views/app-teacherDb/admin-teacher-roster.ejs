@@ -26,11 +26,11 @@
                                 <td>
                                 <% for(let y =0; y< manpower; y++) { %>
                                     <select name='rosteredTeacher' class='roster-selection'>
-                                        <option>0</option>
+                                        <option value='<%=timeTable[i]%>'>0</option>
                                         <% data.forEach(teacher => { %>
-                                        <option value='<%=timeTable[i]%>:<%=teacher.formatTeacherFullName()%>' class='hidden-option'><%=teacher.formatTeacherFullName()%></option>
+                                        <option value='<%=timeTable[i]%>:<%=teacher.id%>' class='hidden-option'><%=teacher.formatTeacherFullName()%></option>
                                         <% }) %>
-                                    </select>
+                                    </select> 
                                     <% } %>
                                 </td>
                             <% } %>

@@ -99,6 +99,8 @@ module.exports = {
         })
     },
     async updateTeacherRoster(req, res) {
-        res.send(req.body)
+        const roster = req.body.rosteredTeacher
+        const filteredRoster = roster.filter(rosterDateAndID => rosterDateAndID.length > 10)
+        res.send(filteredRoster)
     }
 }
