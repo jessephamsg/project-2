@@ -100,7 +100,9 @@ module.exports = {
     },
     async updateTeacherRoster(req, res) {
         const roster = req.body.rosteredTeacher
-        const filteredRoster = roster.filter(rosterDateAndID => rosterDateAndID.length > 10)
-        res.send(filteredRoster)
+        const filteredRoster = roster.filter(rosterDateAndID => rosterDateAndID.length > 10);
+        const rosteredDateArr = filteredRoster.map(item => item.substr(0,10));
+        const rosteredIDArr = filteredRoster.map(item => item.substring(11));
+        res.send(rosteredIDArr)
     }
 }
