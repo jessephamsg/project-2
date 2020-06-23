@@ -11,6 +11,5 @@ afterAll(async () => {
 
 test('if studentRepo.sumAttendanceByDate returns ', async()=> {
     const results = await studentRepo.sumAttendanceByDateAndAgeGroup('Tots');
-    console.log(results);
     expect(results).toBeInstanceOf(Object);
 })

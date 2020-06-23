@@ -77,11 +77,23 @@ module.exports = {
                     'roster.$.isRostered': true,
                 }, 
                 $push: {
-                    'roster.$.timing': arr.timing
+                    'roster.$.timing': arr.timing,
+                    'attendanceSummary': `${arr.timing}:${arr.date}:${arr.id}`
                 }
             });
         }
         const teachers = await db.teacherRecords.find().toArray()
         return teachers
+    },
+    async aggregateAllAttendanceSummary () {
+        const students = await db.teacherRecords.find({
+            $where: 'this.attendanceSummary.length > 0'
+        }).toArray();
+        // const rosterIDArr = [];
+        // for (const student of students) {
+        //     const attendance = await student.attendanceSummary;
+        //     rosterIDArr.push(attendance);
+        // }
+        return students;
     }
 }

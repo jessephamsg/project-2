@@ -12,6 +12,5 @@ afterAll(async () => {
 
 test('if studentRepo.getAllByRegions returns an array', async() => {
     const results = await studentRepo.getAllByRegions(TEST_DATA);
-    console.log(results)
     await expect(results.length).toBeGreaterThan(0);
 })

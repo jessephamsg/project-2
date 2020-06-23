@@ -1,8 +1,8 @@
 const repositories = require('../repositories');
 const Teacher = require('../formatter/Teacher');
 
-const buildTeacherObject = ({_id, firstName, lastName, dob, ageGroup, contactNumber, address, region, role, startDate, yearsOfExperience, assignedChildren, roster, isAtFullCapacity }) => {
-    return new Teacher(_id, firstName, lastName, dob, ageGroup, contactNumber, address, region, role, startDate, yearsOfExperience, assignedChildren, roster, isAtFullCapacity);
+const buildTeacherObject = ({_id, firstName, lastName, dob, ageGroup, contactNumber, address, region, role, startDate, yearsOfExperience, assignedChildren, roster, isAtFullCapacity,attendanceSummary }) => {
+    return new Teacher(_id, firstName, lastName, dob, ageGroup, contactNumber, address, region, role, startDate, yearsOfExperience, assignedChildren, roster, isAtFullCapacity, attendanceSummary);
 }
 
 module.exports = {
@@ -24,6 +24,11 @@ module.exports = {
     async setStaffRoster (rosterArr) {
         const updatedTeacherData = await repositories.teacherRepo.updateStaffRosters(rosterArr);
         const teachers = updatedTeacherData.map(teacher => {return buildTeacherObject(teacher)});
+        return teachers
+    },
+    async getAggregatedRoster () {
+        const teacherData = await repositories.teacherRepo.aggregateAllAttendanceSummary();
+        const teachers = teacherData.map(teacher => {return buildTeacherObject(teacher)});
         return teachers
     }
 }

@@ -29,6 +29,7 @@ module.exports = {
             assignedChildren: [],
             roster: rosterBuilder(),
             isAtFullCapacity: false,
+            attendanceSummary: []
         };
         return newTeacher;
     }

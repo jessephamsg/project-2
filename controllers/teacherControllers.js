@@ -91,11 +91,19 @@ module.exports = {
         const dailyManpower = 5;
         const slots = ['10-12PM', '2-4PM', '5-7PM'];
         const timeTable = services.studentService.createClassTimetable();
+        const students = await services.teacherService.getAggregatedRoster()
+        const rosterIDArr = [];
+        for (const student of students) {
+            const attendance = await student.attendanceSummary;
+            rosterIDArr.push(attendance);
+        }
+        const rosterArr = rosterIDArr.flat();
         res.render('app-teacherDb/admin-teacher-roster.ejs', {
             timeTable,
             data: teacherData,
             manpower: dailyManpower,
-            timeslots: slots
+            timeslots: slots,
+            rosterArr
         })
     },
     async updateTeacherRoster(req, res) {
@@ -111,6 +119,6 @@ module.exports = {
             rosterArr.push(rosterObject);
         }
         const updatedTeacherData = await services.teacherService.setStaffRoster(rosterArr);
-        res.send(updatedTeacherData);
-    }
+        res.redirect('/teachers/age/Tots/roster')
+    },
 }

@@ -1,3 +1,6 @@
+const selectedOptions = []
+
+
 const showStudentDropdown = () => {
     $('.dropdown-container-students').css('display', 'block');
 };
@@ -19,3 +22,22 @@ const launchChildRegistrationForm = () => {
 const closeFormModal = () => {
     $('#child-registration-form').css('display', 'none');
 }
+
+const logAllSelectedOptions = () => {
+    const arr = $('.roster-selection option:selected');
+    for(const option of arr) {
+        option.id!==''? selectedOptions.push(option.id): selectedOptions
+    }
+    console.log(selectedOptions)
+}
+
+const renderRosterPage = () => {
+    selectedOptions.forEach(option => {
+        $(`#${option}`).prop('selected', true)
+    })
+}
+
+$(()=> {
+    renderRosterPage()
+})
+

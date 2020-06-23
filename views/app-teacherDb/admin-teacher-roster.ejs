@@ -19,17 +19,34 @@
                                 <th><%=date%></th>
                             <% }) %>
                         </tr>
-                        <% for(let z =0; z< timeslots.length; z++) { %>
+                        <% for(let z = 0; z < timeslots.length; z++) { %>
                         <tr>
                             <td><%=timeslots[z]%></td>
-                            <% for(let i=0; i < timeTable.length; i++) { %>
+                            <% for(let i = 0; i < timeTable.length; i++) { %>
                                 <td>
-                                <% for(let y =0; y< manpower; y++) { %>
-                                    <select name='rosteredTeacher' class='roster-selection'>
+                                <% for(let y = 0; y < manpower; y++) { %>
+                                    <select name='rosteredTeacher' class='roster-selection' id="myselection">
                                         <option value='<%=timeTable[i]%>'>0</option>
-                                        <% data.forEach(teacher => { %>
-                                        <option value='<%=z%>:<%=timeTable[i]%>:<%=teacher.id%>'><%=teacher.formatTeacherFullName()%></option>
-                                        <% }) %>
+                                        <!-- <% for(let teacherData of data) { %>
+                                            <% for(let roster of teacherData.roster) { %>
+                                                <% if(roster.isRostered===true) { %>
+                                                    <option value='<%=z%>:<%=timeTable[i]%>:<%=teacherData.id%>' selected><%=teacherData.formatTeacherFullName()%></option>
+                                                <% } else { %>
+                                                    <option value='<%=z%>:<%=timeTable[i]%>:<%=teacherData.id%>'><%=teacherData.formatTeacherFullName()%></option>
+                                                <% } %>
+                                            <% } %>
+                                        <% } %> -->
+                                        <% for(const teacher of data) { %>
+                                            <% const optionID = `${z}:${timeTable[i]}:${teacher.id}` %>
+                                            <% if(rosterArr.includes(optionID)) {%>
+                                                <option value='<%=z%>:<%=timeTable[i]%>:<%=teacher.id%>' id='<%=z%>:<%=timeTable[i]%>:<%=teacher.id%>' selected><%=teacher.formatTeacherFullName()%></option>
+                                            <% } else { %>
+                                                <option value='<%=z%>:<%=timeTable[i]%>:<%=teacher.id%>' id='<%=z%>:<%=timeTable[i]%>:<%=teacher.id%>'><%=teacher.formatTeacherFullName()%></option>
+                                            <% } %>
+                                        <% } %>
+                                        <!-- <% data.forEach(teacher => { %>
+                                        <option value='<%=z%>:<%=timeTable[i]%>:<%=teacher.id%>' id='<%=z%>:<%=timeTable[i]%>:<%=teacher.id%>'><%=teacher.formatTeacherFullName()%></option>
+                                        <% }) %> -->
                                     </select> 
                                     <% } %>
                                 </td>
@@ -37,7 +54,7 @@
                         </tr>
                         <% } %>
                     </table>
-                    <input type='submit' value='submit'>
+                    <input type='submit' value='submit' onclick='logAllSelectedOptions()'>
                 </form>
             </div>
             <div class='right-section'>
