@@ -62,8 +62,10 @@ const formatRosterTable = () => {
 }
 
 const formatSelectOnChange = () => {
-    if($(event.currentTarget).hasClass('select-value-zero')) {
+    if($(event.currentTarget).hasClass('select-value-zero') && event.currentTarget.value.length !== 10) {
         $(event.currentTarget).addClass('select-value').removeClass('select-value-zero');
+    } else if ($(event.currentTarget).hasClass('select-value') && event.currentTarget.value.length !== 10) {
+        $(event.currentTarget)
     } else {
         $(event.currentTarget).addClass('select-value-zero').removeClass('select-value');
     }
