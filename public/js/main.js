@@ -50,7 +50,27 @@ const matchRosterData = () => {
     }
 }
 
+const formatRosterTable = () => {
+    const selectArr = $('select');
+    for (const select of selectArr) {
+        if(select.value.length !== 10) {
+            $(select).addClass('select-value')
+        } else {
+            $(select).addClass('select-value-zero')
+        }
+    }
+}
+
+const formatSelectOnChange = () => {
+    if($(event.currentTarget).hasClass('select-value-zero')) {
+        $(event.currentTarget).addClass('select-value').removeClass('select-value-zero');
+    } else {
+        $(event.currentTarget).addClass('select-value-zero').removeClass('select-value');
+    }
+}
+
 $(() => {
-    matchRosterData()
+    matchRosterData();
+    formatRosterTable()
 })
 
