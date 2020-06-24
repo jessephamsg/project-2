@@ -75,7 +75,16 @@ module.exports = {
             }, {
                 $set: {
                     'roster.$.isRostered': true,
-                }, 
+                    'roster.$.timing': [],
+                    'attendanceSummary': []
+                }
+            });
+        }
+        for (const arr of rosterArr) {
+            const teacher = await db.teacherRecords.update({
+                _id: ObjectId(arr.id),
+                'roster.date': arr.date
+            }, { 
                 $push: {
                     'roster.$.timing': arr.timing,
                     'attendanceSummary': `${arr.timing}:${arr.date}:${arr.id}`
@@ -89,11 +98,6 @@ module.exports = {
         const students = await db.teacherRecords.find({
             $where: 'this.attendanceSummary.length > 0'
         }).toArray();
-        // const rosterIDArr = [];
-        // for (const student of students) {
-        //     const attendance = await student.attendanceSummary;
-        //     rosterIDArr.push(attendance);
-        // }
         return students;
     }
 }
