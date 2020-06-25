@@ -26,8 +26,8 @@ module.exports = {
         const teachers = updatedTeacherData.map(teacher => {return buildTeacherObject(teacher)});
         return teachers
     },
-    async getAggregatedRoster () {
-        const teacherData = await repositories.teacherRepo.aggregateAllAttendanceSummary();
+    async getAggregatedRoster (ageGroup) {
+        const teacherData = await repositories.teacherRepo.aggregateAllAttendanceSummary(ageGroup);
         const teachers = teacherData.map(teacher => {return buildTeacherObject(teacher)});
         return teachers
     }

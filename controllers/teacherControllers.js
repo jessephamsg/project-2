@@ -1,5 +1,6 @@
 const services = require('../services');
 const teacherValidator = require('../validators/teacherValidator');
+const teacherHelper = require('./helpers/teacherHelper')
 
 module.exports = {
     async showDefaultData(req, res) {
@@ -87,38 +88,31 @@ module.exports = {
         });
     },
     async showTotsTeacherRoster(req, res) {
-        const teacherData = await services.teacherService.getTeachersByAgeGroup('Tots');
-        const dailyManpower = 5;
-        const slots = ['10-12PM', '2-4PM', '5-7PM'];
-        const timeTable = services.studentService.createClassTimetable();
-        const students = await services.teacherService.getAggregatedRoster()
-        const rosterIDArr = [];
-        for (const student of students) {
-            const attendance = await student.attendanceSummary;
-            rosterIDArr.push(attendance);
-        }
-        const rosterArr = rosterIDArr.flat();
-        res.render('app-teacherDb/admin-teacher-roster.ejs', {
-            timeTable,
-            data: teacherData,
-            manpower: dailyManpower,
-            timeslots: slots,
-            rosterArr
-        })
+        await teacherHelper.getTeacherDataByAgeGroup(req, res, 'Tots');
     },
-    async updateTeacherRoster(req, res) {
-        const roster = req.body.rosteredTeacher
-        const filteredRoster = roster.filter(rosterDateAndID => rosterDateAndID.length > 10);
-        const rosterArr = []
-        for (const roster of filteredRoster) {
-            const rosterObject = {
-                date: roster.substr(2, 10), 
-                id:roster.substring(13), 
-                timing: roster.substr(0,1)
-            }
-            rosterArr.push(rosterObject);
-        }
-        const updatedTeacherData = await services.teacherService.setStaffRoster(rosterArr);
+    async showJuniorTeacherRoster(req, res) {
+        await teacherHelper.getTeacherDataByAgeGroup(req, res, 'Junior');
+    },
+    async showLowerPrimaryTeacherRoster(req, res) {
+        await teacherHelper.getTeacherDataByAgeGroup(req, res, 'Lower Primary');
+    },
+    async showUpperPrimaryTeacherRoster(req, res) {
+        await teacherHelper.getTeacherDataByAgeGroup(req, res, 'Upper Primary');
+    },
+    async updateTeacherTotsRoster(req, res) {
+        await teacherHelper.updateTeacherRoster(req, res);
         res.redirect('/teachers/age/Tots/roster')
+    },
+    async updateTeacherJuniorRoster(req, res) {
+        await teacherHelper.updateTeacherRoster(req, res);
+        res.redirect('/teachers/age/Junior/roster')
+    },
+    async updateTeacherLowerPrimaryRoster(req, res) {
+        await teacherHelper.updateTeacherRoster(req, res);
+        res.redirect('/teachers/age/lower-primary/roster')
+    },
+    async updateTeacherUpperPrimaryRoster(req, res) {
+        await teacherHelper.updateTeacherRoster(req, res);
+        res.redirect('/teachers/age/upper-primary/roster')
     },
 }

@@ -67,6 +67,14 @@ router.get('/teachers/region/bukit-panjang', controllers.teacherControllers.show
 router.get('/teachers/region/cck-bb', controllers.teacherControllers.showBatokRegionData);
 
 router.get('/teachers/age/tots/roster', controllers.teacherControllers.showTotsTeacherRoster);
-router.post('/teachers/age/tots/roster', controllers.teacherControllers.updateTeacherRoster);
+router.get('/teachers/age/junior/roster', controllers.teacherControllers.showJuniorTeacherRoster);
+router.get('/teachers/age/lower-primary/roster', controllers.teacherControllers.showLowerPrimaryTeacherRoster);
+router.get('/teachers/age/upper-primary/roster', controllers.teacherControllers.showUpperPrimaryTeacherRoster);
+
+router.post('/teachers/age/tots/roster', controllers.teacherControllers.updateTeacherTotsRoster);
+router.post('/teachers/age/junior/roster', controllers.teacherControllers.updateTeacherJuniorRoster); //fixing required
+router.post('/teachers/age/lower-primary/roster', controllers.teacherControllers.updateTeacherLowerPrimaryRoster);//fixing required
+router.post('/teachers/age/upper-primary/roster', controllers.teacherControllers.updateTeacherUpperPrimaryRoster);//fixing required
+
 
 module.exports = router;

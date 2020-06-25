@@ -24,28 +24,38 @@ const closeFormModal = () => {
 }
 
 const matchRosterData = () => {
-    const arr = $('.roster-data')
+    const arr = $('.roster-data');
     const valueArr = []
     for (const option of arr) {
         valueArr.push(option.value)
     }
-    valueArr.sort();
-    const splitPositions = []
+    valueArr.sort((a, b) => {
+        const aDate = a.substr(0, 12);
+        const bDate = b.substr(0, 12);
+        return aDate === bDate ? 0 : aDate < bDate ? -1 : 1
+    });
+    const splitPositions = [0]
     for (let i = 0; i < valueArr.length; i++) {
-        if (i !== valueArr.length - 1 && valueArr[i + 1].substr(0, 12) !== valueArr[i].substr(0, 12)) {
-            splitPositions.push(i + 1);
+        if (i !== valueArr.length - 1 && (valueArr[i].substr(0, 12) !== valueArr[i + 1].substr(0, 12))) {
+            splitPositions.push(i);
         } else {
             splitPositions
         }
     }
     const groupsOfArr = [];
-    splitPositions.forEach(value => { groupsOfArr.push(valueArr.splice(0, value)) })
+    for (let i = 0; i < splitPositions.length; i++) {
+        if (i !== splitPositions.length - 1 && i !== 0) {
+            const newArr = valueArr.slice(splitPositions[i] + 1, splitPositions[i + 1] + 1);
+            groupsOfArr.push(newArr);
+        } else if (i !== splitPositions.length - 1 && i === 0) {
+            const newArr = valueArr.slice(splitPositions[i], splitPositions[i + 1] + 1);
+            groupsOfArr.push(newArr);
+        }
+    }
     for (const arr of groupsOfArr) {
-        let index = 0;
-        for (const value of arr) {
-            const test = $(`option[value="${value}"]`)[index];
-            $(test).prop('selected', true);
-            index++
+        for (const [index, value] of arr.entries()) {
+            const selectedOption = $(`option[value="${value}"]`)[index];
+            $(selectedOption).prop('selected', true);
         }
     }
 }
@@ -53,7 +63,7 @@ const matchRosterData = () => {
 const formatRosterTable = () => {
     const selectArr = $('select');
     for (const select of selectArr) {
-        if(select.value.length !== 10) {
+        if (select.value.length !== 10) {
             $(select).addClass('select-value')
         } else {
             $(select).addClass('select-value-zero')
@@ -62,7 +72,7 @@ const formatRosterTable = () => {
 }
 
 const formatSelectOnChange = () => {
-    if($(event.currentTarget).hasClass('select-value-zero') && event.currentTarget.value.length !== 10) {
+    if ($(event.currentTarget).hasClass('select-value-zero') && event.currentTarget.value.length !== 10) {
         $(event.currentTarget).addClass('select-value').removeClass('select-value-zero');
     } else if ($(event.currentTarget).hasClass('select-value') && event.currentTarget.value.length !== 10) {
         $(event.currentTarget)

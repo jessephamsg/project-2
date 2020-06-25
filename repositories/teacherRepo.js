@@ -94,8 +94,9 @@ module.exports = {
         const teachers = await db.teacherRecords.find().toArray()
         return teachers
     },
-    async aggregateAllAttendanceSummary () {
+    async aggregateAllAttendanceSummary (ageGroupQuery) {
         const students = await db.teacherRecords.find({
+            ageGroup: ageGroupQuery,
             $where: 'this.attendanceSummary.length > 0'
         }).toArray();
         return students;
