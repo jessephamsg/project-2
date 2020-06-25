@@ -1,6 +1,8 @@
 const db = require('../database/db');
 const ObjectId = require('mongodb').ObjectId;
-const teacherObjectBuilder = require('./helpers/teacherObjectBuilder')
+const teacherObjectBuilder = require('./helpers/teacherObjectBuilder');
+const calendarHelper = require('./helpers/calendar');
+const analyticsHelper = require('./helpers/analytics');
 
 
 module.exports = {
@@ -42,7 +44,8 @@ module.exports = {
                 _id: ObjectId(teacher['_id'])
             }, {
                     $set: {
-                        startDateInDateFormat: teacher.startDateInDateFormat
+                        startDateInDateFormat: teacher.startDateInDateFormat,
+                        startWeek: calendarHelper.convertDateToWeek(teacher.startDate)
                     }
                 })
         }
@@ -91,7 +94,8 @@ module.exports = {
                     }
                 });
         }
-        const teachers = await db.teacherRecords.find().toArray()
+        const teachers = await db.teacherRecords.find().toArray();
+        await this.updateBandWidth();
         return teachers
     },
     async aggregateAllAttendanceSummary(ageGroupQuery) {
@@ -100,5 +104,34 @@ module.exports = {
             $where: 'this.attendanceSummary.length > 0'
         }).toArray();
         return students;
+    },
+    async updateBandWidth () {
+        const teachingFreq = await db.teacherRecords.aggregate([
+            {
+                $project: {
+                    'teachingFreq': {$size: '$attendanceSummary'}
+                }
+            }
+        ]).toArray();
+        const startWeekArr = await db.teacherRecords.aggregate([
+            {
+                $project: {
+                    'startWeek': '$startWeek'
+                }
+            }
+        ]).toArray();
+        let index = 0;
+        for (const freq of teachingFreq) {
+            const teachingFreq = analyticsHelper.calculateAttendanceFreq(startWeekArr[index].startWeek, freq.teachingFreq);
+            await db.teacherRecords.updateOne({
+                _id: ObjectId(freq['_id'])
+            }, {
+                $set: {
+                    'currentBandWidth': teachingFreq
+                }
+            })
+            index++
+        }
+        return teachingFreq
     }
 }

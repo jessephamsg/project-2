@@ -1,4 +1,5 @@
 const services = require('../services');
+const studentControllers = require('./studentControllers');
 
 module.exports = {
     showLandingPage(req, res) {
@@ -32,9 +33,12 @@ module.exports = {
         res.redirect('/dashboard');
     },
     async showDashboard(req, res) {
+        const studentAttendance = await studentControllers.getMonthlyAvgAttendanceByAge()
         res.render('app-general/admin.ejs', {
-            user: req.session.account
+            //user: req.session.account
+            studentAttendance
         });
+        //res.send(studentAttendance)
     },
     logOut(req, res) {
         req.session.destroy();

@@ -473,3 +473,8 @@ input[type='checkbox'] {
     border: none;
     border-radius: 3px;
 }
+
+#attendanceChart {
+    width: 90%;
+    padding: 5%;
+}

@@ -10,16 +10,19 @@
             <%- include('./partials/admin-nav.ejs') %>
         </div>
         <div class='mid-section'>
-            <%= user.username %>
-            <%= user.note %>
-            <form action='/' method='GET'>
-                <input type='submit' value='Log out'>
-            </form>
-            <form action='/dashboard?_method=PUT' method='POST'>
-                <input type='text' name='note'>
-                <input type='text' name='id' value="<%=user['_id']%>">
-                <input type='submit' value='Submit'>
-            </form>
+            <canvas id="attendanceChart"></canvas>
+            <% studentAttendance.totsMonthlyAvgAttendance.forEach(attendance => { %>
+                <input value='<%=attendance%>' class='tots-attendance'>
+            <% }) %>
+            <% studentAttendance.juniorMonthlyAvgAttendance.forEach(attendance => { %>
+                <input value='<%=attendance%>' class='junior-attendance'>
+            <% }) %>
+            <% studentAttendance.lowerPrimaryMonthlyAvgAttendance.forEach(attendance => { %>
+                <input value='<%=attendance%>' class='lower-primary-attendance'>
+            <% }) %>
+            <% studentAttendance.upperPrimaryMonthlyAvgAttendance.forEach(attendance => { %>
+                <input value='<%=attendance%>' class='upper-primary-attendance'>
+            <% }) %>
         </div>
         <div class='right-section'>
 

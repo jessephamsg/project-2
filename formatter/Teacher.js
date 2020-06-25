@@ -4,7 +4,7 @@ const outputFormatter = dataOutputFormatter.formatDataOutput();
 
 
 module.exports = class Teacher {
-    constructor(id, firstName, lastName, dob, ageGroup, contactNumber, address, region, role, startDate, yearsOfExperience, assignedChildren, roster, isAtFullCapacity, attendanceSummary) {
+    constructor(id, firstName, lastName, dob, ageGroup, contactNumber, address, region, role, startDate, yearsOfExperience, assignedChildren, roster, isAtFullCapacity, attendanceSummary, currentBandWidth) {
         this.id = id,
             this.firstName = firstName,
             this.lastName = lastName,
@@ -19,7 +19,8 @@ module.exports = class Teacher {
             this.assignedChildren = assignedChildren,
             this.roster = roster,
             this.isAtFullCapacity = isAtFullCapacity,
-            this.attendanceSummary = attendanceSummary
+            this.attendanceSummary = attendanceSummary,
+            this.currentBandWidth = currentBandWidth
     }
     formatTeacherFullName() {
         const firstName = stringParser.capitalStringFirstLetter(this.firstName, outputFormatter.LETTER_TO_CAPITAL);

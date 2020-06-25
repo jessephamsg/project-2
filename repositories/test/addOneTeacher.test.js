@@ -9,7 +9,7 @@ const TEST_DATA = {
     address: '',
     region: 'Bukit Panjang',
     role: 'Teacher',
-    startDate: '2019-01-09',
+    startDate: '2020-01-09',
 }
 
 beforeAll(async () => {
