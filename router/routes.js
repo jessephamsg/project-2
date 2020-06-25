@@ -72,9 +72,9 @@ router.get('/teachers/age/lower-primary/roster', controllers.teacherControllers.
 router.get('/teachers/age/upper-primary/roster', controllers.teacherControllers.showUpperPrimaryTeacherRoster);
 
 router.post('/teachers/age/tots/roster', controllers.teacherControllers.updateTeacherTotsRoster);
-router.post('/teachers/age/junior/roster', controllers.teacherControllers.updateTeacherJuniorRoster); //fixing required
-router.post('/teachers/age/lower-primary/roster', controllers.teacherControllers.updateTeacherLowerPrimaryRoster);//fixing required
-router.post('/teachers/age/upper-primary/roster', controllers.teacherControllers.updateTeacherUpperPrimaryRoster);//fixing required
+router.post('/teachers/age/junior/roster', controllers.teacherControllers.updateTeacherJuniorRoster);
+router.post('/teachers/age/lower-primary/roster', controllers.teacherControllers.updateTeacherLowerPrimaryRoster);
+router.post('/teachers/age/upper-primary/roster', controllers.teacherControllers.updateTeacherUpperPrimaryRoster);
 
 
 module.exports = router;

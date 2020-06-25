@@ -1,4 +1,5 @@
 const START_DATE = '2020-01-05';
+const START_DATE_OF_YEAR = '2020-01-01';
 const CLASS_FREQ_IN_MILISEC = 7 * 8.64e+7;
 const WEEKS_IN_A_YEAR = 52;
 const DAY_IN_MILISEC = 1000 * 3600 * 24;
@@ -17,7 +18,7 @@ module.exports = {
     },
     convertDatesToDays(dateString) {
         const date = new Date(dateString);
-        const startDate = new Date('2020-01-01')
+        const startDate = new Date(START_DATE_OF_YEAR)
         const numberOfDaysSinceBeginning = date.getTime() - startDate.getTime();
         return numberOfDaysSinceBeginning / DAY_IN_MILISEC
     },

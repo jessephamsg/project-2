@@ -1,6 +1,6 @@
 const db = require('../database/db');
 const ObjectId = require('mongodb').ObjectId;
-const teacherObjectBuilder= require('./helpers/teacherObjectBuilder')
+const teacherObjectBuilder = require('./helpers/teacherObjectBuilder')
 
 
 module.exports = {
@@ -41,14 +41,14 @@ module.exports = {
             const updateRecord = await db.teacherRecords.updateOne({
                 _id: ObjectId(teacher['_id'])
             }, {
-                $set: {
-                    startDateInDateFormat: teacher.startDateInDateFormat
-                }
-            })
+                    $set: {
+                        startDateInDateFormat: teacher.startDateInDateFormat
+                    }
+                })
         }
         return teachers;
     },
-    async updateYearsOfExperience () {
+    async updateYearsOfExperience() {
         const teachers = await db.teacherRecords.aggregate([{
             $project: {
                 yearsOfExperience: {
@@ -60,41 +60,41 @@ module.exports = {
             const updateRecord = await db.teacherRecords.updateOne({
                 _id: ObjectId(teacher['_id'])
             }, {
-                $set: {
-                    yearsOfExperience: teacher.yearsOfExperience
-                },
-            })
+                    $set: {
+                        yearsOfExperience: teacher.yearsOfExperience
+                    },
+                })
         }
         return teachers
     },
-    async updateStaffRosters (rosterArr) {
+    async updateStaffRosters(rosterArr) {
         for (const arr of rosterArr) {
             const teacher = await db.teacherRecords.update({
                 _id: ObjectId(arr.id),
                 'roster.date': arr.date
             }, {
-                $set: {
-                    'roster.$.isRostered': true,
-                    'roster.$.timing': [],
-                    'attendanceSummary': []
-                }
-            });
+                    $set: {
+                        'roster.$.isRostered': true,
+                        'roster.$.timing': [],
+                        'attendanceSummary': []
+                    }
+                });
         }
         for (const arr of rosterArr) {
             const teacher = await db.teacherRecords.update({
                 _id: ObjectId(arr.id),
                 'roster.date': arr.date
-            }, { 
-                $push: {
-                    'roster.$.timing': arr.timing,
-                    'attendanceSummary': `${arr.timing}:${arr.date}:${arr.id}`
-                }
-            });
+            }, {
+                    $push: {
+                        'roster.$.timing': arr.timing,
+                        'attendanceSummary': `${arr.timing}:${arr.date}:${arr.id}`
+                    }
+                });
         }
         const teachers = await db.teacherRecords.find().toArray()
         return teachers
     },
-    async aggregateAllAttendanceSummary (ageGroupQuery) {
+    async aggregateAllAttendanceSummary(ageGroupQuery) {
         const students = await db.teacherRecords.find({
             ageGroup: ageGroupQuery,
             $where: 'this.attendanceSummary.length > 0'

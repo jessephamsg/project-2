@@ -1,6 +1,3 @@
-const selectedOptions = []
-
-
 const showStudentDropdown = () => {
     $('.dropdown-container-students').css('display', 'block');
 };
@@ -23,17 +20,27 @@ const closeFormModal = () => {
     $('#child-registration-form').css('display', 'none');
 }
 
-const matchRosterData = () => {
+const getRosterData = () => {
     const arr = $('.roster-data');
     const valueArr = []
     for (const option of arr) {
         valueArr.push(option.value)
     }
+    return valueArr
+}
+
+const sortRosterDataByAscendingDate = () => {
+    const valueArr = getRosterData();
     valueArr.sort((a, b) => {
         const aDate = a.substr(0, 12);
         const bDate = b.substr(0, 12);
         return aDate === bDate ? 0 : aDate < bDate ? -1 : 1
     });
+    return valueArr;
+}
+
+const splitRosterDataIntoSlots = () => {
+    const valueArr = sortRosterDataByAscendingDate();
     const splitPositions = [0]
     for (let i = 0; i < valueArr.length; i++) {
         if (i !== valueArr.length - 1 && (valueArr[i].substr(0, 12) !== valueArr[i + 1].substr(0, 12))) {
@@ -52,6 +59,11 @@ const matchRosterData = () => {
             groupsOfArr.push(newArr);
         }
     }
+    return groupsOfArr
+}
+
+const matchRosterData = () => {
+    const groupsOfArr = splitRosterDataIntoSlots();
     for (const arr of groupsOfArr) {
         for (const [index, value] of arr.entries()) {
             const selectedOption = $(`option[value="${value}"]`)[index];
@@ -61,7 +73,7 @@ const matchRosterData = () => {
 }
 
 const formatRosterTable = () => {
-    const selectArr = $('select');
+    const selectArr = $('.roster-selection');
     for (const select of selectArr) {
         if (select.value.length !== 10) {
             $(select).addClass('select-value')

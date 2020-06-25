@@ -20,34 +20,6 @@
                 <% } else { %>
                     <%- include('./partials/admin-roster-form.ejs', {ageGroup: 'Lower-Primary', timeTable, timeslots, manpower, data}) %>
                 <% } %>
-                <!-- <form action='/teachers/age/<%=data[0].ageGroup%>/roster?' method='POST'>
-                    <table>
-                        <tr>
-                            <th>Time slots</th>
-                            <% timeTable.forEach(date => { %>
-                                <th><%=date%></th>
-                            <% }) %>
-                        </tr>
-                        <% for(let z = 0; z < timeslots.length; z++) { %>
-                        <tr>
-                            <td><%=timeslots[z]%></td>
-                            <% for(let i = 0; i < timeTable.length; i++) { %>
-                                <td>
-                                <% for(let y = 0; y < manpower; y++) { %>
-                                    <select name='rosteredTeacher' class='roster-selection' onchange='formatSelectOnChange()'>
-                                        <option value='<%=timeTable[i]%>'>0</option>
-                                        <% data.forEach(teacher => { %>
-                                        <option value='<%=z%>:<%=timeTable[i]%>:<%=teacher.id%>'><%=teacher.formatTeacherFullName()%></option>
-                                        <% }) %>
-                                    </select> 
-                                    <% } %>
-                                </td>
-                            <% } %>
-                        </tr>
-                        <% } %>
-                    </table>
-                    <input type='submit' value='submit' class='roster-submit-button'>
-                </form> -->
                     <div>
                         <% rosterArr.forEach(rosterTime => { %>
                             <input type="text" value='<%=rosterTime%>' class='roster-data'>

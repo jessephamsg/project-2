@@ -4,34 +4,19 @@ const teacherHelper = require('./helpers/teacherHelper')
 
 module.exports = {
     async showDefaultData(req, res) {
-        const teacherData = await services.teacherService.getTeachersByAgeGroup('Tots');
-        res.render('app-teacherDb/admin-teacher-ageGroups.ejs', {
-            data: teacherData
-        });
+        await teacherHelper.showTeacherByAgeGroup(req, res, 'Tots');
     },
     async showTotsData(req, res) {
-        const teacherData = await services.teacherService.getTeachersByAgeGroup('Tots');
-        res.render('app-teacherDb/admin-teacher-ageGroups.ejs', {
-            data: teacherData
-        });
+        await teacherHelper.showTeacherByAgeGroup(req, res, 'Tots');
     },
     async showJuniorData(req, res) {
-        const teacherData = await services.teacherService.getTeachersByAgeGroup('Junior');
-        res.render('app-teacherDb/admin-teacher-ageGroups.ejs', {
-            data: teacherData
-        });
+        await teacherHelper.showTeacherByAgeGroup(req, res, 'Junior');
     },
     async showLowerPrimaryData(req, res) {
-        const teacherData = await services.teacherService.getTeachersByAgeGroup('Lower Primary');
-        res.render('app-teacherDb/admin-teacher-ageGroups.ejs', {
-            data: teacherData
-        });
+        await teacherHelper.showTeacherByAgeGroup(req, res, 'Lower Primary');
     },
     async showUpperPrimaryData(req, res) {
-        const teacherData = await services.teacherService.getTeachersByAgeGroup('Upper Primary');
-        res.render('app-teacherDb/admin-teacher-ageGroups.ejs', {
-            data: teacherData
-        });
+        await teacherHelper.showTeacherByAgeGroup(req, res, 'Upper Primary');
     },
     async addNewTeacherData(req, res) {
         const teacherDetails = {
@@ -58,34 +43,19 @@ module.exports = {
         }
     },
     async showDefaultRegionData(req, res) {
-        const teacherData = await services.teacherService.getTeachersByRegion('Jurong East & West');
-        res.render('app-teacherDb/admin-teacher-region.ejs', {
-            data: teacherData
-        });
+        await teacherHelper.showTeacherByRegion(req, res, 'Jurong East & West')
     },
     async showJurongRegionData(req, res) {
-        const teacherData = await services.teacherService.getTeachersByRegion('Jurong East & West');
-        res.render('app-teacherDb/admin-teacher-region.ejs', {
-            data: teacherData
-        });
+        await teacherHelper.showTeacherByRegion(req, res, 'Jurong East & West')
     },
     async showClementiRegionData(req, res) {
-        const teacherData = await services.teacherService.getTeachersByRegion('Clementi');
-        res.render('app-teacherDb/admin-teacher-region.ejs', {
-            data: teacherData
-        });
+        await teacherHelper.showTeacherByRegion(req, res, 'Clementi')
     },
     async showPanjangRegionData(req, res) {
-        const teacherData = await services.teacherService.getTeachersByRegion('Bukit Panjang');
-        res.render('app-teacherDb/admin-teacher-region.ejs', {
-            data: teacherData
-        });
+        await teacherHelper.showTeacherByRegion(req, res, 'Bukit Panjang')
     },
     async showBatokRegionData(req, res) {
-        const teacherData = await services.teacherService.getTeachersByRegion('Chua Chu Kang & Bukit Batok');
-        res.render('app-teacherDb/admin-teacher-region.ejs', {
-            data: teacherData
-        });
+        await teacherHelper.showTeacherByRegion(req, res, 'Chua Chu Kang & Bukit Batok')
     },
     async showTotsTeacherRoster(req, res) {
         await teacherHelper.getTeacherDataByAgeGroup(req, res, 'Tots');

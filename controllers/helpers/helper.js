@@ -1,7 +1,7 @@
 const services = require('../../services');
 
 module.exports = {
-    async renderStudentPageByAge (req, res, ageQuery) {
+    async renderStudentPageByAge(req, res, ageQuery) {
         const childrenData = await services.studentService.getStudentsByAgeGroup(ageQuery);
         const regulars = await services.studentService.sumRegularsByAge(ageQuery, true);
         const irregulars = await services.studentService.sumRegularsByAge(ageQuery, false);
@@ -11,7 +11,7 @@ module.exports = {
             irregulars
         });
     },
-    async renderAttendanceForm (req, res, ageQuery) {
+    async renderAttendanceForm(req, res, ageQuery) {
         const childrenData = await services.studentService.getStudentsByAgeGroup(ageQuery);
         const timeTable = services.studentService.createClassTimetable();
         res.render('app-studentDb/admin-attendance.ejs', {
@@ -19,14 +19,14 @@ module.exports = {
             dates: timeTable,
         })
     },
-    async updateAttendanceStats (req, res) {
+    async updateAttendanceStats(req, res) {
         const studentsPresent = req.body.isPresent;
         const datePresent = req.body.classDate;
         studentsPresent.forEach(async student => {
             await services.studentService.updateStudentAttendanceById(student, datePresent);
         })
     },
-    async renderAttendanceSummary (req, res, ageQuery) {
+    async renderAttendanceSummary(req, res, ageQuery) {
         const childrenData = await services.studentService.getStudentsByAgeGroup(ageQuery);
         const timeTable = services.studentService.createClassTimetable();
         const aggregatedAttendance = await services.studentService.sumAttendance(ageQuery);
@@ -36,7 +36,7 @@ module.exports = {
             totalAttendance: aggregatedAttendance
         })
     },
-    async renderStudentPageByRegion (req, res, regionQuery) {
+    async renderStudentPageByRegion(req, res, regionQuery) {
         const childrenData = await services.studentService.getStudentsByRegion(regionQuery);
         const regulars = await services.studentService.sumRegularsByRegion(regionQuery, true);
         const irregulars = await services.studentService.sumRegularsByRegion(regionQuery, false);
@@ -46,7 +46,7 @@ module.exports = {
             irregulars
         });
     },
-    async renderRegionalAttendanceStats (req, res, regionQuery) {
+    async renderRegionalAttendanceStats(req, res, regionQuery) {
         const childrenData = await services.studentService.getStudentsByRegion(regionQuery);
         const timeTable = services.studentService.createClassTimetable();
         const aggregatedAttendance = await services.studentService.sumAttendanceByRegion(regionQuery);

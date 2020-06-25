@@ -9,7 +9,7 @@ const outputFormatter = {
 
 
 module.exports = {
-    formatDataOutput () {
+    formatDataOutput() {
         return outputFormatter
     }
 }

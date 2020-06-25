@@ -1,8 +1,8 @@
 module.exports = {
-    capitalStringFirstLetter (string, letterToCapital) {
+    capitalStringFirstLetter(string, letterToCapital) {
         return string.charAt(letterToCapital).toUpperCase() + string.toLowerCase().slice(1);
     },
-    splitNumberString (numberStr, positionToSplit, splitFormat) {
+    splitNumberString(numberStr, positionToSplit, splitFormat) {
         const numberArr = numberStr.split('');
         const formattedNumArr = [];
         for (let [index, number] of numberArr.entries()) {
@@ -11,4 +11,3 @@ module.exports = {
         return formattedNumArr.join('')
     }
 }
- 
