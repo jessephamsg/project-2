@@ -474,7 +474,40 @@ input[type='checkbox'] {
     border-radius: 3px;
 }
 
-#attendanceChart {
-    width: 90%;
+.charts {
+    display: flex;
+    height: 400px;
+    flex-wrap: wrap;
     padding: 5%;
+    width: 100%;
+}
+
+#attendanceChart {
+    width: 100%;
+}
+
+.summary-chart {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    background-color: #0779e4f5;
+    padding: 2.5%;
+    height: 100%;
+    margin-left: 5px;
+}
+
+#totalAttendanceChart {
+    width: 100%;
+    height: 50%;
+}
+
+.ageGroup-chart {
+    width: 60%;
+    height: 100%;
+    background-color: #80808014;
+    padding: 2.5%;
+}
+
+.total-attendance, .tots-attendance, .junior-attendance, .lower-primary-attendance, .upper-primary-attendance {
+    display: none;
 }

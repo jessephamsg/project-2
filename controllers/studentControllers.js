@@ -121,7 +121,9 @@ module.exports = {
         const juniorMonthlyAvgAttendance = await analysisHelpers.getMonthlyAttendanceByAge(juniorAttendance);
         const lowerPrimaryMonthlyAvgAttendance = await analysisHelpers.getMonthlyAttendanceByAge(lowerPrimaryAttendance);
         const upperPrimaryMonthlyAvgAttendance = await analysisHelpers.getMonthlyAttendanceByAge(upperPrimaryAttendance);
+        const totalMonthlyAvgAttendance = await analysisHelpers.getMonthlyAttendance([totsMonthlyAvgAttendance, juniorMonthlyAvgAttendance, lowerPrimaryMonthlyAvgAttendance, upperPrimaryMonthlyAvgAttendance])
         const attendance = {
+            totalMonthlyAvgAttendance,
             totsMonthlyAvgAttendance,
             juniorMonthlyAvgAttendance,
             lowerPrimaryMonthlyAvgAttendance,

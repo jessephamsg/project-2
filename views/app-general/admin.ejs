@@ -10,7 +10,17 @@
             <%- include('./partials/admin-nav.ejs') %>
         </div>
         <div class='mid-section'>
-            <canvas id="attendanceChart"></canvas>
+            <div class = 'charts'>
+                <div class = 'ageGroup-chart'>
+                    <canvas id="attendanceChart"></canvas>
+                </div>
+                <div class = 'summary-chart'>
+                    <canvas id="totalAttendanceChart"></canvas>
+                </div>
+            </div>
+            <% studentAttendance.totalMonthlyAvgAttendance.forEach(attendance => { %>
+                <input value='<%=attendance%>' class='total-attendance'>
+            <% }) %>
             <% studentAttendance.totsMonthlyAvgAttendance.forEach(attendance => { %>
                 <input value='<%=attendance%>' class='tots-attendance'>
             <% }) %>

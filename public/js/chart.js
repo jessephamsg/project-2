@@ -14,7 +14,7 @@ const createAttendanceChart = () => {
     const upperPrimaryAttendanceArr = attendanceDataSet('.upper-primary-attendance');
     const lowerPrimaryAttendanceArr = attendanceDataSet('.lower-primary-attendance');
 
-    let ctx = $('canvas');
+    let ctx = $('#attendanceChart');
     let attendanceChart = new Chart(ctx, {
         type: 'line',
         data: {
@@ -40,10 +40,87 @@ const createAttendanceChart = () => {
                 backgroundColor: '#e91e63a6',
                 borderColor: '#e91e63'
             }]
+        }, 
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                xAxes: [{
+                    gridLines: {
+                        color: "rgba(0, 0, 0, 0)",
+                    }
+                }],
+                yAxes: [{
+                    gridLines: {
+                        color: "rgba(0, 0, 0, 0)",
+                    }   
+                }]
+            }
+        },
+    })
+}
+
+const createTotalAttendanceChart = () => {
+    const totalAttendance = attendanceDataSet('.total-attendance');
+
+    let ctx = $('#totalAttendanceChart');
+    let attendanceChart = new Chart(ctx, {
+        type: 'horizontalBar',
+        data: {
+            labels:  ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            datasets: [{
+                label: 'Total',
+                data: totalAttendance,
+                backgroundColor: '#ffffff',
+                borderColor: '#ffffff'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {
+                labels: {
+                    fontColor: 'white',
+                    fontSize: 10
+                }
+            },
+            scales: {
+                yAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        fontColor: 'white',
+                        fontSize: 10,
+                    },
+                    ticks: {
+                        fontColor: 'white',
+                        fontSize: 10
+                    },
+                    gridLines: {
+                        color: "rgba(0, 0, 0, 0)",
+                    }
+                }],
+                xAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        fontColor: 'white',
+                        fontSize: 10,
+                    },
+                    ticks: {
+                        fontColor: 'white',
+                        fontSize: 10
+                    },
+                    gridLines: {
+                        color: "rgba(0, 0, 0, 0)",
+                    }
+                }]
+            }
         }
     })
 }
 
 $(()=> {
-    createAttendanceChart()
+    createAttendanceChart();
+    createTotalAttendanceChart();
 })

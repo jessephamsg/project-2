@@ -42,6 +42,27 @@ module.exports = {
             index++
         }
         return monthlyAvgAttendance
+    }, 
+    getMonthlyAttendance (arrOfArrays) {
+        const totalAttendance = []
+        for (const [index, arr] of arrOfArrays.entries()) {
+            if (index === 0) {
+                for(const value of arr) {
+                    const result = [value];
+                    totalAttendance.push(result); 
+                }
+            } else {
+                for(const [index,value] of arr.entries()) {
+                    totalAttendance[index].push(value);
+                }
+            }
+        }
+        const totalMonthlyAttendance = totalAttendance.map(monthlyAttendance => {
+            let initialVal = 0;
+            const sum = monthlyAttendance.reduce((acc, initialVal) => acc + initialVal, initialVal);
+            return sum
+        })
+        return totalMonthlyAttendance
     }
 }
 
