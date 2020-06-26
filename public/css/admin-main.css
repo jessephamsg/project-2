@@ -489,7 +489,7 @@ input[type='checkbox'] {
 
 #attendanceChart {
     width: 100%;
-    margin-top: 40px;
+    margin-top: 20px;
     height: 300px;
 }
 
@@ -569,4 +569,11 @@ input[type='checkbox'] {
     margin-top: -20px;
     color: white;
     padding-left: 10px;
+}
+
+.ageGroup-chart > h3 {
+    font-size: 15px;
+    padding-left: 10px;
+    margin-top: 40px;
+    font-weight: 500;
 }
