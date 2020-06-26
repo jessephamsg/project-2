@@ -1,3 +1,5 @@
+const services = require('../../services');
+
 module.exports = {
     splitDataInToGroups (arr) {
         const splitPositions = [0];
@@ -63,6 +65,16 @@ module.exports = {
             return sum
         })
         return totalMonthlyAttendance
+    },
+    async getTotalChildrenByAgeGroup (ageGroup) {
+        const childrenData = await services.studentService.getStudentsByAgeGroup(ageGroup);
+        const totalNumberOfChildren = await childrenData.length;
+        return totalNumberOfChildren
+    },
+    async getTotalTeacherByAgeGroup (ageGroup) {
+        const teacherDate = await services.teacherService.getTeachersByAgeGroup(ageGroup)
+        const totalNumberOfTeachers = await teacherDate.length;
+        return totalNumberOfTeachers
     }
 }
 

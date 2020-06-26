@@ -12,10 +12,37 @@
         <div class='mid-section'>
             <div class = 'charts'>
                 <div class = 'ageGroup-chart'>
-                    <canvas id="attendanceChart"></canvas>
+                    <h2>Age Groups at a glance</h2>
+                    <div class='summary-stats'>
+                    <div class ='summary-card'>
+                        <h3>Number of <br>Tots</h3>
+                        <p><%=studentAttendance.totalTotsChildren%></p>
+                    </div>
+                    <div class ='summary-card'>
+                        <h3>Number of <br>Junior</h3>
+                        <p><%=studentAttendance.totalJuniorChildren%></p>
+                    </div>
+                    <div class ='summary-card'>
+                        <h3>Number of Lower Primary</h3>
+                        <p><%=studentAttendance.totalLowerPrimaryChildren%></p>
+                    </div>
+                    <div class ='summary-card'>
+                        <h3>Number of Upper Primary</h3>
+                        <p><%=studentAttendance.totalUpperPrimaryChildren%></p>
+                    </div>
+                    </div>
+                    <h3>Attendance by Age Groups</h3>
+                    <canvas id="attendanceChart" ></canvas>
                 </div>
                 <div class = 'summary-chart'>
-                    <canvas id="totalAttendanceChart"></canvas>
+                    <h2>Summary</h2>
+                    <div id='summary-stats-1'>
+                        <h3>Total children</h3>
+                        <p><%=studentAttendance.totalUpperPrimaryChildren + studentAttendance.totalLowerPrimaryChildren + studentAttendance.totalJuniorChildren + studentAttendance.totalTotsChildren%></p>
+                    </div>
+                    <div id='totalAttendanceChart-wrapper'>
+                    <canvas id="totalAttendanceChart" height='200px'></canvas>
+                    <div>
                 </div>
             </div>
             <% studentAttendance.totalMonthlyAvgAttendance.forEach(attendance => { %>
@@ -33,10 +60,12 @@
             <% studentAttendance.upperPrimaryMonthlyAvgAttendance.forEach(attendance => { %>
                 <input value='<%=attendance%>' class='upper-primary-attendance'>
             <% }) %>
-        </div>
-        <div class='right-section'>
 
         </div>
     </div>
+        </div>
+        <div class='right-section'>
+    
+        </div>
 </body>
 </html>

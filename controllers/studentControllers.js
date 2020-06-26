@@ -121,9 +121,17 @@ module.exports = {
         const juniorMonthlyAvgAttendance = await analysisHelpers.getMonthlyAttendanceByAge(juniorAttendance);
         const lowerPrimaryMonthlyAvgAttendance = await analysisHelpers.getMonthlyAttendanceByAge(lowerPrimaryAttendance);
         const upperPrimaryMonthlyAvgAttendance = await analysisHelpers.getMonthlyAttendanceByAge(upperPrimaryAttendance);
-        const totalMonthlyAvgAttendance = await analysisHelpers.getMonthlyAttendance([totsMonthlyAvgAttendance, juniorMonthlyAvgAttendance, lowerPrimaryMonthlyAvgAttendance, upperPrimaryMonthlyAvgAttendance])
+        const totalMonthlyAvgAttendance = await analysisHelpers.getMonthlyAttendance([totsMonthlyAvgAttendance, juniorMonthlyAvgAttendance, lowerPrimaryMonthlyAvgAttendance, upperPrimaryMonthlyAvgAttendance]);
+        const totalTotsChildren = await analysisHelpers.getTotalChildrenByAgeGroup('Tots');
+        const totalJuniorChildren = await analysisHelpers.getTotalChildrenByAgeGroup('Junior');
+        const totalLowerPrimaryChildren = await analysisHelpers.getTotalChildrenByAgeGroup('Lower Primary');
+        const totalUpperPrimaryChildren = await analysisHelpers.getTotalChildrenByAgeGroup('Upper Primary');
         const attendance = {
             totalMonthlyAvgAttendance,
+            totalTotsChildren,
+            totalJuniorChildren,
+            totalLowerPrimaryChildren,
+            totalUpperPrimaryChildren,
             totsMonthlyAvgAttendance,
             juniorMonthlyAvgAttendance,
             lowerPrimaryMonthlyAvgAttendance,

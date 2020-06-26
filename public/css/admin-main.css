@@ -476,14 +476,21 @@ input[type='checkbox'] {
 
 .charts {
     display: flex;
-    height: 400px;
+    height: 600px;
     flex-wrap: wrap;
     padding: 5%;
     width: 100%;
 }
 
+.ageGroup-chart > h2 {
+    padding: 10px;
+    font-weight: 600;
+}
+
 #attendanceChart {
     width: 100%;
+    margin-top: 40px;
+    height: 300px;
 }
 
 .summary-chart {
@@ -496,9 +503,14 @@ input[type='checkbox'] {
     margin-left: 5px;
 }
 
+#totalAttendanceChart-wrapper {
+    width: 100%;
+    height: 70%;
+}
+
 #totalAttendanceChart {
     width: 100%;
-    height: 50%;
+    height: 100%;
 }
 
 .ageGroup-chart {
@@ -510,4 +522,51 @@ input[type='checkbox'] {
 
 .total-attendance, .tots-attendance, .junior-attendance, .lower-primary-attendance, .upper-primary-attendance {
     display: none;
+}
+
+.summary-stats {
+    display: flex;
+    height: 20%;
+}
+
+.summary-card {
+    background-color: #8080802e;
+    height: 90%;
+    width: 150px;
+    padding: 10px;
+    margin-left: 2.5%;
+}
+
+.summary-card>h3 {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.summary-card>p {
+    font-size: 30px;
+    font-weight: 600;
+    margin-top: 10px;
+    color: #0779e4;
+}
+
+.summary-chart > h2 {
+    padding: 10px;
+    font-weight: 600;
+    color: white;
+}
+
+#summary-stats-1 > h3 {
+    color: white;
+    font-weight: 300;
+    font-size: 20px;
+    padding-left: 10px;
+    margin-top: 0px;
+}
+
+#summary-stats-1 > p {
+    font-size: 30px;
+    font-weight: 600;
+    margin-top: -20px;
+    color: white;
+    padding-left: 10px;
 }

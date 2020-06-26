@@ -84,5 +84,6 @@ module.exports = {
     async updateTeacherUpperPrimaryRoster(req, res) {
         await teacherHelper.updateTeacherRoster(req, res);
         res.redirect('/teachers/age/upper-primary/roster')
-    }
+    },
+    
 }

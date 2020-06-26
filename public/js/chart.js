@@ -43,7 +43,6 @@ const createAttendanceChart = () => {
         }, 
         options: {
             responsive: true,
-            maintainAspectRatio: false,
             scales: {
                 xAxes: [{
                     gridLines: {
@@ -56,7 +55,7 @@ const createAttendanceChart = () => {
                     }   
                 }]
             }
-        },
+        }
     })
 }
 
