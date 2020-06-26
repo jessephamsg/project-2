@@ -45,25 +45,61 @@
                     <div>
                 </div>
             </div>
+            
             <% studentAttendance.totalMonthlyAvgAttendance.forEach(attendance => { %>
-                <input value='<%=attendance%>' class='total-attendance'>
+            <input value='<%=attendance%>' class='total-attendance'>
             <% }) %>
             <% studentAttendance.totsMonthlyAvgAttendance.forEach(attendance => { %>
-                <input value='<%=attendance%>' class='tots-attendance'>
+            <input value='<%=attendance%>' class='tots-attendance'>
             <% }) %>
             <% studentAttendance.juniorMonthlyAvgAttendance.forEach(attendance => { %>
-                <input value='<%=attendance%>' class='junior-attendance'>
+            <input value='<%=attendance%>' class='junior-attendance'>
             <% }) %>
             <% studentAttendance.lowerPrimaryMonthlyAvgAttendance.forEach(attendance => { %>
-                <input value='<%=attendance%>' class='lower-primary-attendance'>
+            <input value='<%=attendance%>' class='lower-primary-attendance'>
             <% }) %>
             <% studentAttendance.upperPrimaryMonthlyAvgAttendance.forEach(attendance => { %>
-                <input value='<%=attendance%>' class='upper-primary-attendance'>
+            <input value='<%=attendance%>' class='upper-primary-attendance'>
             <% }) %>
-
+                                
+            </div>
         </div>
+        <h2>Lead Contacts</h2>
+        <table id='dashboard-table'>
+                <tr>
+                    <th class='first-col'>Teacher's Name</th>
+                    <th>Role</th>
+                    <th>Age Group</th>
+                    <th>Region</th>
+                    <th>Contact Number</th>
+                    <th>Years of Experience</th>
+                    <th>Brandwidth</th>
+                </tr>
+            <% teachersInCharge.ageGroup.forEach(teacher => { %>
+                <tr>
+                    <td class='first-col'><%= teacher.formatTeacherFullName() %></td>
+                    <td><%= teacher.role %></td>
+                    <td><%= teacher.ageGroup%></td>
+                    <td><%=teacher.region%></td>
+                    <td><%=teacher.formatTeacherNumber()%></td>
+                    <td><%=teacher.formatYears()%></td>
+                    <td><%=teacher.currentBandWidth%></td>
+                </tr>
+            <% })%>
+            <% teachersInCharge.region.forEach(teacher => { %>
+                <tr>
+                    <td><%= teacher.formatTeacherFullName() %></td>
+                    <td><%= teacher.role %></td>
+                    <td><%= teacher.ageGroup%></td>
+                    <td><%=teacher.region%></td>
+                    <td><%=teacher.formatTeacherNumber()%></td>
+                    <td><%=teacher.formatYears()%></td>
+                    <td><%=teacher.currentBandWidth%></td>
+                </tr>
+            <% })%>
+        </table>
     </div>
-        </div>
+    
         <div class='right-section'>
     
         </div>

@@ -577,3 +577,15 @@ input[type='checkbox'] {
     margin-top: 40px;
     font-weight: 500;
 }
+
+#dashboard-table {
+    padding-left: 27px;
+    height: 150px;
+    width: 100%;
+}
+
+.mid-section > h2 {
+    font-size: 20px;
+    padding-left: 48px;
+    font-weight: 600;
+}

@@ -30,6 +30,11 @@ module.exports = {
         const teacherData = await repositories.teacherRepo.aggregateAllAttendanceSummary(ageGroup);
         const teachers = teacherData.map(teacher => { return buildTeacherObject(teacher) });
         return teachers
+    },
+    async getTeachersByRole(roleQuery) {
+        const teacherData = await repositories.teacherRepo.getTeachersByRole(roleQuery);
+        const teachers = teacherData.map(teacher => { return buildTeacherObject(teacher)});
+        return teachers
     }
 }
 

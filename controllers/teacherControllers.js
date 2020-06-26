@@ -85,5 +85,13 @@ module.exports = {
         await teacherHelper.updateTeacherRoster(req, res);
         res.redirect('/teachers/age/upper-primary/roster')
     },
-    
+    async showTeachersByRole (req, res) {
+        const ageGroupLead = await services.teacherService.getTeachersByRole('Age Group Lead');
+        const regionalLead = await services.teacherService.getTeachersByRole('Regional Lead');
+        const teacherInCharge = {
+            ageGroup: ageGroupLead,
+            region: regionalLead
+        }
+        return teacherInCharge
+    }
 }

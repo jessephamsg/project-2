@@ -105,11 +105,11 @@ module.exports = {
         }).toArray();
         return students;
     },
-    async updateBandWidth () {
+    async updateBandWidth() {
         const teachingFreq = await db.teacherRecords.aggregate([
             {
                 $project: {
-                    'teachingFreq': {$size: '$attendanceSummary'}
+                    'teachingFreq': { $size: '$attendanceSummary' }
                 }
             }
         ]).toArray();
@@ -126,12 +126,18 @@ module.exports = {
             await db.teacherRecords.updateOne({
                 _id: ObjectId(freq['_id'])
             }, {
-                $set: {
-                    'currentBandWidth': teachingFreq
-                }
-            })
+                    $set: {
+                        'currentBandWidth': teachingFreq
+                    }
+                })
             index++
         }
         return teachingFreq
+    },
+    async getTeachersByRole(roleQuery) {
+        const teachers = db.teacherRecords.find({
+            role: roleQuery
+        }).toArray();
+        return teachers
     }
 }
