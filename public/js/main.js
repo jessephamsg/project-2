@@ -1,3 +1,7 @@
+let activeTypeTab = [];
+let activeSubTypeTab = [];
+
+
 const showStudentDropdown = () => {
     $('.dropdown-container-students').css('display', 'block');
 };
@@ -7,10 +11,30 @@ const showTeacherDropdown = () => {
 };
 
 const showSubTypeDropdown = () => {
+    $('.subtab-type').removeClass('active-type-tab');
+    const index = event.currentTarget.id;
+    activeTypeTab.push(index);
+    console.log(activeTypeTab)
+    $(`#${index}`).addClass('active-type-tab');
     $('.dropdown-container').css('display', 'none');
     const id = parseInt(event.currentTarget.id.replace('dropdown-', ''));
     $(`#dropdown-container-${id}`).css('display', 'block');
 };
+
+const formatSubtypeOnClick = () => {
+    $('.nav-subtype').removeClass('active-subtype-tab');
+    const index = event.currentTarget.id;
+    activeSubTypeTab.push(index);
+    console.log(activeSubTypeTab)
+    $(`#${index}`).addClass('active-subtype-tab');
+}
+
+const formatTypeAndSubTypeTab = () => {
+    $(`#${activeTypeTab[0]}`).addClass('active-type-tab');
+    $(`#${activeSubTypeTab[0]}`).addClass('active-subtype-tab');
+    // activeTypeTab = [];
+    // activeSubTypeTab = [];
+}
 
 const launchChildRegistrationForm = () => {
     $('#child-registration-form').css('display', 'flex');
@@ -18,7 +42,7 @@ const launchChildRegistrationForm = () => {
 
 const closeFormModal = () => {
     $('#child-registration-form').css('display', 'none');
-}
+};
 
 const sendPageByID = () => {
     const studentID = event.currentTarget.id;
@@ -105,6 +129,7 @@ const formatSelectOnChange = () => {
 
 $(() => {
     matchRosterData();
-    formatRosterTable()
+    formatRosterTable();
+    formatTypeAndSubTypeTab();
 })
 

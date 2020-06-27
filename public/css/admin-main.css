@@ -150,6 +150,16 @@ ul.horizontal-nav {
     padding: 20px;
 }
 
+.active-type-tab {
+    background-color: #0779E4;
+    color: white;
+}
+
+.active-subtype-tab {
+    background-color: #0779E4;
+    color: white;
+}
+
 .subtab-type>a {
     text-decoration: none;
     color: #131212e3
@@ -163,10 +173,10 @@ ul.horizontal-nav {
 
 .dropdown-container>form {
     display: inline-block;
+    margin-left: 2.55%
 }
 
 .dropdown-container>form>input[type='submit'] {
-    margin-left: 15%;
     padding: 15px;
     background-color: #0779e414;
     color: #0779E4;
@@ -739,9 +749,15 @@ input[type='checkbox'] {
 #delete-teacher-button {
     margin-top: -40px;
     background-color: #e91e63;
-    
 }
 
 #delete-student-button {
     background-color: #e91e63
+}
+
+#add-child-button {
+    background-color: #0779e4;
+    color: white;
+    border: none;
+    border-radius: 3px;
 }

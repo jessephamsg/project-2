@@ -9,6 +9,8 @@ module.exports = {
     async addOne(studentObject) {
         const newStudent = studentObjectBuilder.buildStudentObject(studentObject);
         const studentPersonalDetails = await db.studentRecords.insertOne(newStudent);
+        await this.addDateFieldsToAllData();
+        await this.addAgeFieldToAllData();
         const studentDetails = await studentPersonalDetails.ops[0]
         return studentDetails;
     },
