@@ -67,23 +67,25 @@
         <h2>Lead Contacts</h2>
         <table id='dashboard-table'>
                 <tr>
-                    <th class='first-col'>Teacher's Name</th>
+                    <th>Teacher's Name</th>
                     <th>Role</th>
                     <th>Age Group</th>
                     <th>Region</th>
                     <th>Contact Number</th>
-                    <th>Years of Experience</th>
+                    <th>Experience (years)</th>
                     <th>Brandwidth</th>
+                    <th>Address</th>
                 </tr>
             <% teachersInCharge.ageGroup.forEach(teacher => { %>
                 <tr>
-                    <td class='first-col'><%= teacher.formatTeacherFullName() %></td>
+                    <td><%= teacher.formatTeacherFullName() %></td>
                     <td><%= teacher.role %></td>
                     <td><%= teacher.ageGroup%></td>
                     <td><%=teacher.region%></td>
                     <td><%=teacher.formatTeacherNumber()%></td>
                     <td><%=teacher.formatYears()%></td>
                     <td><%=teacher.currentBandWidth%></td>
+                    <td><%=teacher.address%></td>
                 </tr>
             <% })%>
             <% teachersInCharge.region.forEach(teacher => { %>
