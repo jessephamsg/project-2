@@ -216,15 +216,12 @@ module.exports = {
         return total
     },
     async updateStudentProfileByID(studentID, updatedObject) {
-        console.log(studentID);
         const updatedStudentInfo = studentObjectBuilder.buildStudentObject(updatedObject);
-        console.log(updatedStudentInfo)
         const student = await db.studentRecords.updateOne({
             _id: ObjectId(studentID)
         }, {
                 $set: updatedStudentInfo
             });
-        console.log(student)
         const dateArray = updatedObject.isPresent;
         dateArray.forEach(async dateValue => {
             await this.updateOneAttendanceArrayByID(studentID, dateValue)
