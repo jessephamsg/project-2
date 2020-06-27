@@ -22,6 +22,7 @@ router.get('/students/age/lower-primary', controllers.studentControllers.showLow
 router.get('/students/age/upper-primary', controllers.studentControllers.showUpperPrimaryData);
 
 router.put('/students/:index', controllers.studentControllers.updateStudentData);
+router.delete('/students/:index', controllers.studentControllers.deleteStudentByID);
 router.post('/students/age', controllers.studentControllers.addNewStudentData);
 
 router.get('/students/age/tots/form', controllers.studentControllers.showTotsAttendanceForm);

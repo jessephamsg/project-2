@@ -62,6 +62,10 @@ module.exports = {
     async setStudentProfileByID (studentID, updatedStudentDetails) {
         const studentData = await repositories.studentRepo.updateStudentProfileByID(studentID, updatedStudentDetails);
         return studentData
+    },
+    async deleteStudentByID (studentID) {
+        const student = await repositories.studentRepo.removeStudentByID(studentID);
+        return student
     }
 }
 

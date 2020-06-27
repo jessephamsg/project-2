@@ -100,7 +100,6 @@ module.exports = {
         res.render('app-teacherDb/admin-teacher-details.ejs', {
             data: teacher
         })
-        //res.send(req.params.index)
     },
     async updateTeacherDetailsByID (req, res) {
         const teacherID = req.body.id;
@@ -116,7 +115,8 @@ module.exports = {
             region: req.body.region,
             rosteredSlot: req.body.rosteredSlot
         }
+        const ageGroup = updatedDetails.ageGroup.split(' ').join('-')
         const updatedTeacher = await services.teacherService.updateTeacherByID(teacherID,updatedDetails);
-        res.redirect(`./${teacherID}`);
+        res.redirect(`/teachers/age/${ageGroup}`);
     }
 }

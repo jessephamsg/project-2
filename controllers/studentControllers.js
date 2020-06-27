@@ -161,7 +161,14 @@ module.exports = {
             region: req.body.region,
             isPresent: req.body.isPresent
         }
+        const ageGroup = updatedObject.ageGroup.split(' ').join('-');
         const updatedStudent = await services.studentService.setStudentProfileByID(studentID,updatedObject);
-        res.redirect(`./${studentID}`);
+        res.redirect(`/students/age/${ageGroup}`);
+    },
+    async deleteStudentByID (req, res) {
+        const studentID = req.params.index;
+        const ageGroup = req.body.ageGroup.split(' ').join('-');
+        const deletedStudent = await services.studentService.deleteStudentByID(studentID);
+        res.redirect(`/students/age/${ageGroup}`);
     }
 }

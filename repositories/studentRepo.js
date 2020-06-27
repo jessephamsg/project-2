@@ -228,5 +228,12 @@ module.exports = {
         });
         const updatedStudent = await this.getOneByID(studentID);
         return updatedStudent
+    },
+    async removeStudentByID(studentID) {
+        const student = await db.studentRecords.deleteOne({
+            _id: ObjectId(studentID)
+        });
+        console.log(student)
+        return student
     }
 }
