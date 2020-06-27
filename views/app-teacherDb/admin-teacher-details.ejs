@@ -22,18 +22,50 @@
                         <label for='dob'>Date of Birth</label><br>
                         <input name='dob' type='date' value='<%=data.dob%>'><br>
                         <label for='ageGroup'>Age Group</label><br>
-                        <select name='ageGroup' value='<%=data.ageGroup%>'>
-                            <option value='Tots'>Tots</option>
-                            <option value='Junior'>Junior</option>
-                            <option value='Lower Primary'>Lower Primary</option>
-                            <option value='Upper Primary'>Upper Primary</option>
+                        <select name='ageGroup'>
+                            <% if(data.ageGroup === 'Tots') { %>
+                                <option value='Tots' selected>Tots</option>
+                            <% } else { %>
+                                <option value='Tots'>Tots</option>
+                            <% } %>
+                            <% if(data.ageGroup === 'Junior') { %>
+                                <option value='Junior' selected>Junior</option>
+                            <% } else { %>
+                                <option value='Junior'>Junior</option>
+                            <% } %>
+                            <% if(data.ageGroup === 'Lower Primary') { %>
+                                <option value='Lower Primary' selected>Lower Primary</option>
+                            <% } else { %>
+                                <option value='Lower Primary'>Lower Primary</option>
+                            <% } %>
+                            <% if(data.ageGroup === 'Upper Primary') { %>
+                                <option value='Upper Primary' selected>Upper Primary</option>
+                            <% } else { %>
+                                <option value='Upper Primary'>Upper Primary</option>
+                            <% } %>
                         </select><br>
                         <label for='role'>Role</label><br>
-                        <select name='role' value='<%=data.role%>'>
-                            <option value='Age Group Lead'>Age Group Lead</option>
-                            <option value='Regional Lead'>Regional Lead</option>
-                            <option value='Teacher'>Teacher</option>
-                            <option value='Assistant Teacher'>Assistant Teacher</option>
+                        <select name='role'>
+                            <% if(data.role === 'Age Group Lead') { %>
+                                <option value='Age Group Lead' selected>Age Group Lead</option>
+                            <% } else { %>
+                                <option value='Age Group Lead'>Age Group Lead</option>
+                            <% } %>
+                            <% if(data.role === 'Regional Lead') { %>
+                                <option value='Regional Lead' selected>Regional Lead</option>
+                            <% } else { %>
+                                <option value='Regional Lead'>Regional Lead</option>
+                            <% } %>
+                            <% if(data.role === 'Teacher') { %>
+                                <option value='Teacher' selected>Teacher</option>
+                            <% } else { %>
+                                <option value='Teacher'>Teacher</option>
+                            <% } %>
+                            <% if(data.role === 'Assistant Teacher') { %>
+                                <option value='Assistant Teacher' selected>Assistant Teacher</option>
+                            <% } else { %>
+                                <option value='Assistant Teacher'>Assistant Teacher</option>
+                            <% } %>
                         </select><br>
                         <label for='contactNumber'>Contact Number</label><br>
                         <input name='contactNumber' value='<%=data.contactNumber%>'><br>
@@ -42,11 +74,27 @@
                         <label for='address'>Address</label><br>
                         <input name='address' value='<%=data.address%>'><br>
                         <label for='region'>Region</label><br>
-                        <select name='region' value='<%=data.region%>'>
-                            <option value='Jurong East & West'>Jurong East & West</option>
-                            <option value='Clementi'>Clementi</option>
-                            <option value='Chua Chu Kang & Bukit Batok'>Chua Chu Kang & Bukit Batok</option>
-                            <option value='Bukit Panjang'>Bukit Panjang</option>
+                        <select name='region'>
+                            <% if(data.region === 'Jurong East & West') { %>
+                                <option value='Jurong East & West' selected>Jurong East & West</option>
+                            <% } else { %>
+                                <option value='Jurong East & West'>Jurong East & West</option>
+                            <% } %>
+                            <% if(data.region === 'Clementi') { %>
+                                <option value='Clementi' selected>Clementi</option>
+                            <% } else { %>
+                                <option value='Clementi'>Clementi</option>
+                            <% } %>
+                            <% if(data.region === 'Chua Chu Kang & Bukit Batok') { %>
+                                <option value='Chua Chu Kang & Bukit Batok' selected>Chua Chu Kang & Bukit Batok</option>
+                            <% } else { %>
+                                <option value='Chua Chu Kang & Bukit Batok'>Chua Chu Kang & Bukit Batok</option>
+                            <% } %>
+                            <% if(data.region === 'Bukit Panjang') { %>
+                                <option value='Bukit Panjang' selected>Bukit Panjang</option>
+                            <% } else { %>
+                                <option value='Bukit Panjang'>Bukit Panjang</option>
+                            <% } %>
                         </select><br>
                 </div>
                 <div id='profile-table-2'> 

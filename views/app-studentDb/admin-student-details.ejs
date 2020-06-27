@@ -31,11 +31,27 @@
                     </div>
                     <div class='input-pair'>
                         <label for='ageGroup'>Age Group</label><br>
-                        <select name='ageGroup' value='<%=data.ageGroup%>'>
-                            <option value='Tots'>Tots</option>
-                            <option value='Junior'>Junior</option>
-                            <option value='Lower Primary'>Lower Primary</option>
-                            <option value='Upper Primary'>Upper Primary</option>
+                        <select name='ageGroup'>
+                                <% if(data.ageGroup === 'Tots') { %>
+                                    <option value='Tots' selected>Tots</option>
+                                <% } else { %>
+                                    <option value='Tots'>Tots</option>
+                                <% } %>
+                                <% if(data.ageGroup === 'Junior') { %>
+                                    <option value='Junior' selected>Junior</option>
+                                <% } else { %>
+                                    <option value='Junior'>Junior</option>
+                                <% } %>
+                                <% if(data.ageGroup === 'Lower Primary') { %>
+                                    <option value='Lower Primary' selected>Lower Primary</option>
+                                <% } else { %>
+                                    <option value='Lower Primary'>Lower Primary</option>
+                                <% } %>
+                                <% if(data.ageGroup === 'Upper Primary') { %>
+                                    <option value='Upper Primary' selected>Upper Primary</option>
+                                <% } else { %>
+                                    <option value='Upper Primary'>Upper Primary</option>
+                                <% } %>
                         </select><br>
                     </div>
                 </div>
@@ -52,22 +68,62 @@
                 <div class='form-subsection'>
                     <div class='input-pair'>
                         <label for='guardianRole'>Guardian's Role</label><br>
-                        <select name='guardianRole' value='<%=data.guardianRole%>'>
-                            <option value='Mother'>Mother</option>
-                            <option value='Father'>Father</option>
-                            <option value='Grandma'>Grandma</option>
-                            <option value='Grandpa'>Grandpa</option>
-                            <option value='Aunt'>Aunt</option>
-                            <option value='Uncle'>Uncle</option>
-                            <option value='Others'>Others</option>
+                        <select name='guardianRole'>
+                                <% if(data.guardianRole === 'Mother') { %>
+                                    <option value='Mother' selected>Mother</option>
+                                <% } else { %>
+                                    <option value='Mother'>Mother</option>
+                                <% } %>
+                                <% if(data.guardianRole === 'Father') { %>
+                                    <option value='Father' selected>Father</option>
+                                <% } else { %>
+                                    <option value='Father'>Father</option>
+                                <% } %>
+                                <% if(data.guardianRole === 'Grandma') { %>
+                                    <option value='Grandma' selected>Grandma</option>
+                                <% } else { %>
+                                    <option value='Grandma'>Grandma</option>
+                                <% } %>
+                                <% if(data.guardianRole === 'Grandpa') { %>
+                                    <option value='Grandpa' selected>Grandpa</option>
+                                <% } else { %>
+                                    <option value='Grandpa'>Grandpa</option>
+                                <% } %>
+                                <% if(data.guardianRole === 'Aunt') { %>
+                                    <option value='Aunt' selected>Aunt</option>
+                                <% } else { %>
+                                    <option value='Aunt'>Aunt</option>
+                                <% } %>
+                                <% if(data.guardianRole === 'Uncle') { %>
+                                    <option value='Uncle' selected>Uncle</option>
+                                <% } else { %>
+                                    <option value='Uncle'>Uncle</option>
+                                <% } %>
+                                <% if(data.guardianRole === 'Others') { %>
+                                    <option value='Others' selected>Others</option>
+                                <% } else { %>
+                                    <option value='Others'>Others</option>
+                                <% } %>
                         </select><br>
                     </div>
                     <div class='input-pair'>
                         <label for='membership'>Guardian's Membership</label><br>
                         <select name='membership' value='<%=data.membership%>'>
-                            <option value='Regular'>Regular</option>
-                            <option value='Member'>Member</option>
-                            <option value='New'>New</option>
+                                <% if(data.membership === 'Regular') { %>
+                                    <option value='Regular' selected>Regular</option>
+                                <% } else { %>
+                                    <option value='Regular'>Regular</option>
+                                <% } %>
+                                <% if(data.membership === 'Member') { %>
+                                    <option value='Member' selected>Member</option>
+                                <% } else { %>
+                                    <option value='Member'>Member</option>
+                                <% } %>
+                                <% if(data.membership === 'New') { %>
+                                    <option value='New' selected>New</option>
+                                <% } else { %>
+                                    <option value='New'>New</option>
+                                <% } %>
                         </select><br>
                     </div>
                 </div>
@@ -78,11 +134,27 @@
                     </div>
                     <div class='input-pair'>
                         <label for='region'>Child's Region</label><br>
-                        <select name='region' value='<%=data.region%>'>
-                            <option value='Jurong East & West'>Jurong East & West</option>
-                            <option value='Clementi'>Clementi</option>
-                            <option value='Chua Chu Kang & Bukit Batok'>Chua Chu Kang & Bukit Batok</option>
-                            <option value='Bukit Panjang'>Bukit Panjang</option>
+                        <select name='region'>
+                                <% if(data.region === 'Jurong East & West') { %>
+                                    <option value='Jurong East & West' selected>Jurong East & West</option>
+                                <% } else { %>
+                                    <option value='Jurong East & West'>Jurong East & West</option>
+                                <% } %>
+                                <% if(data.region === 'Clementi') { %>
+                                    <option value='Clementi' selected>Clementi</option>
+                                <% } else { %>
+                                    <option value='Clementi'>Clementi</option>
+                                <% } %>
+                                <% if(data.region === 'Chua Chu Kang & Bukit Batok') { %>
+                                    <option value='Chua Chu Kang & Bukit Batok' selected>Chua Chu Kang & Bukit Batok</option>
+                                <% } else { %>
+                                    <option value='Chua Chu Kang & Bukit Batok'>Chua Chu Kang & Bukit Batok</option>
+                                <% } %>
+                                <% if(data.region === 'Bukit Panjang') { %>
+                                    <option value='Bukit Panjang' selected>Bukit Panjang</option>
+                                <% } else { %>
+                                    <option value='Bukit Panjang'>Bukit Panjang</option>
+                                <% } %>
                         </select><br>
                     </div>
                 </div>
