@@ -589,3 +589,61 @@ input[type='checkbox'] {
     padding-left: 5%;
     font-weight: 600;
 }
+
+.student-attendance-history {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.student-attendance-history > .checkbox-pairs {
+    width: 25%;
+}
+
+.edit-form {
+    padding: 10%;
+}
+
+.edit-form > h2 {
+    font-size: 25px;
+    margin-top: -20px;
+    font-weight: 600;
+}
+
+.edit-form > form > h3 {
+    font-size: 20px;
+    margin-top: 30px;
+    font-weight: 500;
+}
+
+.student-attendance-history > h3 {
+    font-size: 20px;
+    margin-top: 30px;
+    font-weight: 500;
+}
+
+.student-attendance-history {
+    height: 250px;
+    overflow-y: scroll;
+    position: relative;
+}
+
+.edit-form> form> .form-subsection> .input-pair> input {
+    padding: 7px;
+    background-color: #8080801c;
+    border:none;
+    width: 350px;
+}
+
+.edit-form> form> .form-subsection> .input-pair> select {
+    background-color: #8080801c;
+    border:none;
+    padding: 6px;
+    width: 362px;
+}
+
+.edit-form> form> .form-subsection> .input-pair> input[type='date'] {
+    background-color: #8080801c;
+    border:none;
+    padding: 5px;
+    width: 352px;
+} 
