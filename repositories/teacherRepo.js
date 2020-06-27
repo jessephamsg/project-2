@@ -140,13 +140,13 @@ module.exports = {
         }).toArray();
         return teachers
     },
-    async updateTeacherDetailsById (teacherID, updatedTeacherObject) {
+    async updateTeacherDetailsById(teacherID, updatedTeacherObject) {
         const newTeacherObject = teacherObjectBuilder.buildTeacherObject(updatedTeacherObject);
         const teacher = await db.teacherRecords.updateOne({
             _id: ObjectId(teacherID)
         }, {
-            $set: newTeacherObject
-        });
+                $set: newTeacherObject
+            });
 
     },
     async getTeacherByID(teacherID) {
@@ -155,10 +155,10 @@ module.exports = {
         });
         return teacher
     },
-    async updateTeacherPersonalAndRosterDetailByID (teacherID, updatedDetails) {
+    async updateTeacherPersonalAndRosterDetailByID(teacherID, updatedDetails) {
         this.updateTeacherDetailsById(teacherID, updatedDetails);
         const rosterArr = updatedDetails.rosteredSlot;
-        const transformedRosterArr = rosterArr.map(roster=> {
+        const transformedRosterArr = rosterArr.map(roster => {
             const rosterObject = {
                 id: teacherID,
                 date: roster.substr(0, 10),
@@ -166,9 +166,21 @@ module.exports = {
             }
             return (rosterObject)
         })
-        await this.updateStaffRosters(transformedRosterArr)
+        await this.updateStaffRosters(transformedRosterArr);
+        const teacher = await db.teacherRecords.find({
+            _id: ObjectId(teacherID)
+        }).toArray();
+        const updateRecord = await db.teacherRecords.updateOne({
+            _id: ObjectId(teacherID)
+        }, {
+                $set: {
+                    startWeek: calendarHelper.convertDateToWeek(teacher[0].startDate)
+                }
+            })
+        await this.updateYearsOfExperience();
+        await this.updateBandWidth();
     },
-    async deleteTeacherByID (teacherID) {
+    async deleteTeacherByID(teacherID) {
         const student = await db.teacherRecords.deleteOne({
             _id: ObjectId(teacherID)
         });

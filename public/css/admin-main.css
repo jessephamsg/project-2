@@ -423,7 +423,7 @@ input[type='checkbox'] {
 }
 
 .stats-div-img {
-   width: 30%;
+    width: 30%;
 }
 
 .stats-div> img {
@@ -630,23 +630,23 @@ input[type='checkbox'] {
 .edit-form> form> .form-subsection> .input-pair> input {
     padding: 7px;
     background-color: #8080801c;
-    border:none;
+    border: none;
     width: 350px;
 }
 
 .edit-form> form> .form-subsection> .input-pair> select {
     background-color: #8080801c;
-    border:none;
+    border: none;
     padding: 6px;
     width: 362px;
 }
 
 .edit-form> form> .form-subsection> .input-pair> input[type='date'] {
     background-color: #8080801c;
-    border:none;
+    border: none;
     padding: 5px;
     width: 352px;
-} 
+}
 
 .hidden-data {
     display: none;
@@ -683,23 +683,23 @@ input[type='checkbox'] {
 #profile-table-1> input {
     padding: 7px;
     background-color: #8080801c;
-    border:none;
+    border: none;
     width: 350px;
 }
 
 #profile-table-1> select {
     background-color: #8080801c;
-    border:none;
+    border: none;
     padding: 6px;
     width: 362px;
 }
 
 #profile-table-1> input[type='date'] {
     background-color: #8080801c;
-    border:none;
+    border: none;
     padding: 5px;
     width: 352px;
-} 
+}
 
 #profile-table-2 {
     width: 40%;
@@ -734,4 +734,14 @@ input[type='checkbox'] {
 #profile-table-2 > h3 {
     font-size: 20px;
     font-weight: 500;
+}
+
+#delete-teacher-button {
+    margin-top: -40px;
+    background-color: #e91e63;
+    
+}
+
+#delete-student-button {
+    background-color: #e91e63
 }

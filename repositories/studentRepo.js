@@ -226,14 +226,16 @@ module.exports = {
         dateArray.forEach(async dateValue => {
             await this.updateOneAttendanceArrayByID(studentID, dateValue)
         });
-        const updatedStudent = await this.getOneByID(studentID);
+        await this.updateFirstSeenDateValue();
+        await this.updateLastSeenDateValue();
+        await this.updateIsRegularValue();
+        const updatedStudent = await db.studentRecords.find({_id: ObjectId(studentID)}).toArray();
         return updatedStudent
     },
     async removeStudentByID(studentID) {
         const student = await db.studentRecords.deleteOne({
             _id: ObjectId(studentID)
         });
-        console.log(student)
         return student
     }
 }
