@@ -53,6 +53,15 @@ module.exports = {
     async sumRegularsByRegion(regionQuery, regularValue) {
         const regulars = await repositories.studentRepo.getAllTrueRegularByRegion(regionQuery, regularValue);
         return regulars
+    },
+    async getStudentByID (studentID) {
+        const studentData = await repositories.studentRepo.getOneByID(studentID);
+        const student = buildStudentObject(studentData);
+        return student
+    },
+    async setStudentProfileByID (studentID, updatedStudentDetails) {
+        const studentData = await repositories.studentRepo.updateStudentProfileByID(studentID, updatedStudentDetails);
+        return studentData
     }
 }
 

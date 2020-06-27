@@ -20,6 +20,11 @@ const closeFormModal = () => {
     $('#child-registration-form').css('display', 'none');
 }
 
+const sendPageByID = () => {
+    const studentID = event.currentTarget.id;
+    window.location.replace(`/students/${studentID}`)
+}
+
 const getRosterData = () => {
     const arr = $('.roster-data');
     const valueArr = []

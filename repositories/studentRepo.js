@@ -215,4 +215,34 @@ module.exports = {
         const total = await regulars.length;
         return total
     },
+    async updateStudentProfileByID(studentID, updatedObject) {
+        console.log(studentID);
+        const updatedStudentInfo = studentObjectBuilder.buildStudentObject(updatedObject);
+        console.log(updatedStudentInfo)
+        const student = await db.studentRecords.updateOne({
+            _id: ObjectId(studentID)
+        }, {
+                $set: {
+                    firstName: updatedStudentInfo.firstName,
+                    lastName: updatedStudentInfo.lastName,
+                    dob: updatedStudentInfo.dob,
+                    ageGroup: updatedStudentInfo.ageGroup,
+                    guardianName: updatedStudentInfo.guardianName,
+                    guardianContact: updatedStudentInfo.guardianContact,
+                    guardianRole: updatedStudentInfo.guardianRole,
+                    membership: updatedStudentInfo.membership,
+                    address: updatedStudentInfo.address,
+                    region: updatedStudentInfo.region,
+                    attendance: updatedStudentInfo.attendance,
+                    attendanceSummary: updatedStudentInfo.attendanceSummary
+                }
+            });
+        console.log(student)
+        const dateArray = updatedObject.isPresent;
+        dateArray.forEach(async dateValue => {
+            await this.updateOneAttendanceArrayByID(studentID, dateValue)
+        });
+        const updatedStudent = await this.getOneByID(studentID);
+        return updatedStudent
+    }
 }

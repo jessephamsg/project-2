@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%- include('../app-general/partials/admin-head.ejs') %>
+</head>
+<body>
+    <%- include('../app-general/partials/app-horizontal-nav.ejs') %>
+    <div class='admin-body'>
+        <div class='left-section'>
+        <%- include('../app-general/partials/admin-nav.ejs') %>
+        </div>
+        <div class='mid-section'>      
+            <div class='edit-form'>
+                <form action='/students/<%=data.id%>?_method=PUT' method='POST'>
+                <label for='firstName'>First Name</label><br>
+                <input name='firstName' value='<%=data.firstName%>'><br>
+                <label for='lastName'>Last Name</label><br>
+                <input name='lastName' value='<%=data.lastName%>'><br>
+                <label for='dob'>Date of Birth</label><br>
+                <input name='dob' type='date' value='<%=data.dob%>'><br>
+                <label for='ageGroup'>Age Group</label><br>
+                <select name='ageGroup' value='<%=data.ageGroup%>'>
+                    <option value='Tots'>Tots</option>
+                    <option value='Junior'>Junior</option>
+                    <option value='Lower Primary'>Lower Primary</option>
+                    <option value='Upper Primary'>Upper Primary</option>
+                </select><br>
+                <label for='guardianName'>Guardian's Name</label><br>
+                <input name='guardianName' value='<%=data.guardianName%>'><br>
+                <label for='guardianContact'>Guardian's Contact</label><br>
+                <input name='guardianContact' value='<%=data.guardianContact%>'><br>
+                <label for='guardianRole'>Guardian's Role</label><br>
+                <select name='guardianRole' value='<%=data.guardianRole%>'>
+                    <option value='Mother'>Mother</option>
+                    <option value='Father'>Father</option>
+                    <option value='Grandma'>Grandma</option>
+                    <option value='Grandpa'>Grandpa</option>
+                    <option value='Aunt'>Aunt</option>
+                    <option value='Uncle'>Uncle</option>
+                    <option value='Others'>Others</option>
+                </select><br>
+                <label for='membership'>Guardian's Membership</label><br>
+                <select name='membership' value='<%=data.membership%>'>
+                    <option value='Regular'>Regular</option>
+                    <option value='Member'>Member</option>
+                    <option value='New'>New</option>
+                </select><br>
+                <label for='address'>Child's Address</label><br>
+                <input name='address' value='<%=data.address%>'><br>
+                <label for='region'>Child's Region</label><br>
+                <select name='region' value='<%=data.region%>'>
+                    <option value='Jurong East & West'>Jurong East & West</option>
+                    <option value='Clementi'>Clementi</option>
+                    <option value='Chua Chu Kang & Bukit Batok'>Chua Chu Kang & Bukit Batok</option>
+                    <option value='Bukit Panjang'>Bukit Panjang</option>
+                </select><br>
+                <div class='student-attendance-history'>
+                <% data.attendance.forEach(attendanceObject => { %>
+                    <div class='checkbox-pairs'>
+                        <% if(attendanceObject.isPresent === true) { %>
+                            <input type='checkbox' name='isPresent' value='<%=attendanceObject.date%>' checked>
+                        <% } else { %>
+                            <input type='checkbox' name='isPresent' value='<%=attendanceObject.date%>'>
+                        <% } %>
+                        <label for='isPresent'><%=attendanceObject.date%></label><br>
+                    </div>
+                <% }) %>
+                </div>
+                <input type='text' name='id' value='<%=data.id%>'>
+                <input type='submit' value='submit'>
+                </form>
+            </div>
+        </div>
+        <div class='right-section'>
+        </div>
+    </div>
+
+</body>
+</html>

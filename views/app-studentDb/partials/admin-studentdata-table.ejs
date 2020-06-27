@@ -8,9 +8,10 @@
         <th>Child's First Seen</th>
         <th>Child's Last Seen</th>
         <th>Teacher in-charge</th>
+        <th>Student ID</th>
 </tr>
 <% data.forEach(datum => { %>
-<tr>
+<tr onclick='sendPageByID()' id='<%=datum.id%>'>
         <td class='first-col'><%= datum.formatChildFullName() %></td>
         <td><%= datum.dob %></td>
         <td><%= datum.formatAgeInYears() %></td>
@@ -23,5 +24,6 @@
         <td><%= datum.firstSeen.date %></td>
         <td><%= datum.lastSeen.date %></td>
         <td><%= datum.teacherIC %></td>
+        <td><%= datum.id %></td>
 </tr>
 <% }) %>

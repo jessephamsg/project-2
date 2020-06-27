@@ -138,5 +138,30 @@ module.exports = {
             upperPrimaryMonthlyAvgAttendance
         }
         return attendance
+    },
+    async showStudentPage (req, res) {
+        const studentID = req.params.index;
+        const student = await services.studentService.getStudentByID(studentID);
+        res.render('app-studentDb/admin-student-details.ejs', {
+            data: student
+        })
+    },
+    async updateStudentData (req, res) {
+        const studentID = req.body.id;
+        const updatedObject = {
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            dob: req.body.dob,
+            ageGroup: req.body.ageGroup,
+            guardianName: req.body.guardianName,
+            guardianContact: req.body.guardianContact,
+            guardianRole: req.body.guardianRole,
+            membership: req.body.membership,
+            address: req.body.address,
+            region: req.body.region,
+            isPresent: req.body.isPresent
+        }
+        const updatedStudent = await services.studentService.setStudentProfileByID(studentID,updatedObject);
+        res.redirect(`./${studentID}`);
     }
 }
