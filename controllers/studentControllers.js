@@ -34,9 +34,10 @@ module.exports = {
             region: req.body.region
         }
         try {
+            const ageGroup = req.body.ageGroup.split(' ').join('-');
             studentValidator.students.validate(studentDetails);
             const childrenData = await services.studentService.createNewStudent(studentDetails);
-            res.redirect('/students/age');
+            res.redirect(`/students/age/${ageGroup}`);
         } catch (err) {
             const childrenData = await services.studentService.getStudentsByAgeGroup('Tots');
             res.render('app-studentDb/admin-newChild.ejs', {
