@@ -222,20 +222,7 @@ module.exports = {
         const student = await db.studentRecords.updateOne({
             _id: ObjectId(studentID)
         }, {
-                $set: {
-                    firstName: updatedStudentInfo.firstName,
-                    lastName: updatedStudentInfo.lastName,
-                    dob: updatedStudentInfo.dob,
-                    ageGroup: updatedStudentInfo.ageGroup,
-                    guardianName: updatedStudentInfo.guardianName,
-                    guardianContact: updatedStudentInfo.guardianContact,
-                    guardianRole: updatedStudentInfo.guardianRole,
-                    membership: updatedStudentInfo.membership,
-                    address: updatedStudentInfo.address,
-                    region: updatedStudentInfo.region,
-                    attendance: updatedStudentInfo.attendance,
-                    attendanceSummary: updatedStudentInfo.attendanceSummary
-                }
+                $set: updatedStudentInfo
             });
         console.log(student)
         const dateArray = updatedObject.isPresent;
