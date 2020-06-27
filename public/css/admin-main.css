@@ -663,11 +663,75 @@ input[type='checkbox'] {
     border-radius: 3px;
 }
 
+.edit-form-teacher {
+    padding: 5%;
+    width: 100%;
+    margin-top: -30px;
+}
+
 .edit-form-teacher > form {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 5%;
 }
 
 #profile-table-1 {
-    width: 50%;
+    width: 40%;
+}
+
+#profile-table-1> input {
+    padding: 7px;
+    background-color: #8080801c;
+    border:none;
+    width: 350px;
+}
+
+#profile-table-1> select {
+    background-color: #8080801c;
+    border:none;
+    padding: 6px;
+    width: 362px;
+}
+
+#profile-table-1> input[type='date'] {
+    background-color: #8080801c;
+    border:none;
+    padding: 5px;
+    width: 352px;
+} 
+
+#profile-table-2 {
+    width: 40%;
+    padding: 5%;
+    background-color: #80808014;
+    margin-right: 5%;
+}
+
+.edit-form-teacher > form > input[type='submit'] {
+    padding: 10px;
+    margin-top: 20px;
+    float: right;
+    width: 200px;
+    background-color: #0779e4;
+    border: none;
+    color: white;
+    border-radius: 3px;
+    margin-left: 68.5%;
+}
+
+#profile-table-1 > h2 {
+    margin-top: 10%;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+#profile-table-1 > h3 {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+#profile-table-2 > h3 {
+    font-size: 20px;
+    font-weight: 500;
 }

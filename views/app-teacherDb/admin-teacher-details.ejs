@@ -10,11 +10,11 @@
         <%- include('../app-general/partials/admin-nav.ejs') %>
         </div>
         <div class='mid-section'>      
-            <h2>Teacher Profile</h2>
             <div class='edit-form-teacher'>
                 <form action='/teachers/<%=data.id%>?_method=PUT' method='POST'>
-                <div id='profile-table-1'>
-                <h3>General Information</h3>
+                    <div id='profile-table-1'>
+                        <h2>Teacher Profile</h2>
+                         <h3>General Information</h3>
                         <label for='firstName'>First Name</label><br>
                         <input name='firstName' value='<%=data.firstName%>'><br>
                         <label for='lastName'>Last Name</label><br>
@@ -58,9 +58,9 @@
                         <th colspan='3'>Time Slot</th>
                     </tr>
                     <tr>
-                        <th>Time Slot 1</th>
-                        <th>Time Slot 2</th>
-                        <th>Time Slot 3</th>
+                        <th>Slot 1: 10 - 12PM</th>
+                        <th>Slot 2: 2 - 4PM</th>
+                        <th>Slot 3: 5 - 7PM</th>
                     </tr>
                     <% data.roster.forEach(rosterObject => { %>
                         <tr>
@@ -79,9 +79,9 @@
                 </table>
                 </div>
                 <input type='text' name='id' value='<%=data.id%>' class='hidden-data'>
-                <input type='submit' value='Save Edits'>
-                </div>
-                </form>
+            </div>
+            <input type='submit' value='Save Edits'>
+            </form>
             </div>
         </div>
         <div class='right-section'>
