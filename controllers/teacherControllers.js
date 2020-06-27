@@ -93,5 +93,30 @@ module.exports = {
             region: regionalLead
         }
         return teacherInCharge
+    },
+    async showTeacherDetailsByID (req, res) {
+        const teacherID = req.params.index;
+        const teacher = await services.teacherService.getTeacherByID(teacherID);
+        res.render('app-teacherDb/admin-teacher-details.ejs', {
+            data: teacher
+        })
+        //res.send(req.params.index)
+    },
+    async updateTeacherDetailsByID (req, res) {
+        const teacherID = req.body.id;
+        const updatedDetails = {
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            dob: req.body.dob,
+            ageGroup: req.body.ageGroup,
+            role: req.body.role,
+            contactNumber: req.body.contactNumber,
+            startDate: req.body.startDate,
+            address: req.body.address,
+            region: req.body.region,
+            rosteredSlot: req.body.rosteredSlot
+        }
+        const updatedTeacher = await services.teacherService.updateTeacherByID(teacherID,updatedDetails);
+        res.redirect(`./${teacherID}`);
     }
 }

@@ -7,11 +7,11 @@
     <th>Role</th>
     <th>Start Date</th>
     <th>Years of Experience</th>
-    <th>Assigned Children</th>
     <th>Bandwidth</th>
+    <th>Assigned Children</th>
 </tr>
 <% data.forEach(datum => { %>
-<tr>
+<tr onclick='sendTeacherPageByID()' id='<%=datum.id%>'>
     <td><%= datum.formatTeacherFullName() %></td>
     <td><%= datum.dob %></td>
     <td><%= datum.ageGroup %></td>
@@ -20,7 +20,7 @@
     <td><%= datum.role %></td>
     <td><%= datum.startDate %></td>
     <td><%= datum.formatYears() %></td>
-    <td><%= datum.assignedChildren %></td>
     <td><%= datum.currentBandWidth %></td>
+    <td><%= datum.assignedChildren %></td>
 </tr>
 <% }) %>

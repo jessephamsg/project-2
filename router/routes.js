@@ -21,7 +21,6 @@ router.get('/students/age/junior', controllers.studentControllers.showJuniorData
 router.get('/students/age/lower-primary', controllers.studentControllers.showLowerPrimaryData);
 router.get('/students/age/upper-primary', controllers.studentControllers.showUpperPrimaryData);
 
-router.get('/students/:index', controllers.studentControllers.showStudentPage);
 router.put('/students/:index', controllers.studentControllers.updateStudentData);
 router.post('/students/age', controllers.studentControllers.addNewStudentData);
 
@@ -44,6 +43,9 @@ router.get('/students/age/upper-primary/attendance', controllers.studentControll
 
 //Super Admin App Routes - Students Region
 router.get('/students/region', controllers.studentControllers.showDefaultRegionData);
+
+router.get('/students/:index', controllers.studentControllers.showStudentPage);
+
 router.get('/students/region/jurong', controllers.studentControllers.showJurongRegionData);
 router.get('/students/region/clementi', controllers.studentControllers.showClementiRegionData);
 router.get('/students/region/bukit-panjang', controllers.studentControllers.showPanjangRegionData);
@@ -64,6 +66,9 @@ router.get('/teachers/age/upper-primary', controllers.teacherControllers.showUpp
 router.post('/teachers/age', controllers.teacherControllers.addNewTeacherData);
 
 router.get('/teachers/region', controllers.teacherControllers.showDefaultRegionData);
+router.get('/teachers/:index', controllers.teacherControllers.showTeacherDetailsByID);
+router.put('/teachers/:index', controllers.teacherControllers.updateTeacherDetailsByID);
+
 router.get('/teachers/region/jurong', controllers.teacherControllers.showJurongRegionData);
 router.get('/teachers/region/clementi', controllers.teacherControllers.showClementiRegionData);
 router.get('/teachers/region/bukit-panjang', controllers.teacherControllers.showPanjangRegionData);

@@ -25,6 +25,11 @@ const sendPageByID = () => {
     window.location.replace(`/students/${studentID}`)
 }
 
+const sendTeacherPageByID = () => {
+    const teacherID = event.currentTarget.id;
+    window.location.replace(`/teachers/${teacherID}`)
+}
+
 const getRosterData = () => {
     const arr = $('.roster-data');
     const valueArr = []

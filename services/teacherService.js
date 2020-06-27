@@ -35,6 +35,15 @@ module.exports = {
         const teacherData = await repositories.teacherRepo.getTeachersByRole(roleQuery);
         const teachers = teacherData.map(teacher => { return buildTeacherObject(teacher)});
         return teachers
+    },
+    async getTeacherByID(teacherID) {
+        const teacherData = await repositories.teacherRepo.getTeacherByID(teacherID);
+        const teacher = await buildTeacherObject(teacherData);
+        return teacher
+    },
+    async updateTeacherByID(teacherID, updatedObject) {
+        const teacherData = await repositories.teacherRepo.updateTeacherPersonalAndRosterDetailByID(teacherID, updatedObject);
+        return teacherData
     }
 }
 

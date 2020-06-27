@@ -139,5 +139,33 @@ module.exports = {
             role: roleQuery
         }).toArray();
         return teachers
+    },
+    async updateTeacherDetailsById (teacherID, updatedTeacherObject) {
+        const newTeacherObject = teacherObjectBuilder.buildTeacherObject(updatedTeacherObject);
+        const teacher = await db.teacherRecords.updateOne({
+            _id: ObjectId(teacherID)
+        }, {
+            $set: newTeacherObject
+        });
+
+    },
+    async getTeacherByID(teacherID) {
+        const teacher = await db.teacherRecords.findOne({
+            _id: ObjectId(teacherID)
+        });
+        return teacher
+    },
+    async updateTeacherPersonalAndRosterDetailByID (teacherID, updatedDetails) {
+        this.updateTeacherDetailsById(teacherID, updatedDetails);
+        const rosterArr = updatedDetails.rosteredSlot;
+        const transformedRosterArr = rosterArr.map(roster=> {
+            const rosterObject = {
+                id: teacherID,
+                date: roster.substr(0, 10),
+                timing: roster.substring(11),
+            }
+            return (rosterObject)
+        })
+        await this.updateStaffRosters(transformedRosterArr)
     }
 }

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%- include('../app-general/partials/admin-head.ejs') %>
+</head>
+<body>
+    <%- include('../app-general/partials/app-horizontal-nav.ejs') %>
+    <div class='admin-body'>
+        <div class='left-section'>
+        <%- include('../app-general/partials/admin-nav.ejs') %>
+        </div>
+        <div class='mid-section'>      
+            <h2>Teacher Profile</h2>
+            <div class='edit-form-teacher'>
+                <form action='/teachers/<%=data.id%>?_method=PUT' method='POST'>
+                <div id='profile-table-1'>
+                <h3>General Information</h3>
+                        <label for='firstName'>First Name</label><br>
+                        <input name='firstName' value='<%=data.firstName%>'><br>
+                        <label for='lastName'>Last Name</label><br>
+                        <input name='lastName' value='<%=data.lastName%>'><br>
+                        <label for='dob'>Date of Birth</label><br>
+                        <input name='dob' type='date' value='<%=data.dob%>'><br>
+                        <label for='ageGroup'>Age Group</label><br>
+                        <select name='ageGroup' value='<%=data.ageGroup%>'>
+                            <option value='Tots'>Tots</option>
+                            <option value='Junior'>Junior</option>
+                            <option value='Lower Primary'>Lower Primary</option>
+                            <option value='Upper Primary'>Upper Primary</option>
+                        </select><br>
+                        <label for='role'>Role</label><br>
+                        <select name='role' value='<%=data.role%>'>
+                            <option value='Age Group Lead'>Age Group Lead</option>
+                            <option value='Regional Lead'>Regional Lead</option>
+                            <option value='Teacher'>Teacher</option>
+                            <option value='Assistant Teacher'>Assistant Teacher</option>
+                        </select><br>
+                        <label for='contactNumber'>Contact Number</label><br>
+                        <input name='contactNumber' value='<%=data.contactNumber%>'><br>
+                        <label for='startDate'>Start Date</label><br>
+                        <input name='startDate' type ='date' value='<%=data.startDate%>'><br>
+                        <label for='address'>Address</label><br>
+                        <input name='address' value='<%=data.address%>'><br>
+                        <label for='region'>Region</label><br>
+                        <select name='region' value='<%=data.region%>'>
+                            <option value='Jurong East & West'>Jurong East & West</option>
+                            <option value='Clementi'>Clementi</option>
+                            <option value='Chua Chu Kang & Bukit Batok'>Chua Chu Kang & Bukit Batok</option>
+                            <option value='Bukit Panjang'>Bukit Panjang</option>
+                        </select><br>
+                </div>
+                <div id='profile-table-2'> 
+                <h3>Roster Details</h3>
+                <div class='teacher-roster-history'>
+                <table>
+                    <tr>
+                        <th rowspan='2'>Date</th>
+                        <th colspan='3'>Time Slot</th>
+                    </tr>
+                    <tr>
+                        <th>Time Slot 1</th>
+                        <th>Time Slot 2</th>
+                        <th>Time Slot 3</th>
+                    </tr>
+                    <% data.roster.forEach(rosterObject => { %>
+                        <tr>
+                            <td><%= rosterObject.date %></td>
+                            <% for(let i =0; i< 3; i++) { %>
+                                <td>
+                                <% if(rosterObject.timing.includes(`${i}`)) { %>
+                                    <input name='rosteredSlot' type='checkbox' value='<%=rosterObject.date%>:<%=i%>' checked>
+                                <% } else { %>
+                                    <input name='rosteredSlot' type='checkbox' value='<%=rosterObject.date%>:<%=i%>'>
+                                <% } %>
+                            </td>
+                            <% } %>
+                        </tr>
+                    <% }) %>
+                </table>
+                </div>
+                <input type='text' name='id' value='<%=data.id%>' class='hidden-data'>
+                <input type='submit' value='Save Edits'>
+                </div>
+                </form>
+            </div>
+        </div>
+        <div class='right-section'>
+        </div>
+    </div>
+
+</body>
+</html>
