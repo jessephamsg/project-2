@@ -167,5 +167,11 @@ module.exports = {
             return (rosterObject)
         })
         await this.updateStaffRosters(transformedRosterArr)
+    },
+    async deleteTeacherByID (teacherID) {
+        const student = await db.teacherRecords.deleteOne({
+            _id: ObjectId(teacherID)
+        });
+        return student
     }
 }

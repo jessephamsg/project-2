@@ -118,5 +118,11 @@ module.exports = {
         const ageGroup = updatedDetails.ageGroup.split(' ').join('-')
         const updatedTeacher = await services.teacherService.updateTeacherByID(teacherID,updatedDetails);
         res.redirect(`/teachers/age/${ageGroup}`);
+    },
+    async deleteTeacherByID (req, res) {
+        const teacherID = req.params.index;
+        const ageGroup = req.body.ageGroup.split(' ').join('-');
+        const deletedTeacher = await services.teacherService.deleteTeacherByID(teacherID);
+        res.redirect(`/teachers/age/${ageGroup}`);
     }
 }

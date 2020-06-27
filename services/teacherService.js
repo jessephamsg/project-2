@@ -33,7 +33,7 @@ module.exports = {
     },
     async getTeachersByRole(roleQuery) {
         const teacherData = await repositories.teacherRepo.getTeachersByRole(roleQuery);
-        const teachers = teacherData.map(teacher => { return buildTeacherObject(teacher)});
+        const teachers = teacherData.map(teacher => { return buildTeacherObject(teacher) });
         return teachers
     },
     async getTeacherByID(teacherID) {
@@ -44,6 +44,10 @@ module.exports = {
     async updateTeacherByID(teacherID, updatedObject) {
         const teacherData = await repositories.teacherRepo.updateTeacherPersonalAndRosterDetailByID(teacherID, updatedObject);
         return teacherData
+    },
+    async deleteTeacherByID(teacherID) {
+        const teacher = await repositories.teacherRepo.deleteTeacherByID(teacherID);
+        return teacher
     }
 }
 

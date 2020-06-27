@@ -69,6 +69,7 @@ router.post('/teachers/age', controllers.teacherControllers.addNewTeacherData);
 router.get('/teachers/region', controllers.teacherControllers.showDefaultRegionData);
 router.get('/teachers/:index', controllers.teacherControllers.showTeacherDetailsByID);
 router.put('/teachers/:index', controllers.teacherControllers.updateTeacherDetailsByID);
+router.delete('/teachers/:index', controllers.teacherControllers.deleteTeacherByID);
 
 router.get('/teachers/region/jurong', controllers.teacherControllers.showJurongRegionData);
 router.get('/teachers/region/clementi', controllers.teacherControllers.showClementiRegionData);
