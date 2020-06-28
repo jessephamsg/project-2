@@ -10,6 +10,7 @@ router.delete('/logout', controllers.onboardingControllers.logOut)
 router.post('/login', controllers.onboardingControllers.verifyAccount);
 router.post('/', controllers.onboardingControllers.createNewUser);
 
+//Access control middleware
 router.use(controllers.onboardingControllers.controlAccess);
 
 //Dashboard Routes

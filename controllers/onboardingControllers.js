@@ -50,14 +50,12 @@ module.exports = {
             const studentAttendance = await studentControllers.getMonthlyAvgAttendanceByAge();
             const teachersInCharge = await teacherControllers.showTeachersByRole();
             res.render('app-general/admin.ejs', {
-                //user: req.session.account
                 studentAttendance,
                 teachersInCharge
             });
         } catch (err) {
             console.log(err.message);
         }
-        //res.send(studentAttendance)
     },
     logOut(req, res) {
         return req.session.destroy(() => {

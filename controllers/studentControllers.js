@@ -133,6 +133,7 @@ module.exports = {
             analysisHelpers.getTotalChildrenByAgeGroup('Lower Primary'),
             analysisHelpers.getTotalChildrenByAgeGroup('Upper Primary')
         ]);
+        
         const totsMonthlyAvgAttendance =  analysisHelpers.getMonthlyAttendanceByAge(totsAttendance);
         const juniorMonthlyAvgAttendance =  analysisHelpers.getMonthlyAttendanceByAge(juniorAttendance);
         const lowerPrimaryMonthlyAvgAttendance =  analysisHelpers.getMonthlyAttendanceByAge(lowerPrimaryAttendance);

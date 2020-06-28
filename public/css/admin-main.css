@@ -37,34 +37,38 @@ ul.horizontal-nav {
     padding: 0;
     width: 100%;
     overflow: hidden;
-    box-shadow: 0 4px 9px 0 rgba(0,0,0,0.1);
-    background-color: #f1f1f1;
+    box-shadow: 0 4px 9px 0 rgba(0, 0, 0, 0.11);
+    background-color: white;
 }
 
-.horizontal-nav > li {
-    float: left;
+.horizontal-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.horizontal-nav > li:nth-child(3) {
-    float: right;
-    background-color: #0779E4;
-    color: white;
-}
-
-.horizontal-nav > li a {
-    display: block;
-    text-align: center;
-    color: white;
+#logo {
+    margin: 0px;
+    margin-left: 5px;
+    vertical-align: middle;
     padding: 20px 16px;
-    text-decoration: none;
+}
+
+.horizontal-nav > p {
+    font-size: 16px;
+}
+
+p#logo {
+    font-weight: 600;
 }
 
 .logout-button {
     color: white;
-}
-
-.horizontal-nav > li a:hover {
     background-color: #0779E4;
+    border: none;
+    float: right;
+    cursor: pointer;
+    padding: 20px 16px;
 }
 
 .admin-body {
@@ -82,12 +86,13 @@ ul.horizontal-nav {
 
 .mid-section {
     width: 80%;
+    margin-top: 10px;
 }
 
 .right-section {
     height: 900px;
     width: 20%;
-    background-color: aliceblue;
+    background-color: #f1f1f1;
 }
 
 .dropdown-students, .dropdown-teachers {
@@ -144,6 +149,16 @@ ul.horizontal-nav {
     font-size: 13px;
     background-color: white;
     margin-bottom: 10px;
+}
+
+.subtab-type:hover {
+    background-color: #55555524;
+    cursor: pointer;
+}
+
+.nav-subtype:hover {
+    box-shadow: 0 4px 9px 0 rgba(0, 0, 0, 0.11);
+    cursor: pointer;
 }
 
 .subtab-type, .subtab-name {
@@ -208,6 +223,9 @@ tr:nth-child(even) {
 
 tr:hover {
     background-color: #ddd;
+    text-decoration: underline;
+    color: #0779e4;
+    cursor: pointer;
 }
 
 th {
@@ -243,6 +261,7 @@ th {
 
 #add-child-button {
     margin-right: 2.5%;
+    cursor: pointer;
 }
 
 /* The Modal (background) */
@@ -436,6 +455,7 @@ input[type='checkbox'] {
 
 .stats-div-img {
     width: 30%;
+    height: 90%;
 }
 
 .stats-div> img {
