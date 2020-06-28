@@ -1,5 +1,5 @@
 let activeTypeTab = ['Tots', 'Junior', 'Lower-Primary', 'Upper-Primary', 'Jurong', 'Clementi', 'Bukit-Panjang', 'CCK-BB'];
-let activeSubTypeTab = ['attendance', 'form'];
+let activeSubTypeTab = ['attendance', 'form', 'roster'];
 
 
 const showStudentDropdown = () => {
@@ -28,17 +28,17 @@ const formatSubtypeOnClick = () => {
 const formatTypeAndSubTypeTab = () => {
     const pathName = window.location.pathname;
     let currentAgeGroup = '';
-    for(const type of activeTypeTab) {
-        if(pathName.includes(type)) {
+    for (const type of activeTypeTab) {
+        if (pathName.includes(type)) {
             $(`#dropdown-${type}`).addClass('active-type-tab');
             currentAgeGroup = type;
-        } 
+        }
     }
     for (const type of activeSubTypeTab) {
-        if(pathName.includes(type)) {
+        if (pathName.includes(type)) {
             $(`#nav-subtype-${currentAgeGroup}`).css('border', 'none');
             $(`#nav-subtype-${type}-${currentAgeGroup}`).css('border', '1px solid #0779E4');
-        } else {
+        } else if (type === activeSubTypeTab[0] && pathName.includes(activeSubTypeTab[0])===false) {
             $(`#nav-subtype-${currentAgeGroup}`).css('border', '1px solid #0779E4');
         }
     }
