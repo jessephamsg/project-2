@@ -6,11 +6,9 @@ module.exports = {
         const teacherData = await services.teacherService.getTeachersByAgeGroup(ageQuery);
         const dailyManpower = 5;
         const slots = ['10-12PM', '2-4PM', '5-7PM'];
-        console.log(teacherData)
         const timeTable = services.studentService.createClassTimetable();
         const students = await services.teacherService.getAggregatedRoster(ageQuery)
         const rosterIDArr = [];
-        console.log(students)
         for (const student of students) {
             const attendance = student.attendanceSummary;
             rosterIDArr.push(attendance);
