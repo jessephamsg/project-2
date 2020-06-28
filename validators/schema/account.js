@@ -4,10 +4,12 @@ module.exports = {
     properties: {
         username: {
             type: 'string',
-            maxLength: 256
+            maxLength: 256,
+            minLength: 2
         },
         password: {
-            type: 'string'
+            type: 'string',
+            minLength: 2
         }
     }
 };

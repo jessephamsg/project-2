@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%- include('./partials/head.ejs') %>
+</head>
+<body class='signup-body'>
+    <div id='signup-page-form'>
+        <%- include('./partials/signUp-component.ejs') %>
+        <% err.forEach(errContent => { %>
+            <p class='form-error'><%=errContent%></p>
+        <% }) %>
+    <p>Already have an account?<a href='/login'>Log in</a></p>
+    <a href='/'>Back to home</a>
+    </div>
+</body>
+</html>

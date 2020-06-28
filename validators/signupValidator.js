@@ -4,12 +4,12 @@ const ajv = new Ajv({
     coerceTypes: true,
     allErrors: true
 });
-const userLoginSchema = require('./schema/userLogin');
-const validator = ajv.compile(userLoginSchema);
+const signupSchema = require('./schema/account');
+const validator = ajv.compile(signupSchema);
 const ValidationError = require('../formatter/ValidationError');
 
 module.exports = {
-    userLogin: {
+    userAccount: {
         validate(data) {
             const isValid = validator(data);
             if (!isValid) {

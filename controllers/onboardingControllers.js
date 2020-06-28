@@ -1,7 +1,8 @@
+const bcrypt = require('bcrypt');
 const services = require('../services');
 const studentControllers = require('./studentControllers');
 const teacherControllers = require('./teacherControllers');
-const userLoginValidator = require('../validators/loginValidator');
+const userSignupValidator = require('../validators/signupValidator');
 
 module.exports = {
     showLandingPage(req, res) {
@@ -22,12 +23,12 @@ module.exports = {
             role: req.body.role,
         }
         try {
-            //userLoginValidator.userLogin.validate()
+            userSignupValidator.userAccount.validate(userAccount);
             const account = await services.userAccountMgtService.createNewUser(userAccount)
             res.redirect('/login');
         } catch (err) {
             const account = await services.userAccountMgtService.createNewUser(userAccount)
-            res.render('onboarding/logInError.ejs', {
+            res.render('onboarding/signupError.ejs', {
                 err
             })
         }
@@ -36,12 +37,13 @@ module.exports = {
         res.render('onboarding/logIn.ejs')
     },
     async verifyAccount(req, res) {
-        //userLoginValidator.userLogin.validate()
-        const username = req.body.username;
-        const password = req.body.password;
-        const account = await services.userAccountMgtService.searchAccount(username, password);
-        req.session.account = account;
-        res.redirect('/dashboard');
+        const foundUser = await services.userAccountMgtService.searchAccount(req.body.username);
+        if (bcrypt.compareSync(req.body.password, foundUser.password)) {
+            req.session.account = foundUser;
+            res.redirect('/dashboard');
+        } else {
+            res.send('<a href="/">wrong password</a>');
+        }
     },
     async showDashboard(req, res) {
         try {
@@ -58,7 +60,15 @@ module.exports = {
         //res.send(studentAttendance)
     },
     logOut(req, res) {
-        req.session.destroy();
-        res.redirect('/');
+        return req.session.destroy(() => {
+            res.redirect('/');
+        });
+    },
+    controlAccess (req, res, next) {
+        if(req.session.account) {
+            next();
+        } else {
+            res.redirect('/')
+        }
     }
 }

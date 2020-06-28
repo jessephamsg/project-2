@@ -3,18 +3,21 @@ const router = express.Router();
 const controllers = require('../controllers')
 
 //Onboarding Routes
-
 router.get('/', controllers.onboardingControllers.showLandingPage);
 router.get('/login', controllers.onboardingControllers.logIn);
 router.get('/signup', controllers.onboardingControllers.signUp);
-router.get('/dashboard', controllers.onboardingControllers.showDashboard);
-router.get('/logout', controllers.onboardingControllers.logOut)
+router.delete('/logout', controllers.onboardingControllers.logOut)
 router.post('/login', controllers.onboardingControllers.verifyAccount);
 router.post('/', controllers.onboardingControllers.createNewUser);
+
+router.use(controllers.onboardingControllers.controlAccess);
+
+//Dashboard Routes
+router.get('/dashboard', controllers.onboardingControllers.showDashboard);
 router.put('/dashboard', controllers.userProfileControllers.editUserProfile);
 
-//Super Admin App Routes - Students Age
 
+//Super Admin App Routes - Students Age
 router.get('/students/age', controllers.studentControllers.showDefaultData);
 router.get('/students/age/tots', controllers.studentControllers.showTotsData);
 router.get('/students/age/junior', controllers.studentControllers.showJuniorData);
@@ -41,10 +44,8 @@ router.get('/students/age/lower-primary/attendance', controllers.studentControll
 router.get('/students/age/upper-primary/attendance', controllers.studentControllers.showUpperPrimaryAttendance);
 
 
-
 //Super Admin App Routes - Students Region
 router.get('/students/region', controllers.studentControllers.showDefaultRegionData);
-
 router.get('/students/:index', controllers.studentControllers.showStudentPage);
 
 router.get('/students/region/jurong', controllers.studentControllers.showJurongRegionData);
@@ -85,8 +86,6 @@ router.post('/teachers/age/tots/roster', controllers.teacherControllers.updateTe
 router.post('/teachers/age/junior/roster', controllers.teacherControllers.updateTeacherJuniorRoster);
 router.post('/teachers/age/lower-primary/roster', controllers.teacherControllers.updateTeacherLowerPrimaryRoster);
 router.post('/teachers/age/upper-primary/roster', controllers.teacherControllers.updateTeacherUpperPrimaryRoster);
-
-//Dashboard Routes
 
 
 

@@ -5,7 +5,7 @@ const SALT_ROUND = 10;
 
 module.exports = {
     async createOne(userAccount) {
-        userAccount.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(SALT_ROUND));
+        userAccount.password = bcrypt.hashSync(userAccount.password, bcrypt.genSaltSync(SALT_ROUND));
         const account = await db.userAccounts.insertOne(
             { 
                 username: userAccount.username,
@@ -33,12 +33,9 @@ module.exports = {
         }).toArray();
         return updatedAccount[0];
     },
-    async findOneAccount(logInUsername, logInPassword) {
+    async findOneAccount(logInUsername) {
         const account = await db.userAccounts.find({
-            $and: [
-                { username: logInUsername },
-                { password: logInPassword }
-            ]
+            username: logInUsername,
         }).toArray();
         return account[0];
     }
