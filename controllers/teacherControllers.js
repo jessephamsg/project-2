@@ -58,7 +58,11 @@ module.exports = {
         await teacherHelper.showTeacherByRegion(req, res, 'Chua Chu Kang & Bukit Batok')
     },
     async showTotsTeacherRoster(req, res) {
-        await teacherHelper.getTeacherDataByAgeGroup(req, res, 'Tots');
+        try {
+            await teacherHelper.getTeacherDataByAgeGroup(req, res, 'Tots');
+        } catch (err) {
+            console.log(err.message)
+        }
     },
     async showJuniorTeacherRoster(req, res) {
         await teacherHelper.getTeacherDataByAgeGroup(req, res, 'Junior');
