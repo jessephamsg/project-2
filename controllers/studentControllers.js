@@ -114,19 +114,40 @@ module.exports = {
         await controllerHelpers.renderRegionalAttendanceStats(req, res, 'Chua Chu Kang & Bukit Batok');
     },
     async getMonthlyAvgAttendanceByAge (req, res) {
-        const totsAttendance = await services.studentService.sumAttendance('Tots');
-        const juniorAttendance = await services.studentService.sumAttendance('Junior');
-        const upperPrimaryAttendance = await services.studentService.sumAttendance('Upper Primary');
-        const lowerPrimaryAttendance = await services.studentService.sumAttendance('Lower Primary');
-        const totsMonthlyAvgAttendance = await analysisHelpers.getMonthlyAttendanceByAge(totsAttendance);
-        const juniorMonthlyAvgAttendance = await analysisHelpers.getMonthlyAttendanceByAge(juniorAttendance);
-        const lowerPrimaryMonthlyAvgAttendance = await analysisHelpers.getMonthlyAttendanceByAge(lowerPrimaryAttendance);
-        const upperPrimaryMonthlyAvgAttendance = await analysisHelpers.getMonthlyAttendanceByAge(upperPrimaryAttendance);
-        const totalMonthlyAvgAttendance = await analysisHelpers.getMonthlyAttendance([totsMonthlyAvgAttendance, juniorMonthlyAvgAttendance, lowerPrimaryMonthlyAvgAttendance, upperPrimaryMonthlyAvgAttendance]);
-        const totalTotsChildren = await analysisHelpers.getTotalChildrenByAgeGroup('Tots');
-        const totalJuniorChildren = await analysisHelpers.getTotalChildrenByAgeGroup('Junior');
-        const totalLowerPrimaryChildren = await analysisHelpers.getTotalChildrenByAgeGroup('Lower Primary');
-        const totalUpperPrimaryChildren = await analysisHelpers.getTotalChildrenByAgeGroup('Upper Primary');
+        const [
+            totsAttendance, 
+            juniorAttendance, 
+            upperPrimaryAttendance, 
+            lowerPrimaryAttendance, 
+            totalTotsChildren,
+            totalJuniorChildren,
+            totalLowerPrimaryChildren,
+            totalUpperPrimaryChildren
+        ] = await Promise.all([
+            services.studentService.sumAttendance('Tots'),
+            services.studentService.sumAttendance('Junior'),
+            services.studentService.sumAttendance('Upper Primary'),
+            services.studentService.sumAttendance('Lower Primary'),
+            analysisHelpers.getTotalChildrenByAgeGroup('Tots'),
+            analysisHelpers.getTotalChildrenByAgeGroup('Junior'),
+            analysisHelpers.getTotalChildrenByAgeGroup('Lower Primary'),
+            analysisHelpers.getTotalChildrenByAgeGroup('Upper Primary')
+        ]);
+        // const totsAttendance = await services.studentService.sumAttendance('Tots');
+        // const juniorAttendance = await services.studentService.sumAttendance('Junior');
+        // const upperPrimaryAttendance = await services.studentService.sumAttendance('Upper Primary');
+        // const lowerPrimaryAttendance = await services.studentService.sumAttendance('Lower Primary');
+        const totsMonthlyAvgAttendance =  analysisHelpers.getMonthlyAttendanceByAge(totsAttendance);
+        const juniorMonthlyAvgAttendance =  analysisHelpers.getMonthlyAttendanceByAge(juniorAttendance);
+        const lowerPrimaryMonthlyAvgAttendance =  analysisHelpers.getMonthlyAttendanceByAge(lowerPrimaryAttendance);
+        const upperPrimaryMonthlyAvgAttendance =  analysisHelpers.getMonthlyAttendanceByAge(upperPrimaryAttendance);
+        const totalMonthlyAvgAttendance =  analysisHelpers.getMonthlyAttendance([totsMonthlyAvgAttendance, juniorMonthlyAvgAttendance, lowerPrimaryMonthlyAvgAttendance, upperPrimaryMonthlyAvgAttendance]);
+        // const totalTotsChildren = await analysisHelpers.getTotalChildrenByAgeGroup('Tots');
+        // const totalJuniorChildren = await analysisHelpers.getTotalChildrenByAgeGroup('Junior');
+        // const totalLowerPrimaryChildren = await analysisHelpers.getTotalChildrenByAgeGroup('Lower Primary');
+        // const totalUpperPrimaryChildren = await analysisHelpers.getTotalChildrenByAgeGroup('Upper Primary');
+        
+
         const attendance = {
             totalMonthlyAvgAttendance,
             totalTotsChildren,
