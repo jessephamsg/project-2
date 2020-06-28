@@ -1,10 +1,13 @@
 const db = require('../database/db');
+const bcrypt = require('bcrypt');
 const ObjectId = require('mongodb').ObjectId;
+const SALT_ROUND = 10;
 
 module.exports = {
     async createOne(userAccount) {
+        userAccount.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(SALT_ROUND));
         const account = await db.userAccounts.insertOne(
-            {
+            { 
                 username: userAccount.username,
                 password: userAccount.password,
                 firstName: userAccount.firstName,

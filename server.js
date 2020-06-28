@@ -12,7 +12,11 @@ db.connect();
 app.use(express.static('public'));
 app.use(express.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
-app.use(session({secret: 'a little bird told me something i cannot tell you at all costs'}))
+app.use(session({
+    secret: 'a little bird told me something i cannot tell you at all costs',
+    resave: false,
+    saveUninitialized: false
+}));
 app.use(router);
 
 app.listen (port, () => {
