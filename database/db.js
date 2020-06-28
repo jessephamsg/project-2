@@ -1,5 +1,5 @@
 const MongoClient = require('mongodb').MongoClient;
-const MONGO_URI = 'mongodb://localhost:27017'
+const MONGO_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017'
 const DB_NAME = 'crm-project';
 
 const client = new MongoClient(MONGO_URI, {
