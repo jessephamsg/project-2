@@ -10,7 +10,7 @@ module.exports = {
         const students = await services.teacherService.getAggregatedRoster(ageQuery)
         const rosterIDArr = [];
         for (const student of students) {
-            const attendance = await student.attendanceSummary;
+            const attendance = student.attendanceSummary;
             rosterIDArr.push(attendance);
         }
         const rosterArr = rosterIDArr.flat();
