@@ -102,7 +102,7 @@ module.exports = {
         const students = await db.teacherRecords.find({
             ageGroup: ageGroupQuery,
             //$where: 'this.attendanceSummary.length > 0'
-            'attendanceSummary.1': { $exists: true}
+            'attendanceSummary.0': { $exists: true}
         }).toArray();
         return students;
     },
