@@ -9,7 +9,7 @@ module.exports = {
         res.render('onboarding/landing-page.ejs');
     },
     signUp(req, res) {
-        res.render('onboarding/signUp.ejs');
+        res.render('onboarding/signup.ejs');
     },
     async createNewUser(req, res) {
         const userAccount = {
