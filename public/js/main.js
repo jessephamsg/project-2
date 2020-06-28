@@ -1,5 +1,5 @@
-let activeTypeTab = [];
-let activeSubTypeTab = [];
+let activeTypeTab = ['Tots', 'Junior', 'Lower-Primary', 'Upper-Primary', 'Jurong', 'Clementi', 'Bukit-Panjang', 'CCK-BB'];
+let activeSubTypeTab = ['attendance', 'form'];
 
 
 const showStudentDropdown = () => {
@@ -13,27 +13,35 @@ const showTeacherDropdown = () => {
 const showSubTypeDropdown = () => {
     $('.subtab-type').removeClass('active-type-tab');
     const index = event.currentTarget.id;
-    activeTypeTab.push(index);
-    console.log(activeTypeTab)
     $(`#${index}`).addClass('active-type-tab');
     $('.dropdown-container').css('display', 'none');
-    const id = parseInt(event.currentTarget.id.replace('dropdown-', ''));
+    const id = event.currentTarget.id.replace('dropdown-', '');
     $(`#dropdown-container-${id}`).css('display', 'block');
 };
 
 const formatSubtypeOnClick = () => {
     $('.nav-subtype').removeClass('active-subtype-tab');
     const index = event.currentTarget.id;
-    activeSubTypeTab.push(index);
-    console.log(activeSubTypeTab)
     $(`#${index}`).addClass('active-subtype-tab');
 }
 
 const formatTypeAndSubTypeTab = () => {
-    $(`#${activeTypeTab[0]}`).addClass('active-type-tab');
-    $(`#${activeSubTypeTab[0]}`).addClass('active-subtype-tab');
-    // activeTypeTab = [];
-    // activeSubTypeTab = [];
+    const pathName = window.location.pathname;
+    let currentAgeGroup = '';
+    for(const type of activeTypeTab) {
+        if(pathName.includes(type)) {
+            $(`#dropdown-${type}`).addClass('active-type-tab');
+            currentAgeGroup = type;
+        } 
+    }
+    for (const type of activeSubTypeTab) {
+        if(pathName.includes(type)) {
+            $(`#nav-subtype-${currentAgeGroup}`).css('border', 'none');
+            $(`#nav-subtype-${type}-${currentAgeGroup}`).css('border', '1px solid #0779E4');
+        } else {
+            $(`#nav-subtype-${currentAgeGroup}`).css('border', '1px solid #0779E4');
+        }
+    }
 }
 
 const launchChildRegistrationForm = () => {

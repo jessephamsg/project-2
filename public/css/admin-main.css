@@ -155,11 +155,6 @@ ul.horizontal-nav {
     color: white;
 }
 
-.active-subtype-tab {
-    background-color: #0779E4;
-    color: white;
-}
-
 .subtab-type>a {
     text-decoration: none;
     color: #131212e3
@@ -180,6 +175,13 @@ ul.horizontal-nav {
     padding: 15px;
     background-color: #0779e414;
     color: #0779E4;
+    border: none;
+}
+
+.active-subtype-tab {
+    background-color: #0779E4;
+    color: white;
+    padding: 15px;
     border: none;
 }
 
