@@ -5,12 +5,6 @@
 - [Project Approach](#project-approach)
 - [Technology & App Infrastructure](#tech-infrastructure)
 - [Code Organisation](#code-org)
-- [User Stories](#user-stories)
-    - [View App Instructions](#view-app-instructions)
-    - [Add/ Edit/ Review Job(s)](#add-edit-review)
-    - [View Charts & Aggregated Data](#view-chart)
-    - [Job Match](#job-match)
-    - [Gain Experience](#gain-exp)
 - [Wireframes](#wireframe)
 - [Limitations](#limitations)
 
@@ -77,22 +71,22 @@ The following bugs have not been addressed:
 ## Wireframes
 
 **Dashboard View**
-![Wireframes](https://github.com/jessephamsg/jessephamsg.github.io/blob/master/Wireframes/dashboard.png)
+![Wireframes](https://github.com/jessephamsg/project-2/blob/master/Wireframes/dashboard.png)
 
 **Student Age Group View**
-![Wireframes](https://github.com/jessephamsg/jessephamsg.github.io/blob/master/Wireframes/student-ageGroup-view.png)
+![Wireframes](https://github.com/jessephamsg/project-2/blob/master/Wireframes/student-ageGroup-view.png)
 
 **Student Attendance View**
-![Wireframes](https://github.com/jessephamsg/jessephamsg.github.io/blob/master/Wireframes/student-attendance-view.png)
+![Wireframes](https://github.com/jessephamsg/project-2/blob/master/Wireframes/student-attendance-view.png)
 
 **Student Profile View**
-![Wireframes](https://github.com/jessephamsg/jessephamsg.github.io/blob/master/Wireframes/student-profile-view.png)
+![Wireframes](https://github.com/jessephamsg/project-2/blob/master/Wireframes/student-profile-view.png)
 
 **Teacher Add New View**
-![Wireframes](https://github.com/jessephamsg/jessephamsg.github.io/blob/master/Wireframes/teacher-addNew-view.png)
+![Wireframes](https://github.com/jessephamsg/project-2/blob/master/Wireframes/teacher-addNew-view.png)
 
 **Teacher Profile View**
-![Wireframes](https://github.com/jessephamsg/jessephamsg.github.io/blob/master/Wireframes/teacher-profile-view.png)
+![Wireframes](https://github.com/jessephamsg/project-2/blob/master/Wireframes/teacher-profile-view.png)
 
 **Teacher Roster View**
-![Wireframes](https://github.com/jessephamsg/jessephamsg.github.io/blob/master/Wireframes/teacher-roster-view.png)
+![Wireframes](https://github.com/jessephamsg/project-2/blob/master/Wireframes/teacher-roster-view.png)
