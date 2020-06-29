@@ -42,19 +42,28 @@ module.exports = {
             req.session.account = foundUser;
             res.redirect('/dashboard');
         } else {
-            res.send('<a href="/">wrong password</a>');
+            res.render('onboarding/logInError.ejs', {
+                err: 'Your account or password does not match any records. Please try again'
+            });
         }
     },
     async showDashboard(req, res) {
         try {
-            const studentAttendance = await studentControllers.getMonthlyAvgAttendanceByAge();
-            const teachersInCharge = await teacherControllers.showTeachersByRole();
+            const [
+                studentAttendance,
+                teachersInCharge
+            ] = await Promise.all([
+                studentControllers.getMonthlyAvgAttendanceByAge(),
+                teacherControllers.showTeachersByRole()
+            ]);
             res.render('app-general/admin.ejs', {
                 studentAttendance,
                 teachersInCharge
             });
         } catch (err) {
-            console.log(err.message);
+            res.render('errors/404.ejs', {
+                err
+            })
         }
     },
     logOut(req, res) {

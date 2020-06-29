@@ -101,7 +101,6 @@ module.exports = {
     async aggregateAllAttendanceSummary(ageGroupQuery) {
         const students = await db.teacherRecords.find({
             ageGroup: ageGroupQuery,
-            //$where: 'this.attendanceSummary.length > 0'
             'attendanceSummary.0': { $exists: true}
         }).toArray();
         return students;

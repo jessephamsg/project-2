@@ -1,26 +1,34 @@
 const services = require('../../services');
+const DAILY_MANPOWER = 5;
+const TIMESLOTS = ['10-12PM', '2-4PM', '5-7PM'];
 
 
 module.exports = {
     async getTeacherDataByAgeGroup(req, res, ageQuery) {
-        const teacherData = await services.teacherService.getTeachersByAgeGroup(ageQuery);
-        const dailyManpower = 5;
-        const slots = ['10-12PM', '2-4PM', '5-7PM'];
+        const dailyManpower = DAILY_MANPOWER;
+        const slots = TIMESLOTS;
         const timeTable = services.studentService.createClassTimetable();
-        const students = await services.teacherService.getAggregatedRoster(ageQuery)
-        const rosterIDArr = [];
-        for (const student of students) {
-            const attendance = student.attendanceSummary;
-            rosterIDArr.push(attendance);
+        try {
+            const teacherData = await services.teacherService.getTeachersByAgeGroup(ageQuery);
+            const students = await services.teacherService.getAggregatedRoster(ageQuery)
+            const rosterIDArr = [];
+            for (const student of students) {
+                const attendance = student.attendanceSummary;
+                rosterIDArr.push(attendance);
+            }
+            const rosterArr = rosterIDArr.flat();
+            res.render('app-teacherDb/admin-teacher-roster.ejs', {
+                timeTable,
+                data: teacherData,
+                manpower: dailyManpower,
+                timeslots: slots,
+                rosterArr
+            })
+        } catch (err) {
+            res.render('errors/404.ejs', {
+                err
+            })
         }
-        const rosterArr = rosterIDArr.flat();
-        res.render('app-teacherDb/admin-teacher-roster.ejs', {
-            timeTable,
-            data: teacherData,
-            manpower: dailyManpower,
-            timeslots: slots,
-            rosterArr
-        })
     },
     async updateTeacherRoster(req, res) {
         const roster = req.body.rosteredTeacher
@@ -34,18 +42,36 @@ module.exports = {
             }
             rosterArr.push(rosterObject);
         }
-        const updatedTeacherData = await services.teacherService.setStaffRoster(rosterArr);
+        try {
+            const updatedTeacherData = await services.teacherService.setStaffRoster(rosterArr);
+        } catch (err) {
+            res.render('errors/404.ejs', {
+                err
+            })
+        }
     },
     async showTeacherByAgeGroup(req, res, ageQuery) {
-        const teacherData = await services.teacherService.getTeachersByAgeGroup(ageQuery);
-        res.render('app-teacherDb/admin-teacher-ageGroups.ejs', {
-            data: teacherData
-        });
+        try {
+            const teacherData = await services.teacherService.getTeachersByAgeGroup(ageQuery);
+            res.render('app-teacherDb/admin-teacher-ageGroups.ejs', {
+                data: teacherData
+            });
+        } catch {
+            res.render('errors/404.ejs', {
+                err
+            })
+        }
     },
     async showTeacherByRegion(req, res, regionQuery) {
-        const teacherData = await services.teacherService.getTeachersByRegion(regionQuery);
-        res.render('app-teacherDb/admin-teacher-region.ejs', {
-            data: teacherData
-        });
+        try {
+            const teacherData = await services.teacherService.getTeachersByRegion(regionQuery);
+            res.render('app-teacherDb/admin-teacher-region.ejs', {
+                data: teacherData
+            });
+        } catch (err) {
+            res.render('errors/404.ejs', {
+                err
+            })
+        }
     }
 }

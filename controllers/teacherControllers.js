@@ -61,7 +61,9 @@ module.exports = {
         try {
             await teacherHelper.getTeacherDataByAgeGroup(req, res, 'Tots');
         } catch (err) {
-            console.log(err.message)
+            res.render('errors/404.ejs', {
+                err
+            })
         }
     },
     async showJuniorTeacherRoster(req, res) {
@@ -89,23 +91,40 @@ module.exports = {
         await teacherHelper.updateTeacherRoster(req, res);
         res.redirect('/teachers/age/upper-primary/roster')
     },
-    async showTeachersByRole (req, res) {
-        const ageGroupLead = await services.teacherService.getTeachersByRole('Age Group Lead');
-        const regionalLead = await services.teacherService.getTeachersByRole('Regional Lead');
-        const teacherInCharge = {
-            ageGroup: ageGroupLead,
-            region: regionalLead
+    async showTeachersByRole(req, res) {
+        try {
+            const [
+                ageGroupLead,
+                regionalLead
+            ] = await Promise.all([
+                services.teacherService.getTeachersByRole('Age Group Lead'),
+                services.teacherService.getTeachersByRole('Regional Lead')
+            ]);
+            const teacherInCharge = {
+                ageGroup: ageGroupLead,
+                region: regionalLead
+            }
+            return teacherInCharge
+        } catch (err) {
+            res.render('errors/404.ejs', {
+                err
+            })
         }
-        return teacherInCharge
     },
-    async showTeacherDetailsByID (req, res) {
+    async showTeacherDetailsByID(req, res) {
         const teacherID = req.params.index;
-        const teacher = await services.teacherService.getTeacherByID(teacherID);
-        res.render('app-teacherDb/admin-teacher-details.ejs', {
-            data: teacher
-        })
+        try {
+            const teacher = await services.teacherService.getTeacherByID(teacherID);
+            res.render('app-teacherDb/admin-teacher-details.ejs', {
+                data: teacher
+            });
+        } catch (err) {
+            res.render('errors/404.ejs', {
+                err
+            })
+        }
     },
-    async updateTeacherDetailsByID (req, res) {
+    async updateTeacherDetailsByID(req, res) {
         const teacherID = req.body.id;
         const updatedDetails = {
             firstName: req.body.firstName,
@@ -119,14 +138,26 @@ module.exports = {
             region: req.body.region,
             rosteredSlot: req.body.rosteredSlot
         }
-        const ageGroup = updatedDetails.ageGroup.split(' ').join('-')
-        const updatedTeacher = await services.teacherService.updateTeacherByID(teacherID,updatedDetails);
-        res.redirect(`/teachers/age/${ageGroup}`);
+        const ageGroup = updatedDetails.ageGroup.split(' ').join('-');
+        try {
+            const updatedTeacher = await services.teacherService.updateTeacherByID(teacherID, updatedDetails);
+            res.redirect(`/teachers/age/${ageGroup}`);
+        } catch (err) {
+            res.render('errors/404.ejs', {
+                err
+            })
+        }
     },
-    async deleteTeacherByID (req, res) {
+    async deleteTeacherByID(req, res) {
         const teacherID = req.params.index;
         const ageGroup = req.body.ageGroup.split(' ').join('-');
-        const deletedTeacher = await services.teacherService.deleteTeacherByID(teacherID);
-        res.redirect(`/teachers/age/${ageGroup}`);
+        try {
+            const deletedTeacher = await services.teacherService.deleteTeacherByID(teacherID);
+            res.redirect(`/teachers/age/${ageGroup}`);
+        } catch (err) {
+            res.render('errors/404.ejs', {
+                err
+            })
+        }
     }
 }

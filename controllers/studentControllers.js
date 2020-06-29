@@ -113,54 +113,66 @@ module.exports = {
     async showBatokRegionAttendanceData(req, res) {
         await controllerHelpers.renderRegionalAttendanceStats(req, res, 'Chua Chu Kang & Bukit Batok');
     },
-    async getMonthlyAvgAttendanceByAge (req, res) {
-        const [
-            totsAttendance, 
-            juniorAttendance, 
-            upperPrimaryAttendance, 
-            lowerPrimaryAttendance, 
-            totalTotsChildren,
-            totalJuniorChildren,
-            totalLowerPrimaryChildren,
-            totalUpperPrimaryChildren
-        ] = await Promise.all([
-            services.studentService.sumAttendance('Tots'),
-            services.studentService.sumAttendance('Junior'),
-            services.studentService.sumAttendance('Upper Primary'),
-            services.studentService.sumAttendance('Lower Primary'),
-            analysisHelpers.getTotalChildrenByAgeGroup('Tots'),
-            analysisHelpers.getTotalChildrenByAgeGroup('Junior'),
-            analysisHelpers.getTotalChildrenByAgeGroup('Lower Primary'),
-            analysisHelpers.getTotalChildrenByAgeGroup('Upper Primary')
-        ]);
-        
-        const totsMonthlyAvgAttendance =  analysisHelpers.getMonthlyAttendanceByAge(totsAttendance);
-        const juniorMonthlyAvgAttendance =  analysisHelpers.getMonthlyAttendanceByAge(juniorAttendance);
-        const lowerPrimaryMonthlyAvgAttendance =  analysisHelpers.getMonthlyAttendanceByAge(lowerPrimaryAttendance);
-        const upperPrimaryMonthlyAvgAttendance =  analysisHelpers.getMonthlyAttendanceByAge(upperPrimaryAttendance);
-        const totalMonthlyAvgAttendance =  analysisHelpers.getMonthlyAttendance([totsMonthlyAvgAttendance, juniorMonthlyAvgAttendance, lowerPrimaryMonthlyAvgAttendance, upperPrimaryMonthlyAvgAttendance]);
-        
-        const attendance = {
-            totalMonthlyAvgAttendance,
-            totalTotsChildren,
-            totalJuniorChildren,
-            totalLowerPrimaryChildren,
-            totalUpperPrimaryChildren,
-            totsMonthlyAvgAttendance,
-            juniorMonthlyAvgAttendance,
-            lowerPrimaryMonthlyAvgAttendance,
-            upperPrimaryMonthlyAvgAttendance
+    async getMonthlyAvgAttendanceByAge(req, res) {
+        try {
+            const [
+                totsAttendance,
+                juniorAttendance,
+                upperPrimaryAttendance,
+                lowerPrimaryAttendance,
+                totalTotsChildren,
+                totalJuniorChildren,
+                totalLowerPrimaryChildren,
+                totalUpperPrimaryChildren
+            ] = await Promise.all([
+                services.studentService.sumAttendance('Tots'),
+                services.studentService.sumAttendance('Junior'),
+                services.studentService.sumAttendance('Upper Primary'),
+                services.studentService.sumAttendance('Lower Primary'),
+                analysisHelpers.getTotalChildrenByAgeGroup('Tots'),
+                analysisHelpers.getTotalChildrenByAgeGroup('Junior'),
+                analysisHelpers.getTotalChildrenByAgeGroup('Lower Primary'),
+                analysisHelpers.getTotalChildrenByAgeGroup('Upper Primary')
+            ]);
+
+            const totsMonthlyAvgAttendance = analysisHelpers.getMonthlyAttendanceByAge(totsAttendance);
+            const juniorMonthlyAvgAttendance = analysisHelpers.getMonthlyAttendanceByAge(juniorAttendance);
+            const lowerPrimaryMonthlyAvgAttendance = analysisHelpers.getMonthlyAttendanceByAge(lowerPrimaryAttendance);
+            const upperPrimaryMonthlyAvgAttendance = analysisHelpers.getMonthlyAttendanceByAge(upperPrimaryAttendance);
+            const totalMonthlyAvgAttendance = analysisHelpers.getMonthlyAttendance([totsMonthlyAvgAttendance, juniorMonthlyAvgAttendance, lowerPrimaryMonthlyAvgAttendance, upperPrimaryMonthlyAvgAttendance]);
+
+            const attendance = {
+                totalMonthlyAvgAttendance,
+                totalTotsChildren,
+                totalJuniorChildren,
+                totalLowerPrimaryChildren,
+                totalUpperPrimaryChildren,
+                totsMonthlyAvgAttendance,
+                juniorMonthlyAvgAttendance,
+                lowerPrimaryMonthlyAvgAttendance,
+                upperPrimaryMonthlyAvgAttendance
+            }
+            return attendance
+        } catch (err) {
+            res.render('errors/404.ejs', {
+                err
+            })
         }
-        return attendance
     },
-    async showStudentPage (req, res) {
-        const studentID = req.params.index;
-        const student = await services.studentService.getStudentByID(studentID);
-        res.render('app-studentDb/admin-student-details.ejs', {
-            data: student
-        })
+    async showStudentPage(req, res) {
+        try {
+            const studentID = req.params.index;
+            const student = await services.studentService.getStudentByID(studentID);
+            res.render('app-studentDb/admin-student-details.ejs', {
+                data: student
+            })
+        } catch (err) {
+            res.render('errors/404.ejs', {
+                err
+            })
+        }
     },
-    async updateStudentData (req, res) {
+    async updateStudentData(req, res) {
         const studentID = req.body.id;
         const updatedObject = {
             firstName: req.body.firstName,
@@ -176,13 +188,25 @@ module.exports = {
             isPresent: req.body.isPresent
         }
         const ageGroup = updatedObject.ageGroup.split(' ').join('-');
-        const updatedStudent = await services.studentService.setStudentProfileByID(studentID,updatedObject);
-        res.redirect(`/students/age/${ageGroup}`);
+        try {
+            const updatedStudent = await services.studentService.setStudentProfileByID(studentID, updatedObject);
+            res.redirect(`/students/age/${ageGroup}`);
+        } catch (err) {
+            res.render('errors/404.ejs', {
+                err
+            })
+        }
     },
-    async deleteStudentByID (req, res) {
+    async deleteStudentByID(req, res) {
         const studentID = req.params.index;
         const ageGroup = req.body.ageGroup.split(' ').join('-');
-        const deletedStudent = await services.studentService.deleteStudentByID(studentID);
-        res.redirect(`/students/age/${ageGroup}`);
+        try {
+            const deletedStudent = await services.studentService.deleteStudentByID(studentID);
+            res.redirect(`/students/age/${ageGroup}`);
+        } catch (err) {
+            res.render('errors/404.ejs', {
+                err
+            })
+        }
     }
 }
